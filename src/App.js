@@ -1,0 +1,26 @@
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { GlobalStyle } from "./globalStyles";
+import Footer from "./components/Footer/Footer";
+import Navbar from "./components/Navbar/Navbar";
+import { Home } from "./components/Home/Home";
+import { Shop } from "./components/Shop/Shop";
+import { SingleItem } from "./components/SingleView/SingleItem";
+
+function App() {
+  return (
+    <Router>
+      <GlobalStyle />
+      <Navbar />
+
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/shoping" exact component={Shop} />
+        <Route path="/singlePage" exact component={SingleItem} />
+      </Switch>
+      <Footer />
+    </Router>
+  );
+}
+
+export default App;
