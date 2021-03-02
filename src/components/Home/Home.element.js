@@ -2,53 +2,58 @@ import styled from "styled-components";
 import { colors } from "../../constants/constants";
 import * as FaIcons from "react-icons/fa";
 
-export const ItemContainer = styled.div`
-  display: grid;
-  grid-template-columns: 2fr 7fr;
-  font-size: 1.2rem;
-  z-index: 999;
-  background: ${colors.white};
-  @media screen and (max-width: 960px) {
-    grid-template-columns: 1fr 9fr;
-    display: ${(props) => (props.showCategory ? "grid" : "flex")};
-    align-items: center;
-    background: ${colors.bodyColor};
-  }
-`;
-
-export const ProductCard = styled.div`
-  margin: 0 1rem;
-  /* line-height: 2; */
-  width: 220px;
-  background-color: ${colors.white};
-  /* border: 1px solid ${colors.primary}; */
-  align-items: center;
-  margin: 10px;
-  border-radius: 5px;
-  padding: 0.5rem;
-  box-shadow: 2px 2px ${colors.white};
-
-  :hover {
-    cursor: pointer;
-    transform: scale(1.06);
-    transition: all 0.3s ease-out;
-    background: ${colors.primary};
-    color: ${colors.white};
-  }
-`;
-
-export const ProductImg = styled.img`
-  height: 100px;
-  width: 150px;
+export const SlidderContainer = styled.div`
   display: flex;
-  flex-direction: column;
-  box-shadow: 2px 2px ${colors.secondary};
-  margin-bottom: 10px;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background: ${colors.bodyColor};
+  overflow: hidden;
+`;
+export const SlidItemWrapper = styled.div`
+  position: relative;
+  width: 500%;
+  margin: 0;
+  left: 0;
+  text-align: left;
+  font-size: 0;
+  animation: 30s slidy infinite;
+  overflow: hidden;
+
+  @keyframes slidy {
+    0% {
+      left: 0%;
+    }
+    20% {
+      left: 0%;
+    }
+    25% {
+      left: -100%;
+    }
+    45% {
+      left: -100%;
+    }
+    50% {
+      left: -200%;
+    }
+    70% {
+      left: -200%;
+    }
+    75% {
+      left: -300%;
+    }
+    95% {
+      left: -300%;
+    }
+    100% {
+      left: -400%;
+    }
+  }
 `;
 
 export const LeftPaginationArrow = styled(FaIcons.FaAngleDoubleLeft)`
-  display: inline-block;
-  align-items: center;
+  display: flex;
+  font-size: 2rem;
   :hover {
     cursor: pointer;
     transform: scale(1.06);
@@ -57,8 +62,9 @@ export const LeftPaginationArrow = styled(FaIcons.FaAngleDoubleLeft)`
   }
 `;
 export const RightPaginationArrow = styled(FaIcons.FaAngleDoubleRight)`
-  display: inline-block;
   align-items: center;
+  font-size: 2rem;
+
   :hover {
     cursor: pointer;
     transform: scale(1.06);

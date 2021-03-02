@@ -5,6 +5,10 @@ import * as FaIcons from "react-icons/fa";
 export const ProductsContainer = styled.div`
   background: ${colors.bodyColor};
   justify-content: left;
+  padding-bottom: 2rem;
+  width: 100%;
+  float: left;
+
   @media screen and (max-width: 560px) {
     display: none;
   }

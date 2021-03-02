@@ -9,7 +9,7 @@ export const Card = styled.div`
   align-items: center;
   margin: 10px;
   border-radius: 5px;
-  padding: 0.5rem;
+  padding: 1rem;
   /* box-shadow: 2px 2px ${colors.white}; */
 
   :hover {
@@ -22,12 +22,13 @@ export const Card = styled.div`
 `;
 
 export const CategoryImg = styled.img`
-  height: 100px;
-  width: 100px;
+  height: 90px;
+  width: 90px;
   display: flex;
   flex-direction: column;
   border-radius: 10rem;
   border: 2px solid red;
+  margin-bottom: 0.7rem;
 `;
 
 export const CategoryInfo = styled.div`

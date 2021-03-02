@@ -14,7 +14,7 @@ import {
 import { ItemCard } from "../Card/Card";
 
 export const ItemGrid = ({ title, data }) => {
-  data.length = 5;
+  data.length = 6;
   const [page, SetIsActive] = useState(0);
   const Paginator = (props) => {
     return (

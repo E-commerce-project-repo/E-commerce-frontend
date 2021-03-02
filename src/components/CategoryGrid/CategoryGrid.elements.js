@@ -10,8 +10,9 @@ export const ProductsContainer = styled.div`
 
 export const ProductWrapper = styled.div`
   display: flex;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   justify-content: center;
+  overflow: scroll;
 `;
 
 export const ProductsHeading = styled.h1`

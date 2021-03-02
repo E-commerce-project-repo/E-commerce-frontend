@@ -7,20 +7,18 @@ import {
   HeroItems,
   HeroH1,
   Price,
-  ProductCategoryImg,
   HeroBtn,
 } from "./HeroElements";
 
 export const Hero = () => {
   const [isOpen, setIsOpen] = useState(false);
-
   const toggle = () => {
     setIsOpen(!isOpen);
   };
 
   return (
     <HeroContainer>
-      <Sidebar isOpen={isOpen} toggle={toggle} />
+      {/* <Sidebar isOpen={isOpen} toggle={toggle} /> */}
       <HeroContent>
         <HeroItems>
           <HeroH1>Macbook pro pc for sale</HeroH1>
