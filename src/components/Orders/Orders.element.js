@@ -7,45 +7,42 @@ export const ProductsContainer = styled.div`
   justify-content: left;
   padding-bottom: 2rem;
   width: 100%;
-  height: auto;
   float: left;
-  @media screen and (max-width: 560px) {
-  }
+  overflow-y: scroll;
 `;
 
 export const ProductWrapper = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: 0 auto;
+  overflow-y: scroll;
+  margin-bottom: 0.4rem;
+  flex-direction: row;
+  justify-content: space-between;
+  background: ${colors.white};
 `;
 
-export const ProductCard = styled.div`
+export const OrderedAmount = styled.p`
   margin: 0 1rem;
-  width: 220px;
-  background-color: ${colors.white};
   align-items: center;
-  margin: 10px;
-  border-radius: 5px;
-  padding: 0.5rem;
-  box-shadow: 2px 2px ${colors.white};
-
-  :hover {
-    cursor: pointer;
-    transform: scale(1.06);
-    transition: all 0.3s ease-out;
-    background: ${colors.primary};
-    color: ${colors.white};
-  }
-`;
-
-export const ProductImg = styled.img`
-  height: 100px;
-  width: 150px;
   display: flex;
-  flex-direction: column;
-  box-shadow: 2px 2px ${colors.secondary};
-  margin-bottom: 10px;
+`;
+export const TotalPrice = styled.div`
+  margin: 0 1rem;
+  text-align: center;
+
+  align-items: center;
+  display: flex;
+`;
+export const ProductHeaderWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+`;
+export const HeaderTitle = styled.div`
+  margin: 0 1rem;
+  font-size: 1rem;
+  font-weight: 570;
 `;
 export const ProductsHeadingContainer = styled.div`
   display: flex;

@@ -8,7 +8,6 @@ export const GlobalStyle = createGlobalStyle`
     margin:0;
     padding: 0;
     font-family: 'Kanit', sans-serif;
-    
   }
 `;
 export const Container = styled.div`
@@ -38,10 +37,37 @@ export const Button = styled.button`
   &:hover {
     transition: all 0.3s ease-out;
     background-color: ${({ primary }) =>
-      primary ? colors.primary : colors.secondary};
+      primary ? colors.secondary : colors.primary};
   }
 
   @media screen and (max-width: 960px) {
     width: 100%;
   }
+`;
+
+export const Label = styled.label`
+  margin-bottom: 0.5em;
+  color: ${colors.labelColor};
+  display: block;
+  font-weight: bold;
+`;
+export const Input = styled.input`
+  padding: 1em;
+  color: ${colors.dark};
+  background: #fff;
+  width: 100%;
+  padding: 12px 40px;
+  margin: 8px 0;
+  border-radius: 4px;
+  display: inline-block;
+  border: 1px solid ${colors.sliver};
+  box-sizing: border-box;
+  /* box-shadow: 0 10px 10px ${colors.secondary}; */
+  outline-color: ${colors.primary};
+`;
+
+export const Message = styled.label`
+  margin-bottom: 0.5em;
+  color: palevioletred;
+  display: ${(props) => (props.show ? "block" : "none")};
 `;

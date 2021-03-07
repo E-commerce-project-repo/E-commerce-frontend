@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { colors } from "../../constants/constants";
-import * as FaIcons from "react-icons/fa";
 
 export const ProductsContainer = styled.div`
   background: ${colors.bodyColor};
@@ -10,13 +9,12 @@ export const ProductsContainer = styled.div`
 
 export const ProductWrapper = styled.div`
   display: flex;
-  /* flex-wrap: wrap; */
   justify-content: center;
   overflow: scroll;
 `;
 
 export const ProductsHeading = styled.h1`
-  font-size: clamp(2rem, 2.5vw, 3rem);
+  font-size: 1.5rem;
   text-align: left;
   margin-left: 2rem;
 `;

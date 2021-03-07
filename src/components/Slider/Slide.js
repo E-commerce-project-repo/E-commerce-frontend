@@ -1,5 +1,4 @@
 import React from "react";
-
 import {
   SlideShow,
   SlideShowSlider,
@@ -9,7 +8,6 @@ import {
   Active,
 } from "./Slide.elements";
 import { Hero } from "../Hero/index";
-const colors = ["#0088FE", "#00C49F", "#FFBB28"];
 const delay = 2500;
 export const Slider = ({ data }) => {
   const [index, setIndex] = React.useState(0);
@@ -26,7 +24,7 @@ export const Slider = ({ data }) => {
     timeoutRef.current = setTimeout(
       () =>
         setIndex((prevIndex) =>
-          prevIndex === colors.length - 1 ? 0 : prevIndex + 1
+          prevIndex === data.length - 1 ? 1 : prevIndex + 1
         ),
       delay
     );
@@ -39,46 +37,31 @@ export const Slider = ({ data }) => {
   return (
     <SlideShow>
       <SlideShowSlider
-        className="slideshowSlider"
+        index={index}
         style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
       >
-        {/* {data.map((backgroundColor, index) => ( */}
-        <Slide className="slide">
-          <Hero />
-        </Slide>
-        <Slide className="slide">
-          <Hero />
-        </Slide>
-        <Slide className="slide">
-          <Hero />
-        </Slide>
-        <Slide className="slide">
-          <Hero />
-        </Slide>
+        {data.map((item, index) => {
+          return (
+            <Slide>
+              <Hero data={item} />
+            </Slide>
+          );
+        })}
       </SlideShowSlider>
-      <SlideShowDots>
-        {/* {data.map((_, idx) => ( */}
-        <SlideDot
-          // key={idx}
-          key={1}
-          className="active"
-          onClick={() => {
-            setIndex(1);
-            // setIndex(idx);
-          }}
-        ></SlideDot>
-        <SlideDot
-          // key={idx}
-          key={2}
-          className=""
-          onClick={() => {
-            setIndex(2);
-            // setIndex(idx);
-          }}
-        ></SlideDot>
 
-        <Active />
-        {/* ))} */}
+      <SlideShowDots>
+        {data.map((_, idx) => {
+          return index === idx ? (
+            <Active />
+          ) : (
+            <SlideDot
+              key={idx}
+              onClick={() => {
+                setIndex(idx);
+              }}
+            ></SlideDot>
+          );
+        })}
       </SlideShowDots>
     </SlideShow>
   );

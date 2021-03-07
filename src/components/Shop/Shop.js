@@ -19,6 +19,16 @@ import { ItemCard } from "../Card/Card";
 export const Shop = () => {
   const [page, setPage] = useState(0);
   const [showCategory, setShowCategory] = useState(false);
+  const next = () => {
+    if (page < productData.length - 1) {
+      setPage(page + 1);
+    }
+  };
+  const prev = () => {
+    if (page > 0) {
+      setPage(page - 1);
+    }
+  };
   const Paginator = (props) => {
     return (
       <PaginationLink
@@ -35,23 +45,19 @@ export const Shop = () => {
     <ItemContainer showCategory={showCategory}>
       <SideBody />
       <ProductsContainer showCategory={showCategory}>
-        <Search />
-
-        <ExpandArrow onClick={() => setShowCategory(true)} />
-
         <ProductWrapper>
           {productDataTwo.map((product, index) => {
             return <ItemCard product={product} isCategory={false} index />;
           })}
         </ProductWrapper>
         <PaginationContainer>
-          <LeftPaginationArrow onClick={() => setPage(page - 1)} />
+          <LeftPaginationArrow onClick={prev} />
           <Pagination>
             {productData.map((_pro, index) => {
               return <Paginator index={index} />;
             })}
           </Pagination>
-          <RightPaginationArrow onClick={() => setPage(page + 1)} />
+          <RightPaginationArrow onClick={next} />
         </PaginationContainer>
       </ProductsContainer>
     </ItemContainer>

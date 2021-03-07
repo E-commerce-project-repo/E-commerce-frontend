@@ -14,7 +14,7 @@ export const colors = {
   light: "#fff",
   sliver: "#a9b3c1",
   white: "#fff",
-  gray: "gray",
+  gray: "#d3d3d3",
   success: "#4BB543",
   labelColor: "#383838",
 };

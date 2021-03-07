@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { FaMagento } from "react-icons/fa";
+import { FaBars } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { Container } from "../../globalStyles";
 import { colors } from "../../constants/constants";
@@ -18,10 +18,9 @@ export const Nav = styled.nav`
 
 export const NavbarContainer = styled(Container)`
   display: flex;
-  justify-content: space-between;
-  height: 80px;
-
-  ${Container}
+  align-items: center;
+  list-style: none;
+  text-align: center;
 `;
 export const NavLogo = styled(Link)`
   color: ${colors.white};
@@ -33,30 +32,36 @@ export const NavLogo = styled(Link)`
   align-items: center;
 `;
 
-export const NavIcon = styled(FaMagento)`
-  margin-right: 0.5rem;
+export const NavIcon = styled.span`
+  margin-right: 2rem;
+  @media screen and (max-width: 960px) {
+    display: none;
+  }
+`;
+export const NavMenuIcon = styled(FaBars)`
+  margin-right: 1rem;
+  display: none;
+  @media screen and (max-width: 960px) {
+    display: block;
+  }
 `;
 
 export const MobileIcon = styled.div`
   display: none;
   @media screen and (max-width: 960px) {
-    display: block;
-    position: absolute;
-    top: 0;
-    right: 0;
-    transform: translate(-100%, 60%);
-    font-size: 1.8rem;
+    display: flex;
+    margin-right: 1rem;
     cursor: pointer;
+    justify-content: center;
   }
 `;
-
 export const NavMenu = styled.ul`
   display: flex;
   align-items: center;
   list-style: none;
   text-align: center;
   @media screen and (max-width: 960px) {
-    display: flex;
+    display: block;
     flex-direction: column;
     width: 100%;
     height: 90vh;
@@ -68,24 +73,22 @@ export const NavMenu = styled.ul`
     background: ${colors.primary};
   }
 `;
-
 export const NavItem = styled.li`
-  height: 80px;
+  height: 50px;
   border-bottom: 2px solid transparent;
-
   &:hover {
-    border-bottom: 2px solid ${colors.primary};
+    border-bottom: 2px solid ${colors.secondary};
   }
+  display: ${({ isHome }) => (isHome ? "none" : "")};
 
   @media screen and (max-width: 960px) {
+    display: flex;
     width: 100%;
-
     &:hover {
       border: none;
     }
   }
 `;
-
 export const NavItemBtn = styled.li`
   @media screen and (max-width: 960px) {
     display: flex;
@@ -109,9 +112,8 @@ export const NavLinks = styled(Link)`
     padding: 2rem;
     width: 100%;
     display: table;
-
     &:hover {
-      color: ${colors.primary};
+      color: ${colors.secondary};
       transition: all 0.3s ease;
     }
   }

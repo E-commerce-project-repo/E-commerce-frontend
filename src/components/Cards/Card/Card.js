@@ -14,7 +14,12 @@ import {
   ProfileButton,
   ProductInfo,
 } from "./Card.lements";
-import { CategoryImg, CategoryInfo, Card } from "./Category.elements";
+import {
+  CategoryImg,
+  CategoryInfo,
+  CategoryTitle,
+  Card,
+} from "./Category.elements";
 
 export const ItemCard = ({ product, isCategory, index }) => {
   return (
@@ -35,7 +40,7 @@ export const CategoryCard = ({ product, isCategory, index }) => {
     <Card key={index}>
       <CategoryInfo>
         <CategoryImg src={product.img} alt={product.alt} />
-        <ProductTitle>{product.name}</ProductTitle>
+        <CategoryTitle>{product.name}</CategoryTitle>
       </CategoryInfo>
     </Card>
   );

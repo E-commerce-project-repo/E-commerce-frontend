@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-import { productData, productDataTwo } from "../CategoryGrid/data";
 import {
   ProductsContainer,
   ProductWrapper,
@@ -11,10 +10,14 @@ import {
   ProductsHeadingContainer,
   RightPaginationArrow,
   LeftPaginationArrow,
-} from "./ItemGrid.element";
-import { ItemCard } from "../Card/Card";
+  OrderedAmount,
+  TotalPrice,
+  HeaderTitle,
+  ProductHeaderWrapper,
+} from "./Orders.element";
+import { OrderCard } from "../Cards/OrderCard/Card";
 
-export const ItemGrid = ({ title, data }) => {
+export const Orders = ({ title, data }) => {
   data.length = 5;
   var [page, SetIsActive] = useState(0);
   const next = () => {
@@ -50,14 +53,20 @@ export const ItemGrid = ({ title, data }) => {
           <RightPaginationArrow onClick={next} />
         </PaginationContainer>
       </ProductsHeadingContainer>
-
-      <ProductWrapper>
-        {data.map((product, index) => {
-          return (
-            <ItemCard product={product} isCategory={false} index={index} />
-          );
-        })}
-      </ProductWrapper>
+      <ProductHeaderWrapper>
+        <HeaderTitle>Product</HeaderTitle>
+        <HeaderTitle>Amount</HeaderTitle>
+        <HeaderTitle>Total Price</HeaderTitle>
+      </ProductHeaderWrapper>
+      {data.map((product, _index) => {
+        return (
+          <ProductWrapper>
+            <OrderCard product={product} />
+            <OrderedAmount>10</OrderedAmount>
+            <TotalPrice>$1000.00</TotalPrice>
+          </ProductWrapper>
+        );
+      })}
 
       <PaginationContainer>
         <Pagination>

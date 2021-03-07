@@ -1,6 +1,5 @@
+import React from "react";
 import { useState } from "react";
-
-import { productData, productDataTwo } from "../CategoryGrid/data";
 import {
   ProductsContainer,
   ProductWrapper,
@@ -11,11 +10,11 @@ import {
   ProductsHeadingContainer,
   RightPaginationArrow,
   LeftPaginationArrow,
-} from "./ItemGrid.element";
-import { ItemCard } from "../Card/Card";
+} from "./CardBuilder.elements";
+import { SideItemCard } from "../SideCard/Card";
 
-export const ItemGrid = ({ title, data }) => {
-  data.length = 5;
+export const PopularThisWeek = ({ title, data }) => {
+  data.length = 3;
   var [page, SetIsActive] = useState(0);
   const next = () => {
     if (page < data.length - 1) {
@@ -41,6 +40,7 @@ export const ItemGrid = ({ title, data }) => {
       </PaginationLink>
     );
   };
+
   return (
     <ProductsContainer>
       <ProductsHeadingContainer>
@@ -54,7 +54,7 @@ export const ItemGrid = ({ title, data }) => {
       <ProductWrapper>
         {data.map((product, index) => {
           return (
-            <ItemCard product={product} isCategory={false} index={index} />
+            <SideItemCard data={product} isCategory={false} index={index} />
           );
         })}
       </ProductWrapper>

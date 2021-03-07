@@ -3,8 +3,11 @@ import {
   SearchBoxContainer,
   SearchBox,
   SearchIcon,
-  CloseIcon,
-  ResultSetContainer,
+  SearchDevider,
+  CategoryWrap,
+  CategoryLabel,
+  CategoryIcon,
+  CategoryContainer,
 } from "./Search.elements";
 import { categories } from "./Api/Api";
 import { ItemList } from "./ItemList/ItemList";
@@ -12,7 +15,6 @@ import { CategoryList } from "./SelectedCategory/SelectedCategory";
 export const Autocomplete = (props) => {
   const [filteredData, setFilteredData] = useState(categories);
   const [selectedCategories, setSelectedCategories] = useState([]);
-  const [focused, setFocused] = useState(false);
   const [userInput, setUserInput] = useState("");
 
   const onSelect = (item, selected) => {
@@ -32,20 +34,12 @@ export const Autocomplete = (props) => {
     setSelectedCategories(item);
   };
 
-  const onKeyFocus = (e) => {
-    setFocused(true);
-  };
-  const closeSearchResult = (e) => {
-    setFocused(false);
-    setUserInput("");
-    setFilteredData(categories);
-  };
+  const onKeyFocus = (e) => {};
+
   const onChange = (e) => {
     setUserInput(e.target.value);
     if (e.target.value.length === 0) {
-      setFocused(false);
     } else {
-      setFocused(true);
     }
     const filteredData = categories.filter((item) => {
       return item.name.toLowerCase().includes(e.target.value);
@@ -56,18 +50,20 @@ export const Autocomplete = (props) => {
 
   return (
     <SearchBoxContainer>
+      <SearchIcon />
+
       <SearchBox
         type="text"
         onChange={onChange}
         onFocus={() => onKeyFocus()}
         value={userInput}
-        placeholder="Search here ..."
+        placeholder="Search..."
       />
-      {focused ? (
-        <CloseIcon onClick={() => closeSearchResult()} />
-      ) : (
-        <SearchIcon onClick={() => setFocused(true)} />
-      )}
+      <SearchDevider />
+      <CategoryContainer>
+        <CategoryLabel>Category</CategoryLabel>
+        <CategoryIcon />
+      </CategoryContainer>
     </SearchBoxContainer>
   );
 };

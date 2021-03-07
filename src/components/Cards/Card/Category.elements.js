@@ -4,13 +4,12 @@ import { colors } from "../../constants/constants";
 
 export const Card = styled.div`
   margin: 0 1rem;
-  /* width: 210px; */
+  width: 100px;
   background-color: ${colors.white};
   align-items: center;
   margin: 10px;
   border-radius: 5px;
-  padding: 1rem;
-  /* box-shadow: 2px 2px ${colors.white}; */
+  padding: 0.3rem;
 
   :hover {
     cursor: pointer;
@@ -22,8 +21,8 @@ export const Card = styled.div`
 `;
 
 export const CategoryImg = styled.img`
-  height: 90px;
-  width: 90px;
+  height: 60px;
+  width: 60px;
   display: flex;
   flex-direction: column;
   border-radius: 10rem;
@@ -39,9 +38,9 @@ export const CategoryInfo = styled.div`
   padding: 0.5rem;
   text-align: center;
 `;
-export const CategoryTitle = styled.h2`
+export const CategoryTitle = styled.span`
   font-weight: 670;
-  font-size: 1rem;
+  font-size: 0.7rem;
 `;
 
 export const CategoryDesc = styled.p`

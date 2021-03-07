@@ -6,26 +6,19 @@ import {
 } from "../../constants/constants";
 
 export const SearchBoxContainer = styled.div`
-  width: 80%;
-  margin: 2rem auto 2rem auto;
+  width: 100%;
   text-align: right;
   position: relative;
 `;
 export const SearchBox = styled.input`
   border: 1px solid ${colors.SecondPrimary};
-  border-radius: 25px;
-  font-size: 2rem;
-  width: 100%;
-  padding: 0.2rem;
+  border-radius: 15px;
+  font-size: 1rem;
+  padding: 15px;
   padding-left: 4rem;
   transition: width 0.3s;
-  /* background: ${colors.secondary}; */
   color: ${colors.SecondPrimary};
-  margin-bottom: 5px;
-  @media screen and (max-width: ${max_960_responsive_screen_size}) {
-    padding: 0.25rem;
-    padding-left: 4rem;
-  }
+  width: 100%;
   ::placeholder {
     font-style: italic;
     font-size: 20px;
@@ -40,10 +33,11 @@ export const SearchBox = styled.input`
   }
   :hover {
     outline: none;
-    /* border: 1px solid ${colors.SecondPrimary}; */
-    transform: scale(1.06);
     transition: all 0.3s ease-out;
-    padding-left: 5rem;
+  }
+  @media screen and (max-width: ${max_960_responsive_screen_size}) {
+    padding: 10px;
+    padding-left: 4rem;
   }
 `;
 export const SearchIcon = styled(FaIcons.FaSearch)`
@@ -51,20 +45,67 @@ export const SearchIcon = styled(FaIcons.FaSearch)`
   height: 20px;
   position: absolute;
   left: 5px;
-  top: 20px;
-  color: ${colors.SecondPrimary};
+  top: 15px;
+  color: ${colors.primary};
   margin-left: 20px;
 
   @media screen and (max-width: ${max_960_responsive_screen_size}) {
     top: 20px;
+    width: 15px;
+    height: 15px;
   }
 `;
+export const SearchDevider = styled(FaIcons.FaGripLinesVertical)`
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: 70%;
+  top: 15px;
+  color: ${colors.primary};
+  margin-left: 20px;
+  @media screen and (max-width: ${max_960_responsive_screen_size}) {
+    width: 20px;
+    height: 20px;
+  }
+`;
+export const CategoryContainer = styled.div`
+  display: flex;
+  flex-direction: center;
+  left: 80%;
+  top: 15px;
+  position: absolute;
+  text-align: center;
+  font-weight: 670;
+`;
+
+export const CategoryLabel = styled.span`
+  font-size: 1rem;
+  left: 76%;
+  top: 15px;
+  text-align: center;
+  font-weight: 570;
+  @media screen and (max-width: ${max_960_responsive_screen_size}) {
+    font-size: 0.7rem;
+  }
+`;
+
+export const CategoryIcon = styled(FaIcons.FaAngleDown)`
+  width: 20px;
+  height: 20px;
+  top: 15px;
+  color: ${colors.primary};
+  margin-left: 20px;
+  @media screen and (max-width: ${max_960_responsive_screen_size}) {
+    margin-left: 0px;
+  }
+`;
+
 export const CloseIcon = styled(FaIcons.FaTimes)`
   width: 20px;
   height: 20px;
   position: absolute;
   left: 5px;
-  top: 20px;
+  top: 15px;
   color: ${colors.primary};
   margin-left: 20px;
 
@@ -74,7 +115,6 @@ export const CloseIcon = styled(FaIcons.FaTimes)`
 `;
 
 export const Label = styled.label`
-  margin-bottom: 0.5em;
   color: ${colors.dark};
   display: block;
 `;

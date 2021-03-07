@@ -6,10 +6,6 @@ import { colors } from "../../constants/constants";
 export const FooterContainer = styled.div`
   background-color: ${colors.primary};
   padding: 4rem 0 0rem 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 `;
 
 export const FooterSubscription = styled.section`

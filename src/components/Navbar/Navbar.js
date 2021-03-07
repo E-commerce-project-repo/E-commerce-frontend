@@ -12,14 +12,19 @@ import {
   NavItemBtn,
   NavLinks,
   NavBtnLink,
+  NavMenuIcon,
 } from "./Navbar.elements";
-
+import { Autocomplete } from "../SearchComponent/Search";
 function Navbar() {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
 
-  const handleClick = () => setClick(!click);
-  const closeMobileMenu = () => setClick(false);
+  const handleClick = () => {
+    setClick(!click);
+  };
+  const closeMobileMenu = () => {
+    setClick(false);
+  };
 
   const showButton = () => {
     if (window.innerWidth <= 960) {
@@ -38,37 +43,51 @@ function Navbar() {
   return (
     <Nav>
       <NavbarContainer>
-        <NavLogo to="/" onClick={closeMobileMenu}>
-          <NavIcon />
+        <NavLogo to="/">
+          <NavIcon>Meba </NavIcon>
+
+          <MobileIcon onClick={handleClick}>
+            {click ? <FaTimes /> : <FaBars />}
+          </MobileIcon>
         </NavLogo>
-        <MobileIcon onClick={handleClick}>
-          {click ? <FaTimes /> : <FaBars />}
-        </MobileIcon>
+
+        <Autocomplete />
+
         <NavMenu onClick={handleClick} click={click}>
-          <NavItem>
+          <NavItem isHome={true}>
             <NavLinks to="/" onClick={closeMobileMenu}>
               Home
             </NavLinks>
           </NavItem>
           <NavItem>
             <NavLinks to="/shoping" onClick={closeMobileMenu}>
-              Shoping
+              Supplier
             </NavLinks>
           </NavItem>
           <NavItem>
-            <NavLinks to="/products" onClick={closeMobileMenu}>
-              Products
+            <NavLinks to="/shoping" onClick={closeMobileMenu}>
+              Supplier
+            </NavLinks>
+          </NavItem>
+          <NavItem>
+            <NavLinks to="/orders" onClick={closeMobileMenu}>
+              Orders
+            </NavLinks>
+          </NavItem>
+          <NavItem>
+            <NavLinks to="/" onClick={closeMobileMenu}>
+              Cart
             </NavLinks>
           </NavItem>
           <NavItemBtn>
             {button ? (
-              <NavBtnLink to="/sign-up">
-                <Button primary={false}>SIGN UP</Button>
+              <NavBtnLink to="/sign-in">
+                <Button primary={false}>SIGN IN</Button>
               </NavBtnLink>
             ) : (
-              <NavBtnLink to="/sign-up">
+              <NavBtnLink to="/sign-in">
                 <Button onClick={closeMobileMenu} fontBig primary={false}>
-                  SIGN UP
+                  SIGN IN
                 </Button>
               </NavBtnLink>
             )}

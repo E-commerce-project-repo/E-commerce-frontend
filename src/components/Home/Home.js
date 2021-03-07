@@ -21,13 +21,7 @@ import { Slider } from "../../components/Slider/Slide";
 export const Home = () => {
   const [page, SetIsActive] = useState(0);
   const [showCategory, setShowCategory] = useState(false);
-  const Page = styled.div`
-    width: 100%;
-    /* margin-left: auto;
-    margin-right: auto; */
-    display: flex;
-    flex-direction: column;
-  `;
+
   return (
     <>
       {/* <Hero /> */}
@@ -37,9 +31,9 @@ export const Home = () => {
         data={productData}
         isCategory={true}
       />
+      <ItemGrid title="Latest Items" data={productData} />
       {/* <ItemGrid title="Latest Items" data={productData} />
       <ItemGrid title="Latest Items" data={productData} /> */}
-      {/* <Page> */}
       {/* <LeftPaginationArrow /> */}
 
       {/* </Page> */}

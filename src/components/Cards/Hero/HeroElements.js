@@ -1,15 +1,12 @@
 import styled from "styled-components";
 import { colors } from "../../constants/constants";
-import ImgBg from "../../images/mac1.jpg";
 
 export const HeroContainer = styled.div`
   background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.1)),
-    url(${ImgBg});
-  /* linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.1)); */
-  /* url(${ImgBg}); */
-  /* height: 40vh; */
+    url(${({ image }) => image});
   background-position: center;
   background-size: cover;
+  height: calc(60vh - 80px);
 `;
 
 export const HeroContent = styled.div`
@@ -27,14 +24,11 @@ export const HeroItems = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* height: 100vh; */
   max-height: 100%;
   padding: 2rem 2rem;
   color: #fff;
-  /* text-transform: uppercase; */
   line-height: 1;
   font-weight: bold;
-  /* background: ${colors.bodyColor}; */
 
   @media screen and (max-width: 650px) {
     width: 100%;

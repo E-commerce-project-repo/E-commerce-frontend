@@ -8,7 +8,7 @@ import { ItemCard, CategoryCard } from "../Card/Card";
 
 export const CategoryGrid = (props) => {
   var data = props.data;
-  data.length = 7;
+  data.length = 10;
   return (
     <ProductsContainer>
       <ProductsHeading>{props.heading}</ProductsHeading>

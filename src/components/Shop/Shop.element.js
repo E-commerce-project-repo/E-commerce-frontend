@@ -110,7 +110,7 @@ export const PaginationLink = styled.a`
     font-size: 12px;
   }
 `;
-export const LeftPaginationArrow = styled(FaIcons.FaAngleDoubleLeft)`
+export const LeftPaginationArrow = styled(FaIcons.FaAngleLeft)`
   display: inline-block;
   align-items: center;
   :hover {
@@ -120,7 +120,7 @@ export const LeftPaginationArrow = styled(FaIcons.FaAngleDoubleLeft)`
     color: ${colors.secondary};
   }
 `;
-export const RightPaginationArrow = styled(FaIcons.FaAngleDoubleRight)`
+export const RightPaginationArrow = styled(FaIcons.FaAngleRight)`
   display: inline-block;
   align-items: center;
   :hover {

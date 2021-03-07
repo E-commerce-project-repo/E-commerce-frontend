@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { colors } from "../../constants/constants";
-//https://tinloof.com/blog/how-to-build-an-auto-play-slideshow-with-react/
 export const SlideShow = styled.div`
   margin: 0 auto;
   overflow: hidden;
@@ -25,9 +24,6 @@ export const SlideDot = styled.div`
   cursor: pointer;
   margin: 15px 7px 0px;
   background-color: #c4c4c4;
-  .active {
-    background-color: #6a0dad;
-  }
 `;
 export const Active = styled.div`
   display: inline-block;
@@ -44,7 +40,7 @@ export const Active = styled.div`
 
 export const Slide = styled.div`
   display: inline-block;
-  height: 400px;
+  height: 50%;
   width: 100%;
   border-radius: 40px;
 `;
