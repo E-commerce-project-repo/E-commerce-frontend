@@ -26,12 +26,12 @@ import {
 } from "./Single.element";
 import sweet3 from "../../images/mac1.jpg";
 import person from "../../images/person.jpeg";
-import { ItemCard, PersonProfileInfo } from "../Card/Card";
+import { ItemCard, PersonProfileInfo } from "../Cards/Card/Card";
 import { productDataTwo } from "../CategoryGrid/data";
 
 export const SingleItem = () => {
   const [page, setPage] = useState(0);
-  const [fullSize, setFullSize] = useState("");
+  const [fullSize, setFullSize] = useState(sweet3);
 
   return (
     <Container>

@@ -9,10 +9,10 @@ import {
   ProductButton,
   ProductInfo,
 } from "./Card.lements";
-
+import { config } from "../../../constants/constants";
 export const SideItemCard = ({ data }) => {
   return (
-    <ProductCard>
+    <ProductCard to={config.singlePage}>
       <ProductInfo>
         <ProductTitle>{data.name}</ProductTitle>
         <ProductDesc>{data.desc}</ProductDesc>

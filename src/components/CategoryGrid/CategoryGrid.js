@@ -4,7 +4,7 @@ import {
   ProductWrapper,
   ProductsHeading,
 } from "./CategoryGrid.elements";
-import { ItemCard, CategoryCard } from "../Card/Card";
+import { ItemCard, CategoryCard } from "../Cards/Card/Card";
 
 export const CategoryGrid = (props) => {
   var data = props.data;

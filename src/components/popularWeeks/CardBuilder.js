@@ -11,7 +11,7 @@ import {
   RightPaginationArrow,
   LeftPaginationArrow,
 } from "./CardBuilder.elements";
-import { SideItemCard } from "../SideCard/Card";
+import { SideItemCard } from "../Cards/SideCard/Card";
 
 export const PopularThisWeek = ({ title, data }) => {
   data.length = 3;

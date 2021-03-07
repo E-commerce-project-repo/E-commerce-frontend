@@ -23,3 +23,12 @@ export const max_960_responsive_screen_size = "960px";
 export const max_500_responsive_screen_size = "500px";
 // export const max_responsive_screen_size = "960px";
 export const api = "www.api.endalkhbel.com";
+
+export const config = {
+  home: "/",
+  singlePage: "/singlePage",
+  shoping: "/shoping",
+  orders: "/orders",
+  signIn: "/sign-in",
+  signUp: "/sign-up",
+};

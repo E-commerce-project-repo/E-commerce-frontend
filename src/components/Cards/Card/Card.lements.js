@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { colors } from "../../constants/constants";
+import { colors } from "../../../constants/constants";
 
-export const ProductCard = styled.div`
+export const ProductCard = styled(Link)`
   margin: 0 1rem;
   width: 210px;
   background-color: ${colors.white};
@@ -11,6 +11,8 @@ export const ProductCard = styled.div`
   border-radius: 5px;
   padding: 0.5rem;
   box-shadow: 2px 2px ${colors.white};
+  text-decoration: none;
+  color: ${colors.primary};
 
   :hover {
     cursor: pointer;

@@ -7,7 +7,7 @@ import {
   Slide,
   Active,
 } from "./Slide.elements";
-import { Hero } from "../Hero/index";
+import { Hero } from "../Cards/Hero/index";
 const delay = 2500;
 export const Slider = ({ data }) => {
   const [index, setIndex] = React.useState(0);

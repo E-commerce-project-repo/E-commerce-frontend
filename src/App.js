@@ -9,7 +9,7 @@ import { SingleItem } from "./components/SingleView/SingleItem";
 import { SignUp } from "./Pages/signup/signup";
 import { SignIn } from "./Pages/Login/Login";
 import { OrderPage } from "./Pages/Orders/Orders";
-
+import { config } from "./constants/constants";
 function App() {
   return (
     <Router>
@@ -18,11 +18,11 @@ function App() {
 
       <Switch>
         <Route path="/" exact component={Home} />
-        <Route path="/shoping" exact component={Shop} />
-        <Route path="/singlePage" exact component={SingleItem} />
-        <Route path="/sign-up" exact component={SignUp} />
-        <Route path="/sign-in" exact component={SignIn} />
-        <Route path="/orders" exact component={OrderPage} />
+        <Route path={config.shoping} exact component={Shop} />
+        <Route path={config.singlePage} exact component={SingleItem} />
+        <Route path={config.signUp} exact component={SignUp} />
+        <Route path={config.signUp} exact component={SignIn} />
+        <Route path={config.orders} exact component={OrderPage} />
       </Switch>
       <Footer />
     </Router>

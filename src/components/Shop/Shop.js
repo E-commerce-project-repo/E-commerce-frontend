@@ -13,9 +13,8 @@ import {
   PaginationContainer,
   RightPaginationArrow,
   LeftPaginationArrow,
-  ExpandArrow,
 } from "./Shop.element";
-import { ItemCard } from "../Card/Card";
+import { ItemCard } from "../Cards/Card/Card";
 export const Shop = () => {
   const [page, setPage] = useState(0);
   const [showCategory, setShowCategory] = useState(false);

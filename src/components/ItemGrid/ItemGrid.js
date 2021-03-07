@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-import { productData, productDataTwo } from "../CategoryGrid/data";
 import {
   ProductsContainer,
   ProductWrapper,
@@ -12,7 +11,7 @@ import {
   RightPaginationArrow,
   LeftPaginationArrow,
 } from "./ItemGrid.element";
-import { ItemCard } from "../Card/Card";
+import { ItemCard } from "../Cards/Card/Card";
 
 export const ItemGrid = ({ title, data }) => {
   data.length = 5;

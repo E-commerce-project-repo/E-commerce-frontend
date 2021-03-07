@@ -20,10 +20,10 @@ import {
   CategoryTitle,
   Card,
 } from "./Category.elements";
-
+import { config } from "../../../constants/constants";
 export const ItemCard = ({ product, isCategory, index }) => {
   return (
-    <ProductCard key={index}>
+    <ProductCard key={index} to={config.singlePage}>
       <ProductInfo>
         <ProductImg src={product.img} alt={product.alt} />
         <ProductTitle>{product.name}</ProductTitle>

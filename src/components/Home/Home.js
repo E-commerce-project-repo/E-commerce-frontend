@@ -2,8 +2,8 @@ import { useState } from "react";
 
 import { productData, productDataTwo } from "../CategoryGrid/data";
 import { CategoryGrid } from "../CategoryGrid/CategoryGrid";
-import { Hero } from "../Hero/index";
-import Feature from "../Feature/index";
+import { Hero } from "../Cards/Hero/index";
+import Feature from "../Cards/Feature/index";
 import {
   RightPaginationArrow,
   LeftPaginationArrow,
@@ -11,7 +11,7 @@ import {
   SlidderContainer,
   SlidItemWrapper,
 } from "./Home.element";
-import { ItemCard } from "../Card/Card";
+import { ItemCard } from "../Cards/Card/Card";
 import { SideBody } from "../SideBodyBar/SideBody";
 import { ItemGrid } from "../ItemGrid/ItemGrid";
 import { Carousel } from "../Slider/Slide";

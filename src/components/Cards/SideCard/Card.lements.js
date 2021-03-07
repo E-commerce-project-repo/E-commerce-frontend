@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { colors } from "../../constants/constants";
+import { colors } from "../../../constants/constants";
 
-export const ProductCard = styled.div`
+export const ProductCard = styled(Link)`
   margin: 0 1rem;
   max-width: 400px;
   background-color: ${colors.white};
@@ -13,6 +13,8 @@ export const ProductCard = styled.div`
   box-shadow: 2px 2px ${colors.white};
   display: flex;
   flex-direction: row;
+  text-decoration: none;
+  color: ${colors.primary};
 
   :hover {
     cursor: pointer;

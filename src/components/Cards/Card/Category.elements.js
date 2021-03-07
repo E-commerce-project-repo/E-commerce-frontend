@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { colors } from "../../constants/constants";
+import { colors } from "../../../constants/constants";
 
 export const Card = styled.div`
   margin: 0 1rem;
