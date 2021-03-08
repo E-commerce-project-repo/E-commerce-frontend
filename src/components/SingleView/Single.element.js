@@ -3,12 +3,13 @@ import { colors } from "../../constants/constants";
 import * as FaIcons from "react-icons/fa";
 
 export const Container = styled.div`
-  display: grid;
-  grid-template-columns: 4fr 1fr;
+  display: flex;
   font-size: 1.2rem;
   padding: 1rem 2rem;
   background: ${colors.bodyColor};
+
   @media screen and (max-width: 960px) {
+    grid-template-columns: 100%;
   }
 `;
 export const ItemContainer = styled.div`
@@ -16,7 +17,6 @@ export const ItemContainer = styled.div`
   flex-direction: column;
   font-size: 1.2rem;
   border: 2px solid ${colors.white};
-
   @media screen and (max-width: 960px) {
   }
 `;
@@ -34,37 +34,49 @@ export const ItemBodyContainer = styled.div`
   grid-template-columns: 3fr 1fr;
   font-size: 1.2rem;
   background: ${colors.bodyColor};
+
   @media screen and (max-width: 960px) {
+    grid-template-columns: 1fr;
   }
 `;
 
 export const ImageContainer = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   background: ${colors.white};
   border: 2px solid ${colors.white};
-  height: 100vh;
+  height: 75vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   @media screen and (max-width: 960px) {
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
   }
 `;
 export const ImagesWrapper = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   background: ${colors.white};
   border: 2px solid ${colors.white};
-  height: 100vh;
+  height: 60vh;
+  width: 60vh;
   @media screen and (max-width: 960px) {
+    display: flex;
+    flex-direction: row;
   }
 `;
 export const ItemImage = styled.img`
-  width: ${({ fullSize }) => (fullSize ? "100%" : "120px")};
+  width: ${({ fullSize }) => (fullSize ? "100%" : "100px")};
   height: ${({ fullSize }) => (fullSize ? "100%" : "100px")};
   max-width: 700px;
   max-height: 700px;
   border-radius: 1rem;
   margin: 1rem;
   border: ${({ fullSize }) => (fullSize ? "" : `1px solid ${colors.primary}`)};
+
   box-shadow: ${({ fullSize }) =>
     fullSize ? `2px 2px ${colors.secondary}` : ``};
 
@@ -75,6 +87,8 @@ export const ItemImage = styled.img`
     color: ${colors.secondary};
   }
   @media screen and (max-width: 960px) {
+    width: ${({ fullSize }) => (fullSize ? "100%" : "80px")};
+    height: ${({ fullSize }) => (fullSize ? "100%" : "80px")};
   }
 `;
 
@@ -84,6 +98,7 @@ export const ItemDetailContainer = styled.div`
   font-size: 1.2rem;
   border: 2px solid ${colors.bodyColor};
   @media screen and (max-width: 960px) {
+    font-size: 0.72rem;
   }
 `;
 export const ItemDetailHeaderInfo = styled.div`

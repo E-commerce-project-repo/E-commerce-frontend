@@ -21,7 +21,7 @@ function App() {
         <Route path={config.shoping} exact component={Shop} />
         <Route path={config.singlePage} exact component={SingleItem} />
         <Route path={config.signUp} exact component={SignUp} />
-        <Route path={config.signUp} exact component={SignIn} />
+        <Route path={config.signIn} exact component={SignIn} />
         <Route path={config.orders} exact component={OrderPage} />
       </Switch>
       <Footer />
