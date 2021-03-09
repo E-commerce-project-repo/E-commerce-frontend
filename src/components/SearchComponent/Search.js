@@ -11,7 +11,6 @@ import {
 } from "./Search.elements";
 import { categories } from "./Api/Api";
 import { ItemList } from "./ItemList/ItemList";
-import { CategoryList } from "./SelectedCategory/SelectedCategory";
 import { HidedCategory } from "../HidedCategory/HidedCategory";
 
 export const Autocomplete = (props) => {
@@ -33,9 +32,7 @@ export const Autocomplete = (props) => {
       setSelectedCategories(newArray);
     }
   };
-  const deleteCategory = (item) => {
-    setSelectedCategories(item);
-  };
+
   const categoryLabel = (label) => {
     props.categoryLabel(label);
     setShowCategory(false);
@@ -56,7 +53,7 @@ export const Autocomplete = (props) => {
   };
 
   return (
-    <SearchBoxContainer onMouseLeave={() => setShowCategory(false)}>
+    <SearchBoxContainer>
       <SearchIcon />
 
       <SearchBox

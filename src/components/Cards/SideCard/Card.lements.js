@@ -46,8 +46,8 @@ export const ProductInfo = styled.div`
   align-items: center;
   padding: 0.5rem;
   text-align: center;
-  height: 50%;
-  width: 50%;
+  height: 100%;
+  width: 100%;
 `;
 
 export const ProductDesc = styled.p`

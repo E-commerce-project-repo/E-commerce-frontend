@@ -97,7 +97,7 @@ export const CategoryLabel = styled.span`
   top: 15px;
   text-align: center;
   font-weight: 400;
-  overflow-x: scroll;
+  overflow: hidden;
 
   @media screen and (max-width: ${max_960_responsive_screen_size}) {
     font-size: 0.7rem;
