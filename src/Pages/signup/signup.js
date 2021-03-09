@@ -10,7 +10,7 @@ import {
   TextWrap,
   TextHeader,
   Text,
-  ForgetPassword,
+  TermAndCondition,
   LoginHeader,
   SignInLabel,
   SignInLink,
@@ -164,10 +164,9 @@ export const SignUp = (props) => {
 
           <LeftPasswordIcon />
         </FormGroup>
-        <ForgetPassword to="/forget-password">
-          What is this? What is this?What is this?What is this?What is this?What
-          is this?What is this?What is this?What is this?What is this?
-        </ForgetPassword>
+        <TermAndCondition to="/term-and-condtion">
+          Accept term and conditions
+        </TermAndCondition>
         <Button primary={true}>Create an account</Button>
         <SignInContainer>
           <SignInLabel>Don't have an account ?</SignInLabel>

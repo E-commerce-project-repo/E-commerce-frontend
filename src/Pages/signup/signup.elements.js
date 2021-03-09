@@ -24,7 +24,7 @@ export const LeftUserNameIcon = styled(FaIcons.FaUser)`
   width: 30px;
   position: absolute;
   left: 5px;
-  top: 45px;
+  top: 55px;
 
   color: ${colors.primary};
 `;
@@ -38,6 +38,10 @@ export const TextWrap = styled.div`
   flex-direction: column;
   width: 50%;
   padding: 3rem;
+  @media screen and (max-width: ${max_responsive_screen_size}) {
+    display: none;
+    width: 100%;
+  }
 `;
 export const TextHeader = styled.span`
   font-weight: 570;
@@ -51,6 +55,12 @@ export const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 40%;
+  overflow-y: scroll;
+  height: auto;
+
+  @media screen and (max-width: ${max_responsive_screen_size}) {
+    width: 100%;
+  }
 `;
 
 export const FormGroup = styled.div`
@@ -64,7 +74,7 @@ export const LeftEmailIcon = styled(FaIcons.FaEnvelope)`
   width: 30px;
   position: absolute;
   left: 5px;
-  top: 45px;
+  top: 55px;
   color: ${colors.primary};
 `;
 
@@ -72,22 +82,23 @@ export const LeftPhoneIcon = styled(FaIcons.FaPhoneAlt)`
   width: 30px;
   position: absolute;
   left: 5px;
-  top: 45px;
+  top: 55px;
   color: ${colors.primary};
 `;
 export const LeftPasswordIcon = styled(FaIcons.FaLock)`
   width: 30px;
   position: absolute;
   left: 5px;
-  top: 45px;
+  top: 55px;
   color: ${colors.primary};
 `;
-export const ForgetPassword = styled(Link)`
-  color: ${colors.gray};
+
+export const TermAndCondition = styled(Link)`
+  color: ${colors.primary};
   font-size: 12px;
   text-decoration: none;
   margin-bottom: 10px;
-  margin-top: 10px;
+  text-align: center;
 `;
 export const LoginHeader = styled.span`
   color: ${colors.primary};

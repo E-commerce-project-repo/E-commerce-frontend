@@ -15,6 +15,9 @@ export const TextWrap = styled.div`
   flex-direction: column;
   width: 50%;
   padding: 3rem;
+  @media screen and (max-width: ${max_responsive_screen_size}) {
+    display: none;
+  }
 `;
 export const TextHeader = styled.span`
   font-weight: 570;
@@ -28,6 +31,9 @@ export const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 40%;
+  @media screen and (max-width: ${max_responsive_screen_size}) {
+    width: 100%;
+  }
 `;
 
 export const FormGroup = styled.div`
@@ -41,7 +47,7 @@ export const LeftEmailIcon = styled(FaIcons.FaEnvelope)`
   width: 30px;
   position: absolute;
   left: 5px;
-  top: 45px;
+  top: 55px;
   color: ${colors.primary};
 `;
 
@@ -49,7 +55,7 @@ export const LeftPhoneIcon = styled(FaIcons.FaLock)`
   width: 30px;
   position: absolute;
   left: 5px;
-  top: 45px;
+  top: 55px;
   color: ${colors.primary};
 `;
 export const ForgetPassword = styled(Link)`
