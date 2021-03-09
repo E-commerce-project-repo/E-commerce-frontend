@@ -17,30 +17,10 @@ export const ItemContainer = styled.div`
   }
 `;
 
-export const SideCategoryHolder = styled.div`
-  display: flex;
-  flex-direction: column;
-  font-size: 1.2rem;
-  top: 0;
-  padding: 15px;
-  @media screen and (max-width: 960px) {
-    width: 100vh;
-    display: ${(props) => (props.showCategory ? "flex" : "none")};
-    flex-direction: column;
-    width: 100%;
-    height: 100vh;
-    position: absolute;
-    top: 80px;
-    left: ${({ showCategory }) => (showCategory ? 0 : "-100%")};
-    opacity: 1;
-    transition: all 0.5s ease;
-    background: ${colors.primary};
-    color: ${colors.white};
-  }
-`;
-export const ExpandArrow = styled(FaIcons.FaAngleDoubleRight)`
+export const ExpandArrow = styled(FaIcons.FaAngleRight)`
   display: none;
   align-items: center;
+  background: ${colors.gray};
   @media screen and (max-width: 760px) {
     display: inline-block;
   }
@@ -50,20 +30,6 @@ export const ExpandArrow = styled(FaIcons.FaAngleDoubleRight)`
     transform: scale(1.06);
     transition: all 0.3s ease-out;
     color: ${colors.secondary};
-  }
-`;
-
-export const CategoryHeading = styled.h2`
-  font-size: clamp(2rem, 2.5vw, 3rem);
-  margin-bottom: 2rem;
-`;
-export const CategoryListItem = styled.a`
-  font-size: 13px;
-  padding: 5px;
-  :hover {
-    cursor: pointer;
-    transform: scale(1.06);
-    transition: all 0.3s ease-out;
   }
 `;
 

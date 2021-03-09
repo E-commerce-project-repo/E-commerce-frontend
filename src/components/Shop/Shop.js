@@ -4,7 +4,11 @@ import { productData, productDataTwo } from "../CategoryGrid/data";
 import Search from "../SearchComponent/Search";
 import { SideBody } from "../SideBodyBar/SideBody";
 
-import { ItemContainer, SideCategoryHolder } from "./Shop.element";
+import {
+  ItemContainer,
+  SideCategoryHolder,
+  SideBodyCategory,
+} from "./Shop.element";
 import {
   ProductsContainer,
   ProductWrapper,
@@ -13,6 +17,7 @@ import {
   PaginationContainer,
   RightPaginationArrow,
   LeftPaginationArrow,
+  ExpandArrow,
 } from "./Shop.element";
 import { ItemCard } from "../Cards/Card/Card";
 export const Shop = () => {
@@ -41,11 +46,17 @@ export const Shop = () => {
     );
   };
   return (
-    <ItemContainer showCategory={showCategory}>
-      <SideBody />
-      <ProductsContainer showCategory={showCategory}>
+    <ItemContainer>
+      <SideBody showCategory={showCategory} setShowCategory={setShowCategory} />
+      <ProductsContainer>
+        <ExpandArrow
+          onClick={() => {
+            setShowCategory(!showCategory);
+          }}
+        />
+
         <ProductWrapper>
-          {productDataTwo.map((product, index) => {
+          {productDataTwo.map((product, _index) => {
             return <ItemCard product={product} isCategory={false} index />;
           })}
         </ProductWrapper>
