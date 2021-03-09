@@ -30,13 +30,13 @@ export const ItemHeader = styled.div`
   }
 `;
 export const ItemBodyContainer = styled.div`
-  display: grid;
-  grid-template-columns: 3fr 1fr;
+  display: flex;
   font-size: 1.2rem;
   background: ${colors.bodyColor};
+  flex-direction: row;
 
   @media screen and (max-width: 960px) {
-    grid-template-columns: 1fr;
+    flex-direction: column;
   }
 `;
 
@@ -49,32 +49,37 @@ export const ImageContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 70%;
   @media screen and (max-width: 960px) {
     display: flex;
     flex-direction: column;
-    height: 80vh;
+    height: auto;
+    width: 100%;
   }
 `;
 export const ImagesWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  flex-wrap: wrap;
   background: ${colors.white};
   border: 2px solid ${colors.white};
-  height: 60vh;
-  width: 60vh;
+  height: auto;
+  margin: 0.5rem;
   @media screen and (max-width: 960px) {
     display: flex;
     flex-direction: row;
+    width: 100%;
   }
 `;
 export const ItemImage = styled.img`
-  width: ${({ fullSize }) => (fullSize ? "100%" : "100px")};
-  height: ${({ fullSize }) => (fullSize ? "100%" : "100px")};
+  width: ${({ fullSize }) => (fullSize ? "100%" : "80px")};
+  height: ${({ fullSize }) => (fullSize ? "100%" : "80px")};
   max-width: 700px;
   max-height: 700px;
   border-radius: 1rem;
-  margin: 1rem;
+  margin: 0.2rem;
+
   border: ${({ fullSize }) => (fullSize ? "" : `1px solid ${colors.primary}`)};
 
   box-shadow: ${({ fullSize }) =>
@@ -87,8 +92,8 @@ export const ItemImage = styled.img`
     color: ${colors.secondary};
   }
   @media screen and (max-width: 960px) {
-    width: ${({ fullSize }) => (fullSize ? "100%" : "80px")};
-    height: ${({ fullSize }) => (fullSize ? "100%" : "80px")};
+    width: ${({ fullSize }) => (fullSize ? "100%" : "60px")};
+    height: ${({ fullSize }) => (fullSize ? "80%" : "60px")};
   }
 `;
 
@@ -97,8 +102,10 @@ export const ItemDetailContainer = styled.div`
   flex-direction: column;
   font-size: 1.2rem;
   border: 2px solid ${colors.bodyColor};
+  width: 30%;
   @media screen and (max-width: 960px) {
     font-size: 0.72rem;
+    width: 100%;
   }
 `;
 export const ItemDetailHeaderInfo = styled.div`
