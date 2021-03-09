@@ -12,10 +12,13 @@ import {
 import { categories } from "./Api/Api";
 import { ItemList } from "./ItemList/ItemList";
 import { CategoryList } from "./SelectedCategory/SelectedCategory";
+import { HidedCategory } from "../HidedCategory/HidedCategory";
+
 export const Autocomplete = (props) => {
   const [filteredData, setFilteredData] = useState(categories);
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [userInput, setUserInput] = useState("");
+  const [showCategory, setShowCategory] = useState(false);
 
   const onSelect = (item, selected) => {
     if (selected) {
@@ -33,6 +36,10 @@ export const Autocomplete = (props) => {
   const deleteCategory = (item) => {
     setSelectedCategories(item);
   };
+  const categoryLabel = (label) => {
+    props.categoryLabel(label);
+    setShowCategory(false);
+  };
 
   const onKeyFocus = (e) => {};
 
@@ -49,7 +56,7 @@ export const Autocomplete = (props) => {
   };
 
   return (
-    <SearchBoxContainer>
+    <SearchBoxContainer onMouseLeave={() => setShowCategory(false)}>
       <SearchIcon />
 
       <SearchBox
@@ -60,10 +67,19 @@ export const Autocomplete = (props) => {
         placeholder="Search..."
       />
       <SearchDevider />
-      <CategoryContainer>
-        <CategoryLabel>Category</CategoryLabel>
+      <CategoryContainer
+        onClick={() => {
+          setShowCategory(!showCategory);
+        }}
+        onMouseEnter={() => setShowCategory(!showCategory)}
+      >
+        <CategoryLabel>{props.CategoryLabel}</CategoryLabel>
         <CategoryIcon />
       </CategoryContainer>
+      <HidedCategory
+        showCategory={showCategory}
+        categoryLabel={categoryLabel}
+      />
     </SearchBoxContainer>
   );
 };

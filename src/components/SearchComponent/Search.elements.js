@@ -19,6 +19,7 @@ export const SearchBox = styled.input`
   transition: width 0.3s;
   color: ${colors.SecondPrimary};
   width: 100%;
+
   ::placeholder {
     font-style: italic;
     font-size: 20px;
@@ -45,12 +46,11 @@ export const SearchIcon = styled(FaIcons.FaSearch)`
   height: 20px;
   position: absolute;
   left: 5px;
-  top: 15px;
+  top: 17px;
   color: ${colors.primary};
   margin-left: 20px;
 
   @media screen and (max-width: ${max_960_responsive_screen_size}) {
-    top: 20px;
     width: 15px;
     height: 15px;
   }
@@ -66,6 +66,7 @@ export const SearchDevider = styled(FaIcons.FaGripLinesVertical)`
   @media screen and (max-width: ${max_960_responsive_screen_size}) {
     width: 20px;
     height: 20px;
+    left: 55%;
   }
 `;
 export const CategoryContainer = styled.div`
@@ -76,14 +77,28 @@ export const CategoryContainer = styled.div`
   position: absolute;
   text-align: center;
   font-weight: 670;
+  border: 1px solid ${colors.primary};
+  border-radius: 5px;
+  padding-left: 2px;
+  width: 1fr;
+  margin-right: 5px;
+  max-height: 50%;
+
+  :hover {
+    cursor: pointer;
+  }
+  @media screen and (max-width: ${max_960_responsive_screen_size}) {
+    left: 70%;
+  }
 `;
 
 export const CategoryLabel = styled.span`
   font-size: 1rem;
-  left: 76%;
   top: 15px;
   text-align: center;
-  font-weight: 570;
+  font-weight: 400;
+  overflow-x: scroll;
+
   @media screen and (max-width: ${max_960_responsive_screen_size}) {
     font-size: 0.7rem;
   }
@@ -92,7 +107,7 @@ export const CategoryLabel = styled.span`
 export const CategoryIcon = styled(FaIcons.FaAngleDown)`
   width: 20px;
   height: 20px;
-  top: 15px;
+  top: 20px;
   color: ${colors.primary};
   margin-left: 20px;
   @media screen and (max-width: ${max_960_responsive_screen_size}) {
