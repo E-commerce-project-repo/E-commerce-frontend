@@ -15,7 +15,6 @@ function App() {
     <Router>
       <GlobalStyle />
       <Navbar />
-
       <Switch>
         <Route path={config.home} exact component={Home} />
         <Route path={config.shoping} exact component={Shop} />

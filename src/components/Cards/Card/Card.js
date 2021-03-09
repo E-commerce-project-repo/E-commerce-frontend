@@ -11,7 +11,8 @@ import {
   ProfileImg,
   ProfileName,
   ProfileDesc,
-  ProfileButton,
+  StarContainer,
+  Star,
   ProductInfo,
 } from "./Card.lements";
 import {
@@ -20,6 +21,7 @@ import {
   CategoryTitle,
   Card,
 } from "./Category.elements";
+
 import { config } from "../../../constants/constants";
 export const ItemCard = ({ product, isCategory, index }) => {
   return (
@@ -53,7 +55,13 @@ export const PersonProfileInfo = ({ person }) => {
       <ProfileName>Endalk belete</ProfileName>
       <ProfileDesc>Lives, Addis Ababa, Ethiopia</ProfileDesc>
       <ProfileDesc>Joined, Aug 6,2027</ProfileDesc>
-      <ProfileButton isCategory={false}>View Detail</ProfileButton>
+      <StarContainer>
+        <Star active={true} />
+        <Star active={true} />
+        <Star active={true} />
+        <Star />
+        <Star />
+      </StarContainer>
     </ProfileInfo>
   );
 };
