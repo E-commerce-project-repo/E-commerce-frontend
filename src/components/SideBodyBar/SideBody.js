@@ -15,16 +15,20 @@ import {
   SortItems,
   SortItem,
 } from "./SideBody.elements";
-export const SideBody = () => {
+export const SideBody = ({ showCategory, setShowCategory }) => {
   const [page, SetIsActive] = useState(0);
   const [showAllCategory, setShowAllCategory] = useState(false);
   const [value, onChange] = useState(1);
 
   return (
-    <SideCategoryHolder>
+    <SideCategoryHolder showCategory={showCategory}>
       <CategoryHeading>Categories</CategoryHeading>
-      <CategoryListItem>All</CategoryListItem>
-      <CategoryListItem>Category Electronics Electronics</CategoryListItem>
+      <CategoryListItem onClick={() => setShowCategory(!showCategory)}>
+        All
+      </CategoryListItem>
+      <CategoryListItem onClick={() => setShowCategory(!showCategory)}>
+        Category Electronics Electronics
+      </CategoryListItem>
       <CategoryListItem>Category Electronics Electronics</CategoryListItem>
       <CategoryListItem>Category and Electronics</CategoryListItem>
       {showAllCategory ? (
@@ -64,11 +68,21 @@ export const SideBody = () => {
 
       <SortLabel> Sort by</SortLabel>
       <SortItems>
-        <SortItem>News first</SortItem>
-        <SortItem>Price: High to Low</SortItem>
-        <SortItem>Price: Low to High</SortItem>
-        <SortItem>Last 24hrs</SortItem>
-        <SortItem>Top selled items</SortItem>
+        <SortItem onClick={() => setShowCategory(!showCategory)}>
+          News first
+        </SortItem>
+        <SortItem onClick={() => setShowCategory(!showCategory)}>
+          Price: High to Low
+        </SortItem>
+        <SortItem onClick={() => setShowCategory(!showCategory)}>
+          Price: Low to High
+        </SortItem>
+        <SortItem onClick={() => setShowCategory(!showCategory)}>
+          Last 24hrs
+        </SortItem>
+        <SortItem onClick={() => setShowCategory(!showCategory)}>
+          Top selled items
+        </SortItem>
       </SortItems>
     </SideCategoryHolder>
   );

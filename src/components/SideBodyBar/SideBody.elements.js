@@ -8,19 +8,17 @@ export const SideCategoryHolder = styled.div`
   top: 0;
   padding: 15px;
   padding: 0.2rem 1rem;
-
   @media screen and (max-width: 960px) {
     width: 100vh;
-    display: ${(props) => (props.showCategory ? "flex" : "none")};
+    display: ${({ showCategory }) => (showCategory ? "flex" : "none")};
     flex-direction: column;
     width: 100%;
-    height: 90vh;
+    height: 100vh;
     position: absolute;
     top: 80px;
     left: ${({ showCategory }) => (showCategory ? 0 : "-100%")};
     transition: all 0.5s ease;
-    background: ${colors.primary};
-    color: ${colors.white};
+    background: ${colors.bodyColor};
   }
 `;
 
