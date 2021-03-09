@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { colors } from "../../../constants/constants";
+import * as FaIcons from "react-icons/fa";
 
 export const ProductCard = styled(Link)`
   margin: 0 1rem;
@@ -20,6 +21,8 @@ export const ProductCard = styled(Link)`
     transition: all 0.3s ease-out;
     background: ${colors.primary};
     color: ${colors.white};
+  }
+  @media screen and (max-width: 960px) {
   }
 `;
 
@@ -114,15 +117,19 @@ export const ProfileImg = styled.img`
     transition: 0.2s ease-out;
   }
 `;
-
-export const ProfileButton = styled.button`
+export const StarContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin: 0.5rem;
+`;
+export const Star = styled(FaIcons.FaStar)`
   font-size: 1rem;
-  padding: 0.5rem 0.5rem;
-  border: none;
-  background: ${colors.secondary};
-  color: #fff;
+  /* padding: 0.5rem 0.5rem; */
+  /* border: none; */
+  /* background: ${colors.secondary}; */
+  color: ${({ active }) => (active ? colors.secondary : colors.gray)};
   transition: 0.2 ease-out;
-  margin-top: 15px;
+  /* margin-top: 15px; */
 
   &:hover {
     background: ${colors.bodyColor};
