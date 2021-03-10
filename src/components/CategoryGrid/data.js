@@ -13,7 +13,7 @@ export const productData = [
     desc:
       "new brand , slightly used , 30 battery count, good price and only few left",
     price: "$19.99",
-    button: "Add to Cart",
+    button: "Add Cart",
   },
   {
     img: product2,
@@ -22,7 +22,7 @@ export const productData = [
     desc:
       "new brand , slightly used , 30 battery count, good price and only few left",
     price: "$16.99",
-    button: "Add to Cart",
+    button: "Add  Cart",
   },
   {
     img: product3,
@@ -31,7 +31,7 @@ export const productData = [
     desc:
       "new brand , slightly used , 30 battery count, good price and only few left",
     price: "$14.99",
-    button: "Add to Cart",
+    button: "Add Cart",
   },
   {
     img: product1,
@@ -40,7 +40,7 @@ export const productData = [
     desc:
       "new brand , slightly used , 30 battery count, good price and only few left",
     price: "$19.99",
-    button: "Add to Cart",
+    button: "Add  Cart",
   },
   {
     img: product1,
@@ -49,7 +49,7 @@ export const productData = [
     desc:
       "new brand , slightly used , 30 battery count, good price and only few left",
     price: "$19.99",
-    button: "Add to Cart",
+    button: "Add Cart",
   },
   {
     img: product1,
@@ -58,7 +58,7 @@ export const productData = [
     desc:
       "new brand , slightly used , 30 battery count, good price and only few left",
     price: "$19.99",
-    button: "Add to Cart",
+    button: "Add Cart",
   },
   {
     img: product2,
@@ -67,7 +67,7 @@ export const productData = [
     desc:
       "new brand , slightly used , 30 battery count, good price and only few left",
     price: "$16.99",
-    button: "Add to Cart",
+    button: "Add Cart",
   },
   {
     img: product3,
@@ -76,7 +76,7 @@ export const productData = [
     desc:
       "new brand , slightly used , 30 battery count, good price and only few left",
     price: "$14.99",
-    button: "Add to Cart",
+    button: "Add  Cart",
   },
   {
     img: product1,
@@ -85,7 +85,7 @@ export const productData = [
     desc:
       "new brand , slightly used , 30 battery count, good price and only few left",
     price: "$19.99",
-    button: "Add to Cart",
+    button: "Add  Cart",
   },
   {
     img: product1,
@@ -94,7 +94,7 @@ export const productData = [
     desc:
       "new brand , slightly used , 30 battery count, good price and only few left",
     price: "$19.99",
-    button: "Add to Cart",
+    button: "Add Cart",
   },
   {
     img: product1,
@@ -103,7 +103,7 @@ export const productData = [
     desc:
       "new brand , slightly used , 30 battery count, good price and only few left",
     price: "$19.99",
-    button: "Add to Cart",
+    button: "Add  Cart",
   },
   {
     img: product1,
@@ -112,7 +112,7 @@ export const productData = [
     desc:
       "new brand , slightly used , 30 battery count, good price and only few left",
     price: "$19.99",
-    button: "Add to Cart",
+    button: "Add  Cart",
   },
   {
     img: product1,
@@ -121,7 +121,7 @@ export const productData = [
     desc:
       "new brand , slightly used , 30 battery count, good price and only few left",
     price: "$19.99",
-    button: "Add to Cart",
+    button: "Add Cart",
   },
   {
     img: product1,
@@ -130,7 +130,7 @@ export const productData = [
     desc:
       "new brand , slightly used , 30 battery count, good price and only few left",
     price: "$19.99",
-    button: "Add to Cart",
+    button: "Add Cart",
   },
 ];
 
@@ -142,7 +142,7 @@ export const productDataTwo = [
     desc:
       "new brand , slightly used , 30 battery count, good price and only few left",
     price: "$9.99",
-    button: "Add to Cart",
+    button: "Add  Cart",
   },
   {
     img: sweet3,
@@ -152,7 +152,7 @@ export const productDataTwo = [
     desc:
       "new brand , slightly used , 30 battery count, good price and only few left",
     price: "$12.99",
-    button: "Add to Cart",
+    button: "Add Cart",
   },
   {
     img: sweet1,
@@ -161,7 +161,7 @@ export const productDataTwo = [
     desc:
       "new brand , slightly used , 30 battery count, good price and only few left",
     price: "$9.99",
-    button: "Add to Cart",
+    button: "Add  Cart",
   },
   {
     img: sweet1,
@@ -170,7 +170,7 @@ export const productDataTwo = [
     desc:
       "new brand , slightly used , 30 battery count, good price and only few left",
     price: "$9.99",
-    button: "Add to Cart",
+    button: "Add Cart",
   },
   {
     img: sweet2,
@@ -179,7 +179,7 @@ export const productDataTwo = [
     desc:
       "new brand , slightly used , 30 battery count, good price and only few left",
     price: "$9.99",
-    button: "Add to Cart",
+    button: "Add Cart",
   },
   {
     img: sweet3,
@@ -188,7 +188,7 @@ export const productDataTwo = [
     desc:
       "new brand , slightly used , 30 battery count, good price and only few left",
     price: "$12.99",
-    button: "Add to Cart",
+    button: "Add Cart",
   },
   {
     img: sweet1,
@@ -197,7 +197,7 @@ export const productDataTwo = [
     desc:
       "new brand , slightly used , 30 battery count, good price and only few left",
     price: "$9.99",
-    button: "Add to Cart",
+    button: "Add Cart",
   },
   {
     img: sweet1,
@@ -206,6 +206,6 @@ export const productDataTwo = [
     desc:
       "new brand , slightly used , 30 battery count, good price and only few left",
     price: "$9.99",
-    button: "Add to Cart",
+    button: "Add Cart",
   },
 ];
