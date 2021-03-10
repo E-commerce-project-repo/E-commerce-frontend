@@ -39,7 +39,7 @@ export const MyCarts = ({ data }) => {
                   +
                 </CartQuntity>
               </CartQuntityContainer>
-              <CartTotalPrice>${10.21 * count}</CartTotalPrice>
+              <CartTotalPrice>${10 * count}</CartTotalPrice>
             </CartWrapper>
           );
         })}
