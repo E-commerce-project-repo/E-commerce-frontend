@@ -14,6 +14,8 @@ import {
   StarContainer,
   Star,
   ProductInfo,
+  ProductButtonWrapper,
+  AddCartIcon,
 } from "./Card.lements";
 import {
   CategoryImg,
@@ -31,8 +33,13 @@ export const ItemCard = ({ product, isCategory, index }) => {
         <ProductTitle>{product.name}</ProductTitle>
         <ProductDesc>{product.desc}</ProductDesc>
         <ProductPrice isCategory={isCategory}>{product.price}</ProductPrice>
-        <ProductButton isCategory={isCategory}>{product.button}</ProductButton>
+        <ProductButton to="/carts">
+          <AddCartIcon />
+          {product.button}
+        </ProductButton>
       </ProductInfo>
+
+      <ProductButtonWrapper isCategory={isCategory}></ProductButtonWrapper>
     </ProductCard>
   );
 };

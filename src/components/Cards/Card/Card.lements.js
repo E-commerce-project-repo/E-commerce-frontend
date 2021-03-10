@@ -58,8 +58,13 @@ export const ProductPrice = styled.p`
   font-size: 2rem;
   display: ${(props) => (props.isCategory ? "none" : "")};
 `;
-
-export const ProductButton = styled.button`
+export const ProductButtonWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  display: ${({ isCategory }) => (isCategory ? "none" : "")};
+`;
+export const ProductButton = styled(Link)`
   font-size: 1rem;
   padding: 0.5rem 0.5rem;
   border: none;
@@ -67,6 +72,7 @@ export const ProductButton = styled.button`
   color: #fff;
   transition: 0.2 ease-out;
   display: ${(props) => (props.isCategory ? "none" : "")};
+  text-decoration: none;
 
   &:hover {
     background: ${colors.bodyColor};
@@ -74,6 +80,10 @@ export const ProductButton = styled.button`
     cursor: pointer;
     color: #000;
   }
+`;
+
+export const AddCartIcon = styled(FaIcons.FaCartPlus)`
+  margin-right: 0.2rem;
 `;
 
 export const ProfileInfo = styled.div`
@@ -124,12 +134,9 @@ export const StarContainer = styled.div`
 `;
 export const Star = styled(FaIcons.FaStar)`
   font-size: 1rem;
-  /* padding: 0.5rem 0.5rem; */
-  /* border: none; */
-  /* background: ${colors.secondary}; */
+
   color: ${({ active }) => (active ? colors.secondary : colors.gray)};
   transition: 0.2 ease-out;
-  /* margin-top: 15px; */
 
   &:hover {
     background: ${colors.bodyColor};
