@@ -63,7 +63,6 @@ export const FormInput = styled.input`
 
 export const FooterLinksContainer = styled.div`
   width: 100%;
-  max-width: 1000px;
   display: flex;
   justify-content: center;
 
