@@ -9,6 +9,7 @@ import { SingleItem } from "./components/SingleView/SingleItem";
 import { SignUp } from "./Pages/signup/signup";
 import { SignIn } from "./Pages/Login/Login";
 import { OrderPage } from "./Pages/Orders/Orders";
+import { Carts } from "./Pages/Carts/Carts";
 import { config } from "./constants/constants";
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <GlobalStyle />
       <Navbar />
       <Switch>
+        <Route path={config.carts} exact component={Carts} />
         <Route path={config.home} exact component={Home} />
         <Route path={config.shoping} exact component={Shop} />
         <Route path={config.singlePage} exact component={SingleItem} />
