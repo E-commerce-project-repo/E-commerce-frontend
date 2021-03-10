@@ -88,8 +88,8 @@ function Navbar() {
               </NavLinks>
             </NavItem>
             <NavItem>
-              <NavLinks to={config.orders} onClick={closeMobileMenu}>
-                Cart
+              <NavLinks to={config.carts} onClick={closeMobileMenu}>
+                Carts
               </NavLinks>
             </NavItem>
             <NavItemBtn>
