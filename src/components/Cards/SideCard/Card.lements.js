@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { colors } from "../../../constants/constants";
+import * as FaIcons from "react-icons/fa";
 
 export const ProductCard = styled(Link)`
   margin: 0 1rem;
@@ -60,7 +61,7 @@ export const ProductPrice = styled.p`
   display: ${(props) => (props.isCategory ? "none" : "")};
 `;
 
-export const ProductButton = styled.button`
+export const ProductButton = styled(Link)`
   font-size: 1rem;
   padding: 0.5rem 0.5rem;
   border: none;
@@ -68,7 +69,7 @@ export const ProductButton = styled.button`
   color: #fff;
   transition: 0.2 ease-out;
   display: ${(props) => (props.isCategory ? "none" : "")};
-
+  text-decoration: none;
   &:hover {
     background: ${colors.bodyColor};
     transition: 0.2s ease-out;
@@ -133,5 +134,13 @@ export const ProfileButton = styled.button`
     transition: 0.2s ease-out;
     cursor: pointer;
     color: #000;
+  }
+`;
+
+export const AddCartIcon = styled(FaIcons.FaCartPlus)`
+  margin-right: 0.2rem;
+  :hover {
+    color: ${colors.secondary};
+    cursor: pointer;
   }
 `;
