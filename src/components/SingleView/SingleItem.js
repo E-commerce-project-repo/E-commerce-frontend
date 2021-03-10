@@ -1,13 +1,10 @@
 import { useState } from "react";
 import {
-  Container,
-  SubContainer,
   ImageContainer,
   ItemContainer,
   ItemHeader,
   ItemBodyContainer,
   ItemDetailContainer,
-  RightSideContainer,
   ItemImage,
   ItemDetailHeaderInfo,
   ItemDetailGroupContainer,
@@ -20,15 +17,11 @@ import {
   ItemDescription,
   ItemDescriptionHeader,
   ImagesWrapper,
-  RelatedItemHeader,
   ProfileButton,
-  RelatedItemCardsWrapper,
 } from "./Single.element";
 import sweet3 from "../../images/mac1.jpg";
 import person from "../../images/person.jpeg";
-import { ItemCard, PersonProfileInfo } from "../Cards/Card/Card";
-import { productData, productDataTwo } from "../CategoryGrid/data";
-import { ItemGrid } from "../ItemGrid/ItemGrid";
+import { PersonProfileInfo } from "../Cards/Card/Card";
 
 export const SingleItem = () => {
   const [page, setPage] = useState(0);
@@ -92,7 +85,7 @@ export const SingleItem = () => {
                 templates for you.
               </ItemDescription>
             </ItemDetailGroup>
-            <ProfileButton>Contact Seller</ProfileButton>
+            <ProfileButton to="/carts">Add Cart</ProfileButton>
             <ItemTermAndCondition></ItemTermAndCondition>
           </ItemDetailHeaderInfo>
           <PersonProfileInfo person={person} />
@@ -101,8 +94,3 @@ export const SingleItem = () => {
     </ItemContainer>
   );
 };
-
-//    <ItemGrid title="Related Products" data={productData} />
-{
-  /* <ItemGrid title="Customers also viewed" data={productData} /> */
-}

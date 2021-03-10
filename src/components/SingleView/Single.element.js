@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { colors } from "../../constants/constants";
 import * as FaIcons from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export const Container = styled.div`
   display: flex;
@@ -216,7 +217,7 @@ export const RelatedItemHeader = styled.div`
   font-weight: 670;
 `;
 
-export const ProfileButton = styled.button`
+export const ProfileButton = styled(Link)`
   font-size: 1rem;
   padding: 0.5rem 0.5rem;
   border: none;
@@ -224,6 +225,8 @@ export const ProfileButton = styled.button`
   color: #fff;
   transition: 0.2 ease-out;
   margin-top: 15px;
+  text-decoration: none;
+  text-align: center;
 
   &:hover {
     background: ${colors.bodyColor};
