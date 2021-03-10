@@ -31,4 +31,5 @@ export const config = {
   orders: "/orders",
   signIn: "/sign-in",
   signUp: "/sign-up",
+  carts: "/carts",
 };
