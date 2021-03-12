@@ -38,6 +38,7 @@ export const SingleItem = () => {
             <ItemImage src={person} onClick={() => setFullSize(person)} />
             <ItemImage src={sweet3} onClick={() => setFullSize(sweet3)} />
             <ItemImage src={person} onClick={() => setFullSize(person)} />
+            <ItemImage src={person} onClick={() => setFullSize(person)} />
           </ImagesWrapper>
         </ImageContainer>
 

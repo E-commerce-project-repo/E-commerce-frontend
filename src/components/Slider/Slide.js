@@ -8,7 +8,7 @@ import {
   Active,
 } from "./Slide.elements";
 import { Hero } from "../Cards/Hero/index";
-const delay = 2500;
+const delay = 5000;
 export const Slider = ({ data }) => {
   const [index, setIndex] = React.useState(0);
   const timeoutRef = React.useRef(null);
