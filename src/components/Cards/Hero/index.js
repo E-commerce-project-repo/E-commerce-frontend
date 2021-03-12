@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import Navbar from "../../Navbar/Navbar";
-import Sidebar from "../../Sidebar";
 import {
   HeroContainer,
   HeroContent,
   HeroItems,
+  HeroItemsWrap,
   HeroH1,
   Price,
   HeroBtn,
+  Desc,
 } from "./HeroElements";
 
 export const Hero = ({ data }) => {
@@ -20,9 +20,9 @@ export const Hero = ({ data }) => {
     <HeroContainer image={data.img}>
       <HeroContent>
         <HeroItems>
-          <HeroH1>Macbook pro pc for sale</HeroH1>
+          <HeroH1>{data.name}</HeroH1>
           <Price>{data.price}</Price>
-          <HeroBtn>Place Order</HeroBtn>
+          <HeroBtn>{data.button}</HeroBtn>
         </HeroItems>
       </HeroContent>
     </HeroContainer>
