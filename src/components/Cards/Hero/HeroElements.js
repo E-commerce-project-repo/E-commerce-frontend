@@ -7,6 +7,9 @@ export const HeroContainer = styled.div`
   background-position: center;
   background-size: cover;
   height: calc(60vh - 80px);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 `;
 
 export const HeroContent = styled.div`
