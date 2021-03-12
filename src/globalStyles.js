@@ -62,12 +62,12 @@ export const Input = styled.input`
   display: inline-block;
   border: 1px solid ${colors.sliver};
   box-sizing: border-box;
-  /* box-shadow: 0 10px 10px ${colors.secondary}; */
   outline-color: ${colors.primary};
+  background: white;
 `;
 
-export const Message = styled.label`
-  margin-bottom: 0.5em;
+export const Message = styled.span`
+  margin-bottom: 0.3em;
+  font-size: 1rem;
   color: palevioletred;
-  display: ${(props) => (props.show ? "block" : "none")};
 `;
