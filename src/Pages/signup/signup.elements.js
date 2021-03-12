@@ -92,12 +92,22 @@ export const LeftPasswordIcon = styled(FaIcons.FaLock)`
   top: 55px;
   color: ${colors.primary};
 `;
+export const TermAndConditionWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+`;
 
+export const Checkbox = styled.input`
+  color: ${colors.primary};
+  font-size: 12px;
+  text-align: center;
+  background-color: red;
+`;
 export const TermAndCondition = styled(Link)`
   color: ${colors.primary};
   font-size: 12px;
   text-decoration: none;
-  margin-bottom: 10px;
   text-align: center;
 `;
 export const LoginHeader = styled.span`
@@ -123,4 +133,8 @@ export const SignInLabel = styled.span`
   color: ${colors.primary};
   font-size: 1rem;
   margin-right: 5px;
+`;
+export const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
 `;

@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Input, Label, Message, Button } from "../../globalStyles";
 import { constants } from "../../constants/constants";
+import { login, logout } from "../../store/user";
+
 import {
   FormGroup,
   Container,
@@ -19,79 +22,50 @@ import {
   LeftUserNameIcon,
   NameGapper,
   LeftPasswordIcon,
+  ButtonContainer,
+  TermAndConditionWrapper,
+  Checkbox,
 } from "./signup.elements";
+import { validator, validateForm } from "../../errorHandler/errorHandler";
+import { DoubleLoader } from "../../components/Loader/Loader";
 
-export const SignUp = (props) => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [company, setCompany] = useState("");
-  const [mobile, setMobile] = useState("");
-  const [show, setShow] = useState(false);
+export const SignUp = () => {
+  const [showLoader, setShowLoader] = useState(false);
 
-  const [firstNameErrorMessage, setFirstNameErrorMessage] = useState("");
-  const [lastNameErrorMessage, setLastNameErrorMessage] = useState("");
-  const [companyErrorMessage, setCompanyErrorMessage] = useState("");
-  const [mobileErrorMessage, setMobileErrorMessage] = useState("");
-  const [emailErrorMessage, setEmailErrorMessage] = useState("");
+  const dispatch = useDispatch();
+  const [user, setUser] = useState({
+    firstName: "",
+    lastName: "",
+    mobile: "",
+    email: "",
+    password: "",
+  });
+  const [errors, setErrors] = useState({
+    firstName: "",
+    lastName: "",
+    mobile: "",
+    email: "",
+    password: "",
+  });
 
-  const nameValidator = () => {
-    var response = false;
-    setShow(true);
-    if (firstName.length < 1) {
-      setFirstNameErrorMessage("First name is required field");
-      response = true;
-    } else if (!firstName.match(/^[A-Za-z][3,15]+$/) && firstName.length < 2) {
-      setFirstNameErrorMessage("You have entered an invalid name.");
-      response = true;
-    } else {
-      setFirstNameErrorMessage("");
-    }
-    if (lastName.length < 1) {
-      setLastNameErrorMessage("Last name is required field");
-      response = true;
-    } else if (!lastName.match(/^[A-Za-z]+$/) && lastName.length > 2) {
-      setLastNameErrorMessage("You have entered an invalid name.");
-      response = true;
-    } else {
-      setLastNameErrorMessage("");
-    }
-
-    if (company.length < 1) {
-      setCompanyErrorMessage("Company  is required field");
-      response = true;
-    } else {
-      setCompanyErrorMessage("");
-    }
-    var phone = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
-    if (mobile.length < 1) {
-      setMobileErrorMessage("Mobile number is required field");
-      response = true;
-    } else if (!mobile.match(phone)) {
-      setMobileErrorMessage("You have entered an invalid phone number.");
-      response = true;
-    } else {
-      setMobileErrorMessage("");
-    }
-
-    if (email.length < 1) {
-      setEmailErrorMessage("Email address is required field");
-      response = true;
-    } else if (
-      !email.match(
-        /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
-      )
-    ) {
-      setEmailErrorMessage("You have entered an invalid email address");
-      response = true;
-    } else {
-      setEmailErrorMessage("");
-    }
-
-    return response;
+  const handleChange = (event) => {
+    event.preventDefault();
+    const { name, value } = event.target;
+    setUser({
+      ...user,
+      [name]: event.target.value,
+    });
+    setErrors({ ...errors, [name]: validator(name, value) });
   };
-  const formValidator = () => {
-    return nameValidator();
+  const handleSubmit = () => {
+    setShowLoader(true);
+
+    if (validateForm(errors)) {
+      dispatch(login({ user }));
+      console.info("Valid Form");
+    } else {
+      console.error("Invalid Form");
+    }
   };
 
   return (
@@ -114,10 +88,11 @@ export const SignUp = (props) => {
             <Input
               id="label"
               placeholder="First Name"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
+              value={user.firstName}
+              name="firstName"
+              onChange={handleChange}
             />
-            <Message show={show}>{firstNameErrorMessage}</Message>
+            <Message>{errors.firstName}</Message>
             <LeftUserNameIcon />
           </FormGroup>
           <NameGapper />
@@ -125,10 +100,11 @@ export const SignUp = (props) => {
             <Label>Last Name</Label>
             <Input
               placeholder="Last Name"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
+              value={user.lastName}
+              name="lastName"
+              onChange={handleChange}
             />
-            <Message show={show}>{lastNameErrorMessage}</Message>
+            <Message>{errors.lastName}</Message>
             <LeftUserNameIcon />
           </FormGroup>
         </NameContainer>
@@ -136,10 +112,11 @@ export const SignUp = (props) => {
           <Label>Mobile Number</Label>
           <Input
             placeholder="Mobile Number"
-            value={mobile}
-            onChange={(e) => setMobile(e.target.value)}
+            value={user.mobile}
+            name="mobile"
+            onChange={handleChange}
           />
-          <Message show={show}>{mobileErrorMessage}</Message>
+          <Message>{errors.mobile}</Message>
 
           <LeftPhoneIcon />
         </FormGroup>
@@ -147,27 +124,39 @@ export const SignUp = (props) => {
           <Label>Email</Label>
           <Input
             placeholder="Email Address"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            value={user.email}
+            name="email"
+            onChange={handleChange}
           />
-          <Message show={show}>{emailErrorMessage}</Message>
+          <Message>{errors.email}</Message>
           <LeftEmailIcon />
         </FormGroup>
         <FormGroup>
           <Label>Password</Label>
           <Input
             placeholder="Password"
-            value={mobile}
-            onChange={(e) => setMobile(e.target.value)}
+            value={user.password}
+            name="password"
+            onChange={handleChange}
           />
-          <Message show={show}>{mobileErrorMessage}</Message>
+          <Message>{errors.password}</Message>
 
           <LeftPasswordIcon />
         </FormGroup>
-        <TermAndCondition to="/term-and-condtion">
-          Accept term and conditions
-        </TermAndCondition>
-        <Button primary={true}>Create an account</Button>
+        <TermAndConditionWrapper>
+          <Checkbox type="checkbox" />
+          <TermAndCondition to="/term-and-condtion">
+            Accept term and conditions
+          </TermAndCondition>
+        </TermAndConditionWrapper>
+
+        {showLoader ? (
+          <DoubleLoader />
+        ) : (
+          <Button primary={true} onClick={handleSubmit}>
+            Create an account
+          </Button>
+        )}
         <SignInContainer>
           <SignInLabel>Don't have an account ?</SignInLabel>
           <SignInLink to="/sign-in">Sign in</SignInLink>
