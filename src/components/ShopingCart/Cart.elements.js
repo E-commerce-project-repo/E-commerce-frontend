@@ -2,6 +2,8 @@ import styled from "styled-components";
 import {
   colors,
   max_960_responsive_screen_size,
+  max_500_responsive_screen_size,
+  max_responsive_screen_size,
 } from "../../constants/constants";
 import * as FaIcons from "react-icons/fa";
 
@@ -23,18 +25,17 @@ export const CartListWrapper = styled.div`
   flex-direction: column;
   overflow-y: scroll;
   justify-content: space-between;
+  padding: 0rem 2rem;
 `;
 
 export const CartWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  margin: 0.4rem;
   justify-content: space-between;
-  padding: 0.1rem 2rem;
   align-items: center;
-  border-bottom: 1px solid red;
+  border-bottom: 0.1px solid ${colors.primary};
 
-  @media screen and (max-width: ${max_960_responsive_screen_size}) {
+  @media screen and (max-width: ${max_responsive_screen_size}) {
     flex-direction: column;
   }
 `;
@@ -87,6 +88,21 @@ export const CheckoutContainer = styled.div`
   justify-content: flex-end;
 `;
 
+export const CloseIcon = styled(FaIcons.FaTimes)`
+  left: 5px;
+  top: 15px;
+  color: ${colors.primary};
+  font-size: 1.5rem;
+  :hover {
+    color: ${colors.secondary};
+    cursor: pointer;
+    transition: 0.2s ease-out;
+    transform: scale(1.06);
+  }
+  @media screen and (max-width: ${max_960_responsive_screen_size}) {
+    top: 20px;
+  }
+`;
 export const CheckoutButton = styled.button`
   font-size: 1rem;
   padding: 0.5rem 0.9rem;
@@ -107,3 +123,4 @@ export const CheckoutButton = styled.button`
     color: #000;
   }
 `;
+export const DetailContainer = styled.div``;

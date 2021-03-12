@@ -11,8 +11,11 @@ import {
   TotalPrice,
   CheckoutButton,
   CheckoutContainer,
+  CloseIcon,
+  DetailContainer,
 } from "./Cart.elements";
 import { SideItemCard } from "../../components/Cards/SideCard/Card";
+
 export const MyCarts = ({ data }) => {
   data.lenth = 5;
   const [count, setCount] = useState(1);
@@ -39,7 +42,8 @@ export const MyCarts = ({ data }) => {
                   +
                 </CartQuntity>
               </CartQuntityContainer>
-              <CartTotalPrice>${10 * count}</CartTotalPrice>
+              <CartTotalPrice>${10.12 * count}</CartTotalPrice>
+              <CloseIcon />
             </CartWrapper>
           );
         })}
