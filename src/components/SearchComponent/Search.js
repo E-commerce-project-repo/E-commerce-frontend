@@ -10,7 +10,6 @@ import {
   CategoryContainer,
 } from "./Search.elements";
 import { categories } from "./Api/Api";
-import { ItemList } from "./ItemList/ItemList";
 import { HidedCategory } from "../HidedCategory/HidedCategory";
 
 export const Autocomplete = (props) => {
@@ -38,8 +37,6 @@ export const Autocomplete = (props) => {
     setShowCategory(false);
   };
 
-  const onKeyFocus = (e) => {};
-
   const onChange = (e) => {
     setUserInput(e.target.value);
     if (e.target.value.length === 0) {
@@ -59,7 +56,6 @@ export const Autocomplete = (props) => {
       <SearchBox
         type="text"
         onChange={onChange}
-        onFocus={() => onKeyFocus()}
         value={userInput}
         placeholder="Search..."
       />

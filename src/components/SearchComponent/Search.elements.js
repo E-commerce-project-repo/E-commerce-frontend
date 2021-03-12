@@ -9,6 +9,18 @@ export const SearchBoxContainer = styled.div`
   width: 100%;
   text-align: right;
   position: relative;
+
+  animation: fadeinout 0.6s linear 1 forwards;
+  @keyframes fadeinout {
+    0% {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+    100% {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+  }
 `;
 export const SearchBox = styled.input`
   border: 1px solid ${colors.SecondPrimary};
@@ -59,10 +71,9 @@ export const SearchDevider = styled(FaIcons.FaGripLinesVertical)`
   width: 20px;
   height: 20px;
   position: absolute;
-  left: 70%;
+  left: 75%;
   top: 15px;
   color: ${colors.primary};
-  margin-left: 20px;
   @media screen and (max-width: ${max_960_responsive_screen_size}) {
     width: 20px;
     height: 20px;
@@ -72,33 +83,35 @@ export const SearchDevider = styled(FaIcons.FaGripLinesVertical)`
 export const CategoryContainer = styled.div`
   display: flex;
   flex-direction: center;
-  left: 80%;
-  top: 15px;
+  justify-content: space-between;
+  left: 78%;
+  top: 17px;
   position: absolute;
   text-align: center;
   font-weight: 670;
   border: 1px solid ${colors.primary};
   border-radius: 5px;
-  padding-left: 2px;
-  width: 1fr;
-  margin-right: 5px;
-  max-height: 50%;
-
+  width: 20%;
+  height: 23px;
   :hover {
     cursor: pointer;
   }
   @media screen and (max-width: ${max_960_responsive_screen_size}) {
     left: 70%;
+    top: 12px;
   }
 `;
 
 export const CategoryLabel = styled.span`
-  font-size: 1rem;
-  top: 15px;
+  font-size: 0.5rem;
   text-align: center;
-  font-weight: 400;
+  font-weight: 570;
   overflow: hidden;
-
+  display: flex;
+  align-items: center;
+  width: 80%;
+  text-align: center;
+  justify-content: center;
   @media screen and (max-width: ${max_960_responsive_screen_size}) {
     font-size: 0.7rem;
   }
@@ -109,7 +122,7 @@ export const CategoryIcon = styled(FaIcons.FaAngleDown)`
   height: 20px;
   top: 20px;
   color: ${colors.primary};
-  margin-left: 20px;
+
   @media screen and (max-width: ${max_960_responsive_screen_size}) {
     margin-left: 0px;
   }
