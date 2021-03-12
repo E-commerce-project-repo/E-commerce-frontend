@@ -90,3 +90,8 @@ export const SignupLabel = styled.span`
   font-size: 1rem;
   margin-right: 5px;
 `;
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`;
