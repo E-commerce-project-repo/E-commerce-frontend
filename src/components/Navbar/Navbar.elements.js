@@ -2,7 +2,12 @@ import styled from "styled-components";
 import { FaBars } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { Container } from "../../globalStyles";
-import { colors } from "../../constants/constants";
+import {
+  colors,
+  max_960_responsive_screen_size,
+} from "../../constants/constants";
+import * as FaIcons from "react-icons/fa";
+
 export const Nav = styled.nav`
   height: 80px;
   display: flex;
@@ -14,13 +19,26 @@ export const Nav = styled.nav`
   z-index: 999;
   background: ${colors.dark};
   box-shadow: 1px 1px ${colors.primary};
+  padding-left: 50px;
+  padding-right: 50px;
 `;
 
-export const NavbarContainer = styled(Container)`
+export const NavbarContainer = styled.div`
   display: flex;
-  align-items: center;
+  justify-content: flex-end;
   list-style: none;
   text-align: center;
+  z-index: 1;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 20px;
+  padding-left: 50px;
+
+  @media screen and (max-width: 991px) {
+    padding-right: 30px;
+    padding-left: 30px;
+  }
 `;
 export const NavLogo = styled(Link)`
   color: ${colors.white};
@@ -72,6 +90,16 @@ export const NavMenu = styled.ul`
     transition: all 0.5s ease;
     background: ${colors.primary};
   }
+  animation: fade 1s linear;
+
+  @keyframes fade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 `;
 export const NavItem = styled.li`
   height: 50px;
@@ -80,6 +108,8 @@ export const NavItem = styled.li`
     border-bottom: 2px solid ${colors.secondary};
   }
   display: ${({ isHome }) => (isHome ? "none" : "")};
+  font-size: 0.9rem;
+  width: 7rem;
 
   @media screen and (max-width: 960px) {
     display: flex;
@@ -106,6 +136,8 @@ export const NavLinks = styled(Link)`
   text-decoration: none;
   padding: 0.5rem 1rem;
   height: 100%;
+  text-align: center;
+  justify-content: center;
 
   @media screen and (max-width: 960px) {
     text-align: center;
@@ -129,4 +161,57 @@ export const NavBtnLink = styled(Link)`
   width: 100%;
   border: none;
   outline: none;
+`;
+export const SearchIconWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+
+  border: none;
+
+  outline: none;
+`;
+export const SearchIcon = styled(FaIcons.FaSearch)`
+  width: 20px;
+  height: 20px;
+  color: ${colors.white};
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  :hover {
+    cursor: pointer;
+    transform: scale(1.06);
+    transition: all 0.3s ease-out;
+  }
+
+  @media screen and (max-width: ${max_960_responsive_screen_size}) {
+    width: 15px;
+    height: 15px;
+  }
+`;
+
+export const CloseIcon = styled(FaIcons.FaTimes)`
+  width: 20px;
+  height: 20px;
+  color: ${colors.white};
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  :hover {
+    cursor: pointer;
+    transform: scale(1.06);
+    transition: all 0.3s ease-out;
+  }
+
+  @media screen and (max-width: ${max_960_responsive_screen_size}) {
+    width: 15px;
+    height: 15px;
+  }
 `;

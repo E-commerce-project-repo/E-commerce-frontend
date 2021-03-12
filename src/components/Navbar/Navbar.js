@@ -13,6 +13,10 @@ import {
   NavLinks,
   NavBtnLink,
   NavMenuIcon,
+  SearchHandler,
+  SearchIcon,
+  SearchIconWrapper,
+  CloseIcon,
 } from "./Navbar.elements";
 import { Autocomplete } from "../SearchComponent/Search";
 import { config } from "../../constants/constants";
@@ -21,6 +25,7 @@ function Navbar() {
   const [button, setButton] = useState(true);
   const [showCategory, setShowCategory] = useState(false);
   const [CategoryLabel, setCategoryLabel] = useState("All");
+  const [expandSearch, setExpandSearch] = useState(false);
 
   const categoryLabel = (label) => {
     setCategoryLabel(label);
@@ -28,6 +33,7 @@ function Navbar() {
 
   const handleClick = () => {
     setClick(!click);
+    setExpandSearch(false);
   };
   const showCategoryFun = () => {
     setShowCategory(!showCategory);
@@ -37,39 +43,38 @@ function Navbar() {
     setClick(false);
   };
 
-  const showButton = () => {
-    if (window.innerWidth <= 960) {
-      setButton(false);
-    } else {
-      setButton(true);
-    }
-  };
+  // const showButton = () => {
+  //   if (window.innerWidth <= 960) {
+  //     setButton(false);
+  //   } else {
+  //     setButton(true);
+  //   }
+  // };
 
-  useEffect(() => {
-    showButton();
-  }, []);
+  // useEffect(() => {
+  //   showButton();
+  // }, []);
 
-  window.addEventListener("resize", showButton);
+  // window.addEventListener("resize", showButton);
 
   return (
-    <>
-      <Nav>
-        <NavbarContainer>
-          <NavLogo to={config.home}>
-            <NavIcon>Meba </NavIcon>
+    <Nav>
+      <NavLogo to={config.home}>
+        <NavIcon>Meba </NavIcon>
 
-            <MobileIcon onClick={handleClick}>
-              {click ? <FaTimes /> : <FaBars />}
-            </MobileIcon>
-          </NavLogo>
-
+        <MobileIcon onClick={handleClick}>
+          {click ? <FaTimes /> : <FaBars />}
+        </MobileIcon>
+      </NavLogo>
+      <NavbarContainer>
+        {expandSearch ? (
           <Autocomplete
             showCategoryFun={showCategoryFun}
             showCategory={showCategory}
             CategoryLabel={CategoryLabel}
             categoryLabel={categoryLabel}
           />
-
+        ) : (
           <NavMenu onClick={handleClick} click={click}>
             <NavItem isHome={true}>
               <NavLinks to={config.home} onClick={closeMobileMenu}>
@@ -87,6 +92,12 @@ function Navbar() {
                 Orders
               </NavLinks>
             </NavItem>
+            <NavItem>
+              <NavLinks to={config.addItems} onClick={closeMobileMenu}>
+                Add Items
+              </NavLinks>
+            </NavItem>
+
             <NavItem>
               <NavLinks to={config.carts} onClick={closeMobileMenu}>
                 Carts
@@ -106,9 +117,19 @@ function Navbar() {
               )}
             </NavItemBtn>
           </NavMenu>
-        </NavbarContainer>
-      </Nav>
-    </>
+        )}
+      </NavbarContainer>
+      {expandSearch ? (
+        <CloseIcon onClick={() => setExpandSearch(false)} />
+      ) : (
+        <SearchIcon
+          onClick={() => {
+            setExpandSearch(true);
+            setClick(false);
+          }}
+        />
+      )}
+    </Nav>
   );
 }
 
