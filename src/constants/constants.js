@@ -20,7 +20,7 @@ export const colors = {
 };
 export const max_responsive_screen_size = "680px";
 export const max_960_responsive_screen_size = "960px";
-export const max_500_responsive_screen_size = "500px";
+export const max_500_responsive_screen_size = "590px";
 // export const max_responsive_screen_size = "960px";
 export const api = "www.api.endalkhbel.com";
 
@@ -32,4 +32,5 @@ export const config = {
   signIn: "/sign-in",
   signUp: "/sign-up",
   carts: "/carts",
+  addItems: "/add-items",
 };
