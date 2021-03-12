@@ -9,13 +9,13 @@ export const HidedCategory = (props) => {
         All
       </CategoryListItem>
       <CategoryListItem
-        onClick={() => props.categoryLabel("Category  Electronics")}
+        onClick={() => props.categoryLabel("Category  Electronics items")}
       >
         Category Electronics Electronics
       </CategoryListItem>
       <CategoryListItem>Category Electronics Electronics</CategoryListItem>
       <CategoryListItem
-        onClick={() => props.categoryLabel("Category and Electronics")}
+        onClick={() => props.categoryLabel("Category and Electronics no")}
       >
         Category and Electronics
       </CategoryListItem>
@@ -36,6 +36,9 @@ export const HidedCategory = (props) => {
       <CategoryListItem>Apple ProductsContainer</CategoryListItem>
       <CategoryListItem>Cement raw materials</CategoryListItem>
       <CategoryListItem>Car maintaince tools</CategoryListItem>
+      <CategoryListItem>clothes and shoes</CategoryListItem>
+      <CategoryListItem>clothes and shoes</CategoryListItem>
+      <CategoryListItem>clothes and shoes</CategoryListItem>
       <CategoryListItem>clothes and shoes</CategoryListItem>
     </Container>
   );
