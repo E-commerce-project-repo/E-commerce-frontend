@@ -86,7 +86,7 @@ export const AddCartIcon = styled(FaIcons.FaCartPlus)`
   margin-right: 0.2rem;
 `;
 
-export const ProfileInfo = styled.div`
+export const ProfileInfo = styled(Link)`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -96,6 +96,9 @@ export const ProfileInfo = styled.div`
   background: ${colors.white};
   padding: 10px;
   border-radius: 10px;
+  text-decoration: none;
+  color: ${colors.primary};
+
   :hover {
     cursor: pointer;
     border: 0.5px solid ${colors.primary};

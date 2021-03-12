@@ -24,11 +24,10 @@ import {
   LeftPasswordIcon,
   ButtonContainer,
   TermAndConditionWrapper,
-  Checkbox,
 } from "./signup.elements";
 import { validator, validateForm } from "../../errorHandler/errorHandler";
 import { DoubleLoader } from "../../components/Loader/Loader";
-
+import { CheckBox } from "../../components/MultipleComponents/Check";
 export const SignUp = () => {
   const [showLoader, setShowLoader] = useState(false);
 
@@ -143,13 +142,14 @@ export const SignUp = () => {
 
           <LeftPasswordIcon />
         </FormGroup>
-        <TermAndConditionWrapper>
-          <Checkbox type="checkbox" />
-          <TermAndCondition to="/term-and-condtion">
-            Accept term and conditions
-          </TermAndCondition>
-        </TermAndConditionWrapper>
-
+        <FormGroup>
+          <TermAndConditionWrapper>
+            <CheckBox />
+            <TermAndCondition to="/term-and-condtion">
+              Accept term and conditions
+            </TermAndCondition>
+          </TermAndConditionWrapper>
+        </FormGroup>
         {showLoader ? (
           <DoubleLoader />
         ) : (

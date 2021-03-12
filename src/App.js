@@ -12,6 +12,7 @@ import { OrderPage } from "./Pages/Orders/Orders";
 import { Carts } from "./Pages/Carts/Carts";
 import { AddItem } from "./components/Item/Add";
 import { config } from "./constants/constants";
+import { Seller } from "./Pages/Seller/Seller";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path={config.signIn} exact component={SignIn} />
         <Route path={config.orders} exact component={OrderPage} />
         <Route path={config.addItems} exact component={AddItem} />
+        <Route path={config.sellerInfo} exact component={Seller} />
       </Switch>
       <Footer />
     </Router>

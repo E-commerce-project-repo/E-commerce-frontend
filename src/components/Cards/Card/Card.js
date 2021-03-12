@@ -57,7 +57,7 @@ export const CategoryCard = ({ product, isCategory, index }) => {
 
 export const PersonProfileInfo = ({ person }) => {
   return (
-    <ProfileInfo>
+    <ProfileInfo to={config.sellerInfo}>
       <ProfileImg src={person} />
       <ProfileName>Endalk belete</ProfileName>
       <ProfileDesc>Lives, Addis Ababa, Ethiopia</ProfileDesc>

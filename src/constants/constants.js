@@ -33,4 +33,11 @@ export const config = {
   signUp: "/sign-up",
   carts: "/carts",
   addItems: "/add-items",
+  sellerInfo: "/seller-info",
+};
+
+export const constant_variables = {
+  left_icon_top: "40px",
+  left_icon_left: "5px",
+  border_radius: "4px",
 };

@@ -1,14 +1,28 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Input, Label, Message, Button } from "../../globalStyles";
+import {
+  Input,
+  Label,
+  Message,
+  Button,
+  SearchBoxContainer,
+  SearchBox,
+  CategoryIcon,
+  LeftIcon,
+  Select,
+  Option,
+  TextArea,
+} from "../../globalStyles";
 import { constants } from "../../constants/constants";
 import { login, logout } from "../../store/user";
+import * as FaIcons from "react-icons/fa";
 
 import {
   FormGroup,
   Container,
-  LeftPhoneIcon,
+  LeftPPriceIcon,
   LeftEmailIcon,
+  LeftCategoryIcon,
   FormContainer,
   TextWrap,
   TextHeader,
@@ -24,7 +38,6 @@ import {
   LeftPasswordIcon,
   ButtonContainer,
   TermAndConditionWrapper,
-  Checkbox,
   ImageContainer,
   Image,
   File,
@@ -34,6 +47,7 @@ import {
 } from "./Add.elements";
 import { validator, validateForm } from "../../errorHandler/errorHandler";
 import { DoubleLoader } from "../Loader/Loader";
+import { CheckBox } from "../MultipleComponents/Check";
 
 export const AddItem = () => {
   const [showLoader, setShowLoader] = useState(false);
@@ -41,28 +55,32 @@ export const AddItem = () => {
   const [onhoverShow, setOnhoverShow] = useState(false);
 
   const dispatch = useDispatch();
-  const [user, setUser] = useState({
-    firstName: "",
-    lastName: "",
-    mobile: "",
-    email: "",
-    password: "",
+  const [item, setItem] = useState({
+    productName: "",
+    subtitle: "",
+    Category: "",
+    price: 0.0,
+    amount: 1,
+    description: "",
+    term: "",
     images: [],
   });
   const [errors, setErrors] = useState({
-    firstName: "",
-    lastName: "",
-    mobile: "",
-    email: "",
-    password: "",
+    productName: "",
+    subtitle: "",
+    Category: "",
+    price: "",
+    amount: "",
+    description: "",
+    term: "",
     images: "",
   });
 
   const handleChange = (event) => {
     event.preventDefault();
     const { name, value } = event.target;
-    setUser({
-      ...user,
+    setItem({
+      ...item,
       [name]: event.target.value,
     });
     setErrors({ ...errors, [name]: validator(name, value) });
@@ -72,20 +90,20 @@ export const AddItem = () => {
     setErrors({ ...errors, images: "You should select atleast 3 images" });
 
     if (validateForm(errors)) {
-      dispatch(login({ user }));
+      dispatch(login({ item }));
       console.info("Valid Form");
     } else {
       console.error("Invalid Form");
     }
   };
   const removeImage = (image) => {
-    const newArray = user.images.filter((item) => {
+    const newArray = item.images.filter((item) => {
       return item !== image;
     });
     console.log(newArray);
 
-    setUser({
-      ...user,
+    setItem({
+      ...item,
       images: newArray,
     });
   };
@@ -93,9 +111,9 @@ export const AddItem = () => {
   const handleImageChange = (e) => {
     e.preventDefault();
     let file = e.target.files[0];
-    setUser({
-      ...user,
-      images: user.images.concat({
+    setItem({
+      ...item,
+      images: item.images.concat({
         file: file,
         imageUrl: URL.createObjectURL(file),
       }),
@@ -111,19 +129,19 @@ export const AddItem = () => {
           <File
             type="file"
             onChange={handleImageChange}
-            disabled={user.images.length >= 5 ? true : false}
+            disabled={item.images.length >= 5 ? true : false}
           />
-          <ButtonFile size={user.images.length}>Choose Images</ButtonFile>
+          <ButtonFile size={item.images.length}>Choose Images</ButtonFile>
         </ButtonContainer>
 
-        {user.images.length < 4 ? (
+        {item.images.length < 4 ? (
           <Text>
             <Message>{errors.images}</Message>
           </Text>
         ) : null}
 
         <ImageContainer>
-          {user.images.map((pic, index) => {
+          {item.images.map((pic, index) => {
             return onhoverImage === index && onhoverShow === true ? (
               <CloseOnHoverContainer
                 onMouseLeave={() => {
@@ -156,75 +174,110 @@ export const AddItem = () => {
         </ImageContainer>
       </TextWrap>
       <FormContainer>
-        <LoginHeader>Create an account</LoginHeader>
+        <LoginHeader>Create an Item</LoginHeader>
+        <FormGroup>
+          <Label htmlFor="label">Product Name</Label>
+
+          <Input
+            id="label"
+            placeholder="Product Name"
+            value={item.productName}
+            name="productName"
+            onChange={handleChange}
+          />
+
+          <Message>{errors.productName}</Message>
+        </FormGroup>
+        <FormGroup>
+          <Label>Subtitle</Label>
+
+          <Input
+            placeholder="Subtitle"
+            value={item.subtitle}
+            name="subtitle"
+            onChange={handleChange}
+          />
+          <Message>{errors.subtitle}</Message>
+        </FormGroup>
+
         <NameContainer>
           <FormGroup>
-            <Label htmlFor="label">First Name</Label>
-            <Input
-              id="label"
-              placeholder="First Name"
-              value={user.firstName}
-              name="firstName"
-              onChange={handleChange}
-            />
-            <Message>{errors.firstName}</Message>
-            <LeftUserNameIcon />
+            <Label>Category</Label>
+            <Select>
+              <Option value="emdalk">Endalk belete</Option>
+              <Option value="Abselom">Abselom</Option>
+              <Option value="Hermela">Hermela</Option>
+              <Option value="Betty">Betty</Option>
+              <Option value="Natty">Natty</Option>
+            </Select>
           </FormGroup>
           <NameGapper />
           <FormGroup>
-            <Label>Last Name</Label>
+            <Label>Price</Label>
             <Input
-              placeholder="Last Name"
-              value={user.lastName}
-              name="lastName"
+              placeholder="Price"
+              value={item.price}
+              type="number"
+              name="price"
               onChange={handleChange}
             />
-            <Message>{errors.lastName}</Message>
-            <LeftUserNameIcon />
           </FormGroup>
         </NameContainer>
         <FormGroup>
-          <Label>Mobile Number</Label>
-          <Input
-            placeholder="Mobile Number"
-            value={user.mobile}
-            name="mobile"
-            onChange={handleChange}
-          />
-          <Message>{errors.mobile}</Message>
+          <NameContainer>
+            <FormGroup>
+              <Label>Amount</Label>
+              <Input
+                placeholder="Price"
+                value={item.amount}
+                type="number"
+                name="amount"
+                onChange={handleChange}
+              />
+            </FormGroup>
+            <NameGapper />
 
-          <LeftPhoneIcon />
+            <FormGroup>
+              <Label>Reorder treashold</Label>
+              <Select>
+                <Option value="emdalk">Endalk belete</Option>
+                <Option value="Abselom">Abselom</Option>
+                <Option value="Hermela">Hermela</Option>
+                <Option value="Betty">Betty</Option>
+                <Option value="Natty">Natty</Option>
+              </Select>
+            </FormGroup>
+          </NameContainer>
         </FormGroup>
         <FormGroup>
-          <Label>Email</Label>
-          <Input
-            placeholder="Email Address"
-            value={user.email}
-            name="email"
+          <Label>Description</Label>
+          <TextArea
+            placeholder="Description"
+            value={item.description}
+            name="description"
             onChange={handleChange}
+            rows="4"
+            cols="40"
           />
-          <Message>{errors.email}</Message>
-          <LeftEmailIcon />
         </FormGroup>
         <FormGroup>
-          <Label>Password</Label>
-          <Input
-            placeholder="Password"
-            value={user.password}
-            name="password"
+          <Label>Term and Condition</Label>
+          <TextArea
+            placeholder="Term and Condition"
+            value={item.term}
+            name="term"
             onChange={handleChange}
+            rows="4"
+            cols="50"
           />
-          <Message>{errors.password}</Message>
-
-          <LeftPasswordIcon />
         </FormGroup>
-        <TermAndConditionWrapper>
-          <Checkbox type="checkbox" />
-          <TermAndCondition to="/term-and-condtion">
-            Accept term and conditions
-          </TermAndCondition>
-        </TermAndConditionWrapper>
-
+        <FormGroup>
+          <TermAndConditionWrapper>
+            <CheckBox />
+            <TermAndCondition>Boost</TermAndCondition>
+          </TermAndConditionWrapper>
+        </FormGroup>
+        <FormGroup />
         {showLoader ? (
           <DoubleLoader />
         ) : (
@@ -232,10 +285,6 @@ export const AddItem = () => {
             Share
           </Button>
         )}
-        <SignInContainer>
-          <SignInLabel>Don't have an account ?</SignInLabel>
-          <SignInLink to="/sign-in">Sign in</SignInLink>
-        </SignInContainer>
       </FormContainer>
     </Container>
   );

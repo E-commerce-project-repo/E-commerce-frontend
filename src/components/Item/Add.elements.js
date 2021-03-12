@@ -1,5 +1,9 @@
 import styled from "styled-components";
-import { colors, max_responsive_screen_size } from "../../constants/constants";
+import {
+  colors,
+  max_responsive_screen_size,
+  constant_variables,
+} from "../../constants/constants";
 import * as FaIcons from "react-icons/fa";
 import { Link } from "react-router-dom";
 
@@ -7,9 +11,13 @@ export const Container = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  height: 100vh;
-  padding: 2% 1% 0;
-  /* background: ${colors.bodyColor}; */
+  height: auto;
+  padding: 2% 2% 2%;
+  overflow-y: scroll;
+
+  @media screen and (max-width: ${max_responsive_screen_size}) {
+    flex-direction: column;
+  }
 `;
 export const NameContainer = styled.div`
   display: flex;
@@ -23,14 +31,13 @@ export const NameContainer = styled.div`
 export const LeftUserNameIcon = styled(FaIcons.FaUser)`
   width: 30px;
   position: absolute;
-  left: 5px;
-  top: 55px;
-
+  left: ${constant_variables.left_icon_left};
+  top: ${constant_variables.left_icon_top};
   color: ${colors.primary};
 `;
 export const NameGapper = styled.div`
   display: block;
-  width: 20px;
+  width: 10px;
 `;
 
 export const TextWrap = styled.div`
@@ -38,9 +45,10 @@ export const TextWrap = styled.div`
   flex-direction: column;
   width: 50%;
   padding: 3rem;
-  background: ${colors.white};
+  background: ${colors.bodyColor};
+  padding: 2% 2% 2%;
+
   @media screen and (max-width: ${max_responsive_screen_size}) {
-    display: none;
     width: 100%;
   }
 `;
@@ -58,9 +66,10 @@ export const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 40%;
-  overflow-y: scroll;
   height: auto;
   background: ${colors.white};
+  background: ${colors.bodyColor};
+  padding: 2% 2% 2%;
 
   @media screen and (max-width: ${max_responsive_screen_size}) {
     width: 100%;
@@ -74,43 +83,35 @@ export const FormGroup = styled.div`
   position: relative;
 `;
 
-export const LeftEmailIcon = styled(FaIcons.FaEnvelope)`
+export const LeftPPriceIcon = styled(FaIcons.FaDollarSign)`
   width: 30px;
   position: absolute;
-  left: 5px;
-  top: 55px;
-  color: ${colors.primary};
-`;
-
-export const LeftPhoneIcon = styled(FaIcons.FaPhoneAlt)`
-  width: 30px;
-  position: absolute;
-  left: 5px;
-  top: 55px;
+  left: ${constant_variables.left_icon_left};
+  top: ${constant_variables.left_icon_top};
   color: ${colors.primary};
 `;
 export const LeftPasswordIcon = styled(FaIcons.FaLock)`
   width: 30px;
   position: absolute;
-  left: 5px;
-  top: 55px;
+  left: ${constant_variables.left_icon_left};
+  top: ${constant_variables.left_icon_top};
   color: ${colors.primary};
 `;
 export const TermAndConditionWrapper = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: left;
   margin-bottom: 10px;
 `;
 
-export const Checkbox = styled.input`
+export const Checkbox = styled.input.attrs({ type: "checkbox" })`
   color: ${colors.primary};
-  font-size: 12px;
+  font-size: 19px;
   text-align: center;
-  background-color: red;
+  background: red;
 `;
 export const TermAndCondition = styled(Link)`
   color: ${colors.primary};
-  font-size: 12px;
+  font-size: 15px;
   text-decoration: none;
   text-align: center;
 `;
@@ -143,6 +144,7 @@ export const ImageContainer = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
 `;
 
 export const Image = styled.img`
@@ -155,7 +157,7 @@ export const Image = styled.img`
   :hover {
     transition: all 0.3s ease-out;
     transform: scale(1.06);
-    background: red;
+    background: ${colors.secondary};
     opacity: 0;
   }
 `;
@@ -179,7 +181,7 @@ export const CloseOnHover = styled(FaIcons.FaTimes)`
   :hover {
     transition: all 0.3s ease-out;
     transform: scale(1.06);
-    color: red;
+    color: ${colors.secondary};
     cursor: pointer;
   }
 `;

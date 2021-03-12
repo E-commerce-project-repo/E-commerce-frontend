@@ -29,6 +29,10 @@ const validate_phone = (mobile) => {
 };
 
 export const validator = (name, value) => {
+  if (value.length < 1) {
+    return "This is required field";
+  }
+
   switch (name) {
     case "username":
       return value.length < 3

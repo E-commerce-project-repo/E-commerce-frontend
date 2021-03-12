@@ -4,22 +4,7 @@ import * as FaIcons from "react-icons/fa";
 
 export const Container = styled.a`
   background: ${colors.bodyColor};
-  /* justify-content: right;
-  width: ${({ showCategory }) => (showCategory ? "100%" : "0%")};
-  height: ${({ showCategory }) => (showCategory ? " 100vh" : "0%")};
-  position: absolute;
-  top: ${({ showCategory }) => (showCategory ? 0 : "-100%")};
-  transition: all 0.5s ease-in-out;
-  top: 55px;
-  display: ${({ showCategory }) => (showCategory ? "flex" : "none")};
-  flex-direction: row;
-  flex-wrap: wrap;
-  overflow-y: scroll;
-  padding: 1rem; */
-  /* @media screen and (max-width: 960px) {
-    flex-direction: column;
-    flex-wrap: nowrap;
-  } */
+
   position: absolute;
   top: 55px;
   width: ${({ showCategory }) => (showCategory ? "100%" : "0%")};

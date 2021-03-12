@@ -1,5 +1,9 @@
 import styled from "styled-components";
-import { colors, max_responsive_screen_size } from "../../constants/constants";
+import {
+  colors,
+  max_responsive_screen_size,
+  constant_variables,
+} from "../../constants/constants";
 import * as FaIcons from "react-icons/fa";
 import { Link } from "react-router-dom";
 
@@ -46,16 +50,16 @@ export const FormGroup = styled.div`
 export const LeftEmailIcon = styled(FaIcons.FaEnvelope)`
   width: 30px;
   position: absolute;
-  left: 5px;
-  top: 55px;
+  left: ${constant_variables.left_icon_left};
+  top: ${constant_variables.left_icon_top};
   color: ${colors.primary};
 `;
 
 export const LeftPhoneIcon = styled(FaIcons.FaLock)`
   width: 30px;
   position: absolute;
-  left: 5px;
-  top: 55px;
+  left: ${constant_variables.left_icon_left};
+  top: ${constant_variables.left_icon_top};
   color: ${colors.primary};
 `;
 export const ForgetPassword = styled(Link)`
