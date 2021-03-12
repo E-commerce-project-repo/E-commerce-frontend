@@ -5,6 +5,9 @@ import {
   LoaderBox,
   LoaderSlide,
   LoaderSlides,
+  LoaderContainer,
+  DoubleLoaderSpinner,
+  Loading,
 } from "./Loader.element";
 export const Loader = () => {
   return (
@@ -35,5 +38,13 @@ export const Loader = () => {
         </LoaderSlides>
       </LoaderBackground>
     </Container>
+  );
+};
+
+export const DoubleLoader = () => {
+  return (
+    <DoubleLoaderSpinner>
+      <Loading />
+    </DoubleLoaderSpinner>
   );
 };

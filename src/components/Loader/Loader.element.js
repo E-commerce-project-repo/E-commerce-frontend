@@ -66,3 +66,50 @@ export const LoaderSlide = styled.li`
     }
   }
 `;
+export const DoubleLoaderSpinner = styled.div`
+  /* width: 50px;
+  height: 50px; */
+  display: flex;
+  justify-content: center;
+`;
+
+export const Loading = styled.div`
+  height: 55px;
+  width: 55px;
+  border: 5px solid transparent;
+  border-top-color: ${colors.primary};
+  border-bottom-color: ${colors.primary};
+  border-radius: 50%;
+  position: relative;
+  animation: spin 1s linear infinite;
+  ::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    bottom: 10px;
+    left: 10px;
+    border: 5px solid transparent;
+    border-top-color: ${colors.secondary};
+    border-bottom-color: ${colors.secondary};
+    border-radius: 50%;
+    animation: spin 0.5s linear infinite;
+  }
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes spinBack {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(-720deg);
+    }
+  }
+`;
