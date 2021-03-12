@@ -10,7 +10,9 @@ import { SignUp } from "./Pages/signup/signup";
 import { SignIn } from "./Pages/Login/Login";
 import { OrderPage } from "./Pages/Orders/Orders";
 import { Carts } from "./Pages/Carts/Carts";
+import { AddItem } from "./components/Item/Add";
 import { config } from "./constants/constants";
+
 function App() {
   return (
     <Router>
@@ -24,6 +26,7 @@ function App() {
         <Route path={config.signUp} exact component={SignUp} />
         <Route path={config.signIn} exact component={SignIn} />
         <Route path={config.orders} exact component={OrderPage} />
+        <Route path={config.addItems} exact component={AddItem} />
       </Switch>
       <Footer />
     </Router>
