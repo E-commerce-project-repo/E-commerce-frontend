@@ -27,8 +27,8 @@ export const ProductCard = styled(Link)`
 `;
 
 export const ProductImg = styled.img`
-  height: 80%;
-  width: 50%;
+  height: 130px;
+  width: 160px;
   display: flex;
   flex-direction: column;
   box-shadow: 2px 2px ${colors.secondary};
