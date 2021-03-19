@@ -131,3 +131,12 @@ export const Checkbox = styled(FaIcons.FaCheckCircle)`
   text-align: center;
   background: red;
 `;
+
+export const HeightGap = styled.div`
+  height: ${({ height }) => height};
+  background: ${({ background }) => (background ? background : "")};
+`;
+export const WidthGap = styled.div`
+  width: ${({ width }) => width};
+  background: ${({ background }) => background};
+`;

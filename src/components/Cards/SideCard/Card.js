@@ -9,20 +9,46 @@ import {
   ProductButton,
   ProductInfo,
   AddCartIcon,
+  HeightGap,
+  WidthGap,
+  CheckedIcon,
 } from "./Card.lements";
+import sweet3 from "../../../images/mac1.jpg";
+import { parseDate } from "../../../utilities/dateFormat";
 import { config } from "../../../constants/constants";
 export const SideItemCard = ({ data, isCategory }) => {
   return (
     <ProductCard to={config.singlePage}>
       <ProductInfo>
-        <ProductTitle>{data.name}</ProductTitle>
-        <ProductDesc>{data.desc}</ProductDesc>
-        <ProductPrice isCategory={false}>{data.price}</ProductPrice>
+        <ProductTitle>{data.title}</ProductTitle>
+        <HeightGap height="5px" />
+        <ProductDesc>{data.description}</ProductDesc>
+        <HeightGap height="10px" />
+
+        <ProductDesc>
+          <CheckedIcon />${data.price}
+        </ProductDesc>
+
+        <HeightGap height="5px" />
+
+        <ProductDesc>
+          <CheckedIcon />
+          {data.items_in_stock + " in stock"}
+        </ProductDesc>
+        <ProductDesc>
+          <CheckedIcon />
+          {data.location}
+        </ProductDesc>
+        <ProductDesc>
+          <CheckedIcon />
+          {data.shop.name}
+        </ProductDesc>
         <ProductButton isCategory={isCategory} to="/carts">
-          <AddCartIcon /> {data.button}
+          <AddCartIcon />
         </ProductButton>
+        <ProductDesc>{parseDate(data.created_at)}</ProductDesc>
       </ProductInfo>
-      <ProductImg src={data.img} alt={data.alt} />
+      <ProductImg src={sweet3} alt={data.alt} />
     </ProductCard>
   );
 };

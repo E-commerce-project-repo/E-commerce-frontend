@@ -137,7 +137,50 @@ export const SignInLabel = styled.span`
   font-size: 1rem;
   margin-right: 5px;
 `;
+// export const ButtonContainer = styled.div`
+//   display: flex;
+//   justify-content: center;
+// `;
+
 export const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
+  margin-top: 1rem;
+  flex-direction: column;
+`;
+
+export const ButtonFile = styled.a`
+  border-radius: 4px;
+  background: ${colors.primary};
+  white-space: nowrap;
+  padding: 10px 24px;
+  color: ${colors.white};
+  font-size: 16px;
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  text-align: center;
+`;
+
+export const File = styled.input.attrs({ type: "file" })`
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+`;
+
+export const Image = styled.img`
+  width: 100px;
+  height: 100px;
+  margin: 1rem;
+  border: 1px solid ${colors.primary};
+  border-radius: 1rem;
+
+  :hover {
+    transition: all 0.3s ease-out;
+    transform: scale(1.06);
+    cursor: pointer;
+  }
 `;

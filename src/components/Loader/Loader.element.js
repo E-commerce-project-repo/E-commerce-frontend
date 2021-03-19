@@ -11,7 +11,7 @@ export const Container = styled.div`
 export const LoaderBackground = styled.div`
   display: grid;
   grid-template-columns: 1fr 6fr;
-  height: 80vh;
+  /* height: 80vh; */
   width: 90%;
 `;
 

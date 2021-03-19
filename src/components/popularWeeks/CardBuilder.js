@@ -14,7 +14,7 @@ import {
 import { SideItemCard } from "../Cards/SideCard/Card";
 
 export const PopularThisWeek = ({ title, data }) => {
-  data.length = 3;
+  // data.length = 3;
   var [page, SetIsActive] = useState(0);
   const next = () => {
     if (page < data.length - 1) {

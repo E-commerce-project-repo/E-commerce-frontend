@@ -48,21 +48,6 @@ export const Slider = ({ data }) => {
           );
         })}
       </SlideShowSlider>
-
-      <SlideShowDots>
-        {data.map((_, idx) => {
-          return index === idx ? (
-            <Active />
-          ) : (
-            <SlideDot
-              key={idx}
-              onClick={() => {
-                setIndex(idx);
-              }}
-            ></SlideDot>
-          );
-        })}
-      </SlideShowDots>
     </SlideShow>
   );
 };

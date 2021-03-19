@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { Button } from "../../globalStyles";
 import {
@@ -12,17 +12,19 @@ import {
   NavItemBtn,
   NavLinks,
   NavBtnLink,
-  NavMenuIcon,
-  SearchHandler,
   SearchIcon,
-  SearchIconWrapper,
   CloseIcon,
 } from "./Navbar.elements";
 import { Autocomplete } from "../SearchComponent/Search";
 import { config } from "../../constants/constants";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../store/login";
 function Navbar() {
+  const dispatch = useDispatch();
+  const { success } = useSelector((state) => state.login);
+  const { _success } = useSelector((state) => state.signup);
   const [click, setClick] = useState(false);
-  const [button, setButton] = useState(true);
+
   const [showCategory, setShowCategory] = useState(false);
   const [CategoryLabel, setCategoryLabel] = useState("All");
   const [expandSearch, setExpandSearch] = useState(false);
@@ -42,20 +44,6 @@ function Navbar() {
   const closeMobileMenu = () => {
     setClick(false);
   };
-
-  // const showButton = () => {
-  //   if (window.innerWidth <= 960) {
-  //     setButton(false);
-  //   } else {
-  //     setButton(true);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   showButton();
-  // }, []);
-
-  // window.addEventListener("resize", showButton);
 
   return (
     <Nav>
@@ -104,9 +92,14 @@ function Navbar() {
               </NavLinks>
             </NavItem>
             <NavItemBtn>
-              {button ? (
-                <NavBtnLink to={config.signIn}>
-                  <Button primary={false}>SIGN IN</Button>
+              {success || _success ? (
+                <NavBtnLink
+                  onClick={() => dispatch(logout())}
+                  to={config.signIn}
+                >
+                  <Button primary={false} onClick={closeMobileMenu}>
+                    Log out
+                  </Button>
                 </NavBtnLink>
               ) : (
                 <NavBtnLink to={config.signIn}>

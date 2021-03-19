@@ -9,15 +9,12 @@ export const ProductsContainer = styled.div`
   width: 100%;
   height: auto;
   float: left;
-  @media screen and (max-width: 560px) {
-  }
 `;
 
 export const ProductWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 0 auto;
 `;
 
 export const ProductCard = styled.div`

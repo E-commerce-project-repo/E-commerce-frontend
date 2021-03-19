@@ -10,10 +10,10 @@ export const ProductCard = styled(Link)`
   align-items: center;
   margin: 10px;
   border-radius: 5px;
-  padding: 0.5rem;
   box-shadow: 2px 2px ${colors.white};
   text-decoration: none;
   color: ${colors.primary};
+  border: 1px solid ${colors.gray};
 
   :hover {
     cursor: pointer;
@@ -26,26 +26,35 @@ export const ProductCard = styled(Link)`
   }
 `;
 
-export const ProductImg = styled.img`
-  height: 100px;
-  width: 150px;
+export const BottonWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 0.5rem 0.5rem;
+`;
+export const LeftItemWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  box-shadow: 2px 2px ${colors.secondary};
+`;
+
+export const ProductImg = styled.img`
+  height: 150px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 1px 1px ${colors.secondary};
   margin-bottom: 10px;
 `;
 
-export const ProductTitle = styled.h2`
+export const ProductTitle = styled.p`
   font-weight: 400;
-  font-size: 17px;
+  font-size: 12px;
+  text-align: left;
 `;
 
 export const ProductInfo = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 0.5rem;
   text-align: center;
 `;
 
@@ -55,7 +64,8 @@ export const ProductDesc = styled.p`
 `;
 
 export const ProductPrice = styled.p`
-  font-size: 2rem;
+  text-align: left;
+  font-size: 1rem;
   display: ${(props) => (props.isCategory ? "none" : "")};
 `;
 export const ProductButtonWrapper = styled.div`
@@ -65,14 +75,17 @@ export const ProductButtonWrapper = styled.div`
   display: ${({ isCategory }) => (isCategory ? "none" : "")};
 `;
 export const ProductButton = styled(Link)`
-  font-size: 1rem;
   padding: 0.5rem 0.5rem;
   border: none;
-  background: ${colors.secondary};
   color: #fff;
   transition: 0.2 ease-out;
   display: ${(props) => (props.isCategory ? "none" : "")};
   text-decoration: none;
+  align-self: flex-end;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  border: 1px solid ${colors.gray};
 
   &:hover {
     background: ${colors.bodyColor};
@@ -83,7 +96,7 @@ export const ProductButton = styled(Link)`
 `;
 
 export const AddCartIcon = styled(FaIcons.FaCartPlus)`
-  margin-right: 0.2rem;
+  color: ${colors.secondary};
 `;
 
 export const ProfileInfo = styled(Link)`
@@ -98,10 +111,14 @@ export const ProfileInfo = styled(Link)`
   border-radius: 10px;
   text-decoration: none;
   color: ${colors.primary};
+  border: 1px solid ${colors.gray};
 
   :hover {
     cursor: pointer;
-    border: 0.5px solid ${colors.primary};
+    background: ${colors.primary};
+    color: ${colors.white};
+    transition: 0.2s ease-out;
+    transform: scale(1.03);
   }
 `;
 
@@ -120,10 +137,9 @@ export const ProfileDesc = styled.p`
 export const ProfileImg = styled.img`
   margin-bottom: 1px;
   font-size: 12px;
-  width: 100px;
-  height: 100px;
-  border-radius: 100px;
-  margin-top: 5px;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
   :hover {
     cursor: pointer;
     transform: scale(1.03);

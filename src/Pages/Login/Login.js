@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { login, logout } from "../../store/user";
-import PropTypes from "prop-types";
+import { login, logout } from "../../store/login";
 import { Input, Label, Message, Button } from "../../globalStyles";
 import {
   FormGroup,
@@ -18,28 +17,22 @@ import {
   SignupLink,
   SignupContainer,
 } from "./Login.elements";
-import { validator, validateForm } from "../../errorHandler/errorHandler";
+import { Redirect } from "react-router";
+import { config } from "../../constants/constants";
+
 import { DoubleLoader } from "../../components/Loader/Loader";
 export const SignIn = (props) => {
   const dispatch = useDispatch();
-  // const { user } = useSelector((state) => state.user);
-  const [showLoader, setShowLoader] = useState(false);
+
+  const { loading, errors, success } = useSelector((state) => state.login);
+
   const [user, setUser] = useState({
-    username: "",
+    email: "",
     password: "",
   });
-  const [errors, setErrors] = useState({
-    username: "",
-    password: "",
-  });
+
   const handleSubmit = () => {
-    setShowLoader(true);
-    if (validateForm(errors)) {
-      dispatch(login({ user }));
-      console.info("Valid Form");
-    } else {
-      console.error("Invalid Form");
-    }
+    dispatch(login(user));
   };
   const handleChange = (event) => {
     event.preventDefault();
@@ -48,8 +41,10 @@ export const SignIn = (props) => {
       ...user,
       [name]: event.target.value,
     });
-    setErrors({ ...errors, [name]: validator(name, value) });
   };
+  if (success) {
+    return <Redirect to={config.home} />;
+  }
   return (
     <Container>
       <TextWrap>
@@ -67,11 +62,11 @@ export const SignIn = (props) => {
           <Label>Username</Label>
           <Input
             placeholder="Username"
-            value={user.username}
-            name="username"
+            value={user.email}
+            name="email"
             onChange={handleChange}
           />
-          <Message>{errors.username}</Message>
+          <Message>{errors.email}</Message>
           <LeftEmailIcon />
         </FormGroup>
         <FormGroup>
@@ -85,9 +80,11 @@ export const SignIn = (props) => {
           <Message>{errors.password}</Message>
           <LeftPhoneIcon />
         </FormGroup>
+        <Message>{errors.detail}</Message>
+
         <ForgetPassword to="/forget-password">Foget password?</ForgetPassword>
 
-        {showLoader ? (
+        {loading ? (
           <DoubleLoader />
         ) : (
           <Button primary={true} onClick={handleSubmit}>

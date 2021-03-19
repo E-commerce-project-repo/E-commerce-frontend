@@ -40,13 +40,28 @@ export const ItemBodyContainer = styled.div`
     flex-direction: column;
   }
 `;
+export const SubContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  /* background: ${colors.white}; */
+  border: 2px solid ${colors.white};
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  @media screen and (max-width: 960px) {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: 100%;
+  }
+`;
 
 export const ImageContainer = styled.div`
   display: flex;
   flex-direction: row;
   background: ${colors.white};
   border: 2px solid ${colors.white};
-  height: 75vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -61,12 +76,10 @@ export const ImageContainer = styled.div`
 export const ImagesWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  flex-wrap: wrap;
   background: ${colors.white};
   border: 2px solid ${colors.white};
-  height: auto;
-  margin: 0.5rem;
+  justify-content: center;
+  height: 100%;
   @media screen and (max-width: 960px) {
     display: flex;
     flex-direction: row;
@@ -78,13 +91,12 @@ export const ItemImage = styled.img`
   height: ${({ fullSize }) => (fullSize ? "100%" : "80px")};
   max-width: 700px;
   max-height: 700px;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   margin: 0.2rem;
-
   border: ${({ fullSize }) => (fullSize ? "" : `1px solid ${colors.primary}`)};
 
   box-shadow: ${({ fullSize }) =>
-    fullSize ? `2px 2px ${colors.secondary}` : ``};
+    fullSize ? `1px 1px ${colors.secondary}` : ``};
 
   &:hover {
     cursor: pointer;
@@ -122,10 +134,7 @@ export const ItemDetailHeaderInfo = styled.div`
 export const ItemDetailGroupContainer = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 1rem;
   box-shadow: 0px 2px ${colors.secondary};
-  @media screen and (max-width: 960px) {
-  }
 `;
 export const ItemDetailGroup = styled.div`
   display: flex;
@@ -137,8 +146,7 @@ export const ItemDetailGroup = styled.div`
   @media screen and (max-width: 960px) {
   }
 `;
-export const ItemDetailHeader = styled.h4`
-  font-weight: 570;
+export const ItemDetailHeader = styled.h6`
   text-align: left;
   color: ${colors.dark};
 
@@ -208,8 +216,9 @@ export const RightSideContainer = styled.div`
 `;
 export const RelatedItemCardsWrapper = styled.div`
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
-  overflow-y: scroll;
+  background: red;
 `;
 export const RelatedItemHeader = styled.div`
   font-size: 1rem;

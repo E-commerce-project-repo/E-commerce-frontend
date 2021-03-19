@@ -14,7 +14,6 @@ import {
 import { ItemCard } from "../Cards/Card/Card";
 
 export const ItemGrid = ({ title, data }) => {
-  data.length = 5;
   var [page, SetIsActive] = useState(0);
   const next = () => {
     if (page < data.length - 1) {

@@ -21,8 +21,8 @@ export const Loader = () => {
           <LoaderSlide width={"100%"} />
         </LoaderSlides>
 
-        <LoaderBox />
-        <LoaderSlides>
+        {/* <LoaderBox /> */}
+        {/* <LoaderSlides>
           <LoaderSlide width={"90%"} />
           <LoaderSlide width={"60%"} />
           <LoaderSlide width={"100%"} />
@@ -35,7 +35,7 @@ export const Loader = () => {
           <LoaderSlide width={"90%"} />
           <LoaderSlide width={"33%"} />
           <LoaderSlide width={"67%"} />
-        </LoaderSlides>
+        </LoaderSlides> */}
       </LoaderBackground>
     </Container>
   );

@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Input, Label, Message, Button } from "../../globalStyles";
-import { constants } from "../../constants/constants";
-import { login, logout } from "../../store/user";
-
+import { signUp } from "../../store/signup";
+import { config } from "../../constants/constants";
 import {
   FormGroup,
   Container,
-  LeftPhoneIcon,
   LeftEmailIcon,
   FormContainer,
   TextWrap,
@@ -22,14 +20,17 @@ import {
   LeftUserNameIcon,
   NameGapper,
   LeftPasswordIcon,
-  ButtonContainer,
   TermAndConditionWrapper,
+  ButtonContainer,
+  ButtonFile,
+  File,
+  Image,
 } from "./signup.elements";
-import { validator, validateForm } from "../../errorHandler/errorHandler";
 import { DoubleLoader } from "../../components/Loader/Loader";
 import { CheckBox } from "../../components/MultipleComponents/Check";
+import { Redirect } from "react-router";
 export const SignUp = () => {
-  const [showLoader, setShowLoader] = useState(false);
+  const { loading, errors, success } = useSelector((state) => state.signup);
 
   const dispatch = useDispatch();
   const [user, setUser] = useState({
@@ -38,13 +39,9 @@ export const SignUp = () => {
     mobile: "",
     email: "",
     password: "",
-  });
-  const [errors, setErrors] = useState({
-    firstName: "",
-    lastName: "",
-    mobile: "",
-    email: "",
-    password: "",
+    name: "",
+    imageUrl: "",
+    image: {},
   });
 
   const handleChange = (event) => {
@@ -53,20 +50,24 @@ export const SignUp = () => {
     setUser({
       ...user,
       [name]: event.target.value,
+      name: user.firstName + user.lastName,
     });
-    setErrors({ ...errors, [name]: validator(name, value) });
   };
   const handleSubmit = () => {
-    setShowLoader(true);
-
-    if (validateForm(errors)) {
-      dispatch(login({ user }));
-      console.info("Valid Form");
-    } else {
-      console.error("Invalid Form");
-    }
+    dispatch(signUp(user));
   };
-
+  const handleImageChange = (e) => {
+    e.preventDefault();
+    let file = e.target.files[0];
+    setUser({
+      ...user,
+      image: file,
+      imageUrl: URL.createObjectURL(file),
+    });
+  };
+  if (success) {
+    return <Redirect to={config.home} />;
+  }
   return (
     <Container>
       <TextWrap>
@@ -91,7 +92,6 @@ export const SignUp = () => {
               name="firstName"
               onChange={handleChange}
             />
-            <Message>{errors.firstName}</Message>
             <LeftUserNameIcon />
           </FormGroup>
           <NameGapper />
@@ -103,21 +103,22 @@ export const SignUp = () => {
               name="lastName"
               onChange={handleChange}
             />
-            <Message>{errors.lastName}</Message>
+
             <LeftUserNameIcon />
           </FormGroup>
         </NameContainer>
-        <FormGroup>
-          <Label>Mobile Number</Label>
-          <Input
-            placeholder="Mobile Number"
-            value={user.mobile}
-            name="mobile"
-            onChange={handleChange}
-          />
-          <Message>{errors.mobile}</Message>
+        {errors.name ? (
+          <FormGroup>
+            <Message>{errors.name}</Message>
+          </FormGroup>
+        ) : null}
 
-          <LeftPhoneIcon />
+        <FormGroup>
+          <ButtonContainer>
+            <File type="file" onChange={handleImageChange} />
+            <ButtonFile>Choose an Image</ButtonFile>
+            {user.imageUrl ? <Image src={user.imageUrl} /> : null}
+          </ButtonContainer>
         </FormGroup>
         <FormGroup>
           <Label>Email</Label>
@@ -142,6 +143,8 @@ export const SignUp = () => {
 
           <LeftPasswordIcon />
         </FormGroup>
+        <Message>{errors.detail}</Message>
+
         <FormGroup>
           <TermAndConditionWrapper>
             <CheckBox />
@@ -150,7 +153,8 @@ export const SignUp = () => {
             </TermAndCondition>
           </TermAndConditionWrapper>
         </FormGroup>
-        {showLoader ? (
+
+        {loading ? (
           <DoubleLoader />
         ) : (
           <Button primary={true} onClick={handleSubmit}>

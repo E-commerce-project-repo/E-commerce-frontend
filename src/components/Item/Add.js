@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import {
   Input,
   Label,
@@ -14,7 +13,7 @@ import {
   TextArea,
 } from "../../globalStyles";
 import { constants } from "../../constants/constants";
-import { login, logout } from "../../store/user";
+import { login, logout } from "../../store/login";
 import * as FaIcons from "react-icons/fa";
 
 import {
@@ -37,43 +36,41 @@ import {
   NameGapper,
   LeftPasswordIcon,
   ButtonContainer,
+  ButtonFile,
   TermAndConditionWrapper,
   ImageContainer,
   Image,
   File,
-  ButtonFile,
   CloseOnHover,
   CloseOnHoverContainer,
 } from "./Add.elements";
 import { validator, validateForm } from "../../errorHandler/errorHandler";
 import { DoubleLoader } from "../Loader/Loader";
 import { CheckBox } from "../MultipleComponents/Check";
-
+import { useDispatch, useSelector } from "react-redux";
+import { add } from "../../store/item";
+import { config } from "../../constants/constants";
 export const AddItem = () => {
-  const [showLoader, setShowLoader] = useState(false);
   const [onhoverImage, setOnhoverImage] = useState(0);
   const [onhoverShow, setOnhoverShow] = useState(false);
+  const [image_error, setImageError] = useState(null);
+  const { loading, errors, success } = useSelector((state) => state.item);
 
   const dispatch = useDispatch();
   const [item, setItem] = useState({
-    productName: "",
-    subtitle: "",
+    title: "",
+    location: "",
     Category: "",
     price: 0.0,
-    amount: 1,
+    item_in_stock: 0,
     description: "",
+    condition: "",
+    shop: null,
+    owner: null,
     term: "",
+    Properties: "",
+    treshold: 0,
     images: [],
-  });
-  const [errors, setErrors] = useState({
-    productName: "",
-    subtitle: "",
-    Category: "",
-    price: "",
-    amount: "",
-    description: "",
-    term: "",
-    images: "",
   });
 
   const handleChange = (event) => {
@@ -83,24 +80,17 @@ export const AddItem = () => {
       ...item,
       [name]: event.target.value,
     });
-    setErrors({ ...errors, [name]: validator(name, value) });
   };
   const handleSubmit = () => {
-    setShowLoader(true);
-    setErrors({ ...errors, images: "You should select atleast 3 images" });
-
-    if (validateForm(errors)) {
-      dispatch(login({ item }));
-      console.info("Valid Form");
-    } else {
-      console.error("Invalid Form");
-    }
+    setImageError(true);
+    // if (item.images.length >= 4) {
+    dispatch(add(item));
+    // }
   };
   const removeImage = (image) => {
     const newArray = item.images.filter((item) => {
       return item !== image;
     });
-    console.log(newArray);
 
     setItem({
       ...item,
@@ -134,9 +124,9 @@ export const AddItem = () => {
           <ButtonFile size={item.images.length}>Choose Images</ButtonFile>
         </ButtonContainer>
 
-        {item.images.length < 4 ? (
+        {image_error && item.images.length < 4 ? (
           <Text>
-            <Message>{errors.images}</Message>
+            <Message>{"You should select atleast 3 images"}</Message>
           </Text>
         ) : null}
 
@@ -176,7 +166,7 @@ export const AddItem = () => {
       <FormContainer>
         <LoginHeader>Create an Item</LoginHeader>
         <FormGroup>
-          <Label htmlFor="label">Product Name</Label>
+          <Label htmlFor="label">Title</Label>
 
           <Input
             id="label"
@@ -186,7 +176,7 @@ export const AddItem = () => {
             onChange={handleChange}
           />
 
-          <Message>{errors.productName}</Message>
+          <Message>{errors.title}</Message>
         </FormGroup>
         <FormGroup>
           <Label>Subtitle</Label>
@@ -199,10 +189,51 @@ export const AddItem = () => {
           />
           <Message>{errors.subtitle}</Message>
         </FormGroup>
+        <FormGroup>
+          <Label>Category</Label>
+          <Select>
+            <Option value="emdalk">Endalk belete</Option>
+            <Option value="Abselom">Abselom</Option>
+            <Option value="Hermela">Hermela</Option>
+            <Option value="Betty">Betty</Option>
+            <Option value="Natty">Natty</Option>
+          </Select>
+        </FormGroup>
 
-        <NameContainer>
+        <FormGroup>
+          <Label>Category</Label>
+          <Select>
+            <Option value="emdalk">Endalk belete</Option>
+            <Option value="Abselom">Abselom</Option>
+            <Option value="Hermela">Hermela</Option>
+            <Option value="Betty">Betty</Option>
+            <Option value="Natty">Natty</Option>
+          </Select>
+        </FormGroup>
+        <FormGroup>
+          <Label>Price</Label>
+          <Input
+            placeholder="Price"
+            value={item.price}
+            type="number"
+            name="price"
+            onChange={handleChange}
+          />
+        </FormGroup>
+        <FormGroup>
           <FormGroup>
-            <Label>Category</Label>
+            <Label>Amount</Label>
+            <Input
+              placeholder="Price"
+              value={item.amount}
+              type="number"
+              name="amount"
+              onChange={handleChange}
+            />
+          </FormGroup>
+
+          <FormGroup>
+            <Label>Reorder treashold</Label>
             <Select>
               <Option value="emdalk">Endalk belete</Option>
               <Option value="Abselom">Abselom</Option>
@@ -211,43 +242,6 @@ export const AddItem = () => {
               <Option value="Natty">Natty</Option>
             </Select>
           </FormGroup>
-          <NameGapper />
-          <FormGroup>
-            <Label>Price</Label>
-            <Input
-              placeholder="Price"
-              value={item.price}
-              type="number"
-              name="price"
-              onChange={handleChange}
-            />
-          </FormGroup>
-        </NameContainer>
-        <FormGroup>
-          <NameContainer>
-            <FormGroup>
-              <Label>Amount</Label>
-              <Input
-                placeholder="Price"
-                value={item.amount}
-                type="number"
-                name="amount"
-                onChange={handleChange}
-              />
-            </FormGroup>
-            <NameGapper />
-
-            <FormGroup>
-              <Label>Reorder treashold</Label>
-              <Select>
-                <Option value="emdalk">Endalk belete</Option>
-                <Option value="Abselom">Abselom</Option>
-                <Option value="Hermela">Hermela</Option>
-                <Option value="Betty">Betty</Option>
-                <Option value="Natty">Natty</Option>
-              </Select>
-            </FormGroup>
-          </NameContainer>
         </FormGroup>
         <FormGroup>
           <Label>Description</Label>
@@ -259,7 +253,9 @@ export const AddItem = () => {
             rows="4"
             cols="40"
           />
+          <Message>{errors.description}</Message>
         </FormGroup>
+
         <FormGroup>
           <Label>Term and Condition</Label>
           <TextArea
@@ -278,7 +274,7 @@ export const AddItem = () => {
           </TermAndConditionWrapper>
         </FormGroup>
         <FormGroup />
-        {showLoader ? (
+        {loading ? (
           <DoubleLoader />
         ) : (
           <Button primary={true} onClick={handleSubmit}>

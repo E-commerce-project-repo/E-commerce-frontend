@@ -73,18 +73,18 @@ export const Pagination = styled.div`
 export const PaginationLink = styled.a`
   color: black;
   float: left;
-  padding: 8px 16px;
-  margin: 4px 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-decoration: none;
   background-color: ${(props) => (props.isActive ? colors.primary : "")};
   color: ${(props) => (props.isActive ? "white" : "")};
-  border-radius: 20px;
+  border-radius: 50%;
   cursor: pointer;
-  @media screen and (max-width: 560px) {
-    padding: 3px 3px;
-    margin: 2px 2px;
-    font-size: 12px;
-  }
+  height: 30px;
+  width: 30px;
+  text-align: center;
+  justify-content: center;
 `;
 export const LeftPaginationArrow = styled(FaIcons.FaAngleLeft)`
   display: inline-block;

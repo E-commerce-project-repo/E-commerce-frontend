@@ -36,6 +36,22 @@ export const config = {
   sellerInfo: "/seller-info",
 };
 
+export const apiConfig = {
+  // root: "https://meba-backend.herokuapp.com/api/v1",
+  root: " http://localhost:8000/api/v1",
+  home: "/",
+  singlePage: "/singlePage",
+  category: "/categories/",
+  shoping: "/shoping",
+  orders: "/orders",
+  signIn: "/auth/login/",
+  signUp: "/auth/signup/",
+  carts: "/carts",
+  item: "/items/",
+  sellerInfo: "/seller-info",
+};
+// https://meba-project.herokuapp.com/api/v1/auth/login/
+
 export const constant_variables = {
   left_icon_top: "40px",
   left_icon_left: "5px",

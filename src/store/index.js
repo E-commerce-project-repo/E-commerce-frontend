@@ -1,9 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
-import user from "./user";
+import login from "./login";
+import signup from "./signup";
+import category from "./category";
+import item from "./item";
 
 const reducer = combineReducers({
-  user,
+  login,
+  signup,
+  category,
+  item,
 });
 
 const store = configureStore({

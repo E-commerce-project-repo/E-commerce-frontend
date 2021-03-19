@@ -4,19 +4,21 @@ import { colors } from "../../../constants/constants";
 import * as FaIcons from "react-icons/fa";
 
 export const ProductCard = styled(Link)`
-  margin: 0 1rem;
-  max-width: 400px;
+  width: 40%;
+  height: 250px;
+  margin: 6px;
   background-color: ${colors.white};
   align-items: center;
-  margin: 10px;
   border-radius: 5px;
   padding: 0.5rem;
-  box-shadow: 2px 2px ${colors.white};
+  border: 1px solid ${colors.gray};
   display: flex;
   flex-direction: row;
   text-decoration: none;
   color: ${colors.primary};
-
+  @media screen and (max-width: 960px) {
+    width: 100%;
+  }
   :hover {
     cursor: pointer;
     transform: scale(1.06);
@@ -27,16 +29,14 @@ export const ProductCard = styled(Link)`
 `;
 
 export const ProductImg = styled.img`
-  height: 130px;
-  width: 160px;
+  height: 90%;
+  width: 50%;
   display: flex;
   flex-direction: column;
-  box-shadow: 2px 2px ${colors.secondary};
-  margin-bottom: 10px;
+  box-shadow: 1px 1px ${colors.secondary};
 `;
 
-export const ProductTitle = styled.h2`
-  font-weight: 400;
+export const ProductTitle = styled.h4`
   font-size: 17px;
 `;
 
@@ -44,11 +44,12 @@ export const ProductInfo = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  padding: 0.5rem;
-  text-align: center;
+  align-items: left;
+  text-align: left;
   height: 100%;
-  width: 100%;
+  width: 50%;
+  padding: 2px 10px 1px 2px;
+  /* background: red; */
 `;
 
 export const ProductDesc = styled.p`
@@ -56,20 +57,34 @@ export const ProductDesc = styled.p`
   font-size: 12px;
 `;
 
-export const ProductPrice = styled.p`
-  font-size: 2rem;
+export const HeightGap = styled.div`
+  height: ${({ height }) => height};
+`;
+export const WidthGap = styled.div`
+  width: ${({ width }) => width};
+`;
+
+export const ProductPrice = styled.h6`
+  font-size: 1rem;
   display: ${(props) => (props.isCategory ? "none" : "")};
 `;
 
 export const ProductButton = styled(Link)`
   font-size: 1rem;
-  padding: 0.5rem 0.5rem;
   border: none;
-  background: ${colors.secondary};
   color: #fff;
   transition: 0.2 ease-out;
   display: ${(props) => (props.isCategory ? "none" : "")};
   text-decoration: none;
+  display: flex;
+  width: 40px;
+  height: 40px;
+  align-self: flex-end;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: 1px solid ${colors.gray};
+
   &:hover {
     background: ${colors.bodyColor};
     transition: 0.2s ease-out;
@@ -113,6 +128,7 @@ export const ProfileImg = styled.img`
   height: 100px;
   border-radius: 100px;
   margin-top: 5px;
+
   :hover {
     cursor: pointer;
     transform: scale(1.03);
@@ -139,8 +155,16 @@ export const ProfileButton = styled.button`
 
 export const AddCartIcon = styled(FaIcons.FaCartPlus)`
   margin-right: 0.2rem;
+  color: ${colors.secondary};
   :hover {
     color: ${colors.secondary};
     cursor: pointer;
   }
+`;
+
+export const CheckedIcon = styled(FaIcons.FaChevronCircleRight)`
+  color: ${colors.success};
+  margin-right: 3px;
+  align-items: center;
+  font-size: 12px;
 `;

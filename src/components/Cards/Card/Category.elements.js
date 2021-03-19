@@ -10,6 +10,7 @@ export const Card = styled.div`
   margin: 10px;
   border-radius: 5px;
   padding: 0.3rem;
+  border: 1px solid ${colors.gray};
 
   :hover {
     cursor: pointer;
@@ -26,7 +27,7 @@ export const CategoryImg = styled.img`
   display: flex;
   flex-direction: column;
   border-radius: 10rem;
-  border: 2px solid red;
+  border: 1px solid red;
   margin-bottom: 0.7rem;
 `;
 
