@@ -10,28 +10,44 @@ import {
   ProductsHeadingContainer,
   RightPaginationArrow,
   LeftPaginationArrow,
+  ThreeDots,
 } from "./ItemGrid.element";
 import { ItemCard } from "../Cards/Card/Card";
 
-export const ItemGrid = ({ title, data }) => {
-  var [page, SetIsActive] = useState(0);
+export const ItemGrid = ({
+  title,
+  data,
+  nextPage,
+  number_in_page,
+  count,
+  nextUrl,
+  previousUrl,
+  prevPage,
+  page,
+  currentPage,
+}) => {
+  let dotController = false,
+    pages = [],
+    total_data_length = data.length;
+  for (let i = 0; i < count / number_in_page; i++) {
+    pages.push(i);
+  }
   const next = () => {
-    if (page < data.length - 1) {
-      SetIsActive(page + 1);
+    if (nextUrl) {
+      nextPage(nextUrl);
     }
   };
   const prev = () => {
-    if (page > 0) {
-      SetIsActive(page - 1);
+    if (prevPage && page > 0) {
+      prevPage(previousUrl);
     }
   };
 
   const Paginator = ({ index }) => {
-    console.log(page, data.length);
     return (
       <PaginationLink
         onClick={() => {
-          SetIsActive(index);
+          currentPage(index);
         }}
         isActive={index === page ? true : false}
       >
@@ -59,8 +75,22 @@ export const ItemGrid = ({ title, data }) => {
 
       <PaginationContainer>
         <Pagination>
-          {data.map((_pro, index) => {
-            return <Paginator index={index} />;
+          {pages.map((index) => {
+            if (
+              index === 0 ||
+              index === 1 ||
+              index === 2 ||
+              index === pages.length - 1 ||
+              index === total_data_length - 2 ||
+              index === total_data_length - 3 ||
+              (index > page - 2 && index < page + 3) ||
+              pages.length < 10
+            ) {
+              return <Paginator index={index} />;
+            } else if (dotController === false) {
+              dotController = true;
+              return <ThreeDots />;
+            }
           })}
         </Pagination>
       </PaginationContainer>

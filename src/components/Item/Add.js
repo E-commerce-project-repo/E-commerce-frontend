@@ -48,7 +48,7 @@ import { validator, validateForm } from "../../errorHandler/errorHandler";
 import { DoubleLoader } from "../Loader/Loader";
 import { CheckBox } from "../MultipleComponents/Check";
 import { useDispatch, useSelector } from "react-redux";
-import { add } from "../../store/item";
+import { add } from "../../store/item/item";
 import { config } from "../../constants/constants";
 export const AddItem = () => {
   const [onhoverImage, setOnhoverImage] = useState(0);

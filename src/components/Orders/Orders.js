@@ -32,7 +32,6 @@ export const Orders = ({ title, data }) => {
   };
 
   const Paginator = ({ index }) => {
-    console.log(page, data.length);
     return (
       <PaginationLink
         onClick={() => {

@@ -28,7 +28,7 @@ import { Loader } from "../../components/Loader/Loader";
 import { useDispatch, useSelector } from "react-redux";
 import { config } from "../../constants/constants";
 import { category } from "../../store/category";
-import * as itemAction from "../../store/item";
+import * as itemAction from "../../store/item/item";
 import { ItemGrid } from "../../components/ItemGrid/ItemGrid";
 import { ItemCard } from "../Cards/Card/Card";
 import { Redirect } from "react-router";

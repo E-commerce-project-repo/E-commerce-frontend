@@ -5,6 +5,15 @@ export const ProductsContainer = styled.div`
   background: ${colors.bodyColor};
   color: ${colors.dark};
   padding: 2rem 1rem;
+  animation: fade 1.2s linear;
+  @keyframes fade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 `;
 
 export const ProductWrapper = styled.div`

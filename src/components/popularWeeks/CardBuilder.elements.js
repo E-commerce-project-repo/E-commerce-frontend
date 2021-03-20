@@ -15,6 +15,16 @@ export const ProductWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  animation: fade 1.2s linear;
+
+  @keyframes fade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 `;
 
 export const ProductCard = styled.div`
@@ -100,6 +110,31 @@ export const RightPaginationArrow = styled(FaIcons.FaAngleRight)`
   align-items: center;
   background: ${colors.gray};
 
+  :hover {
+    cursor: pointer;
+    transform: scale(1.06);
+    transition: all 0.3s ease-out;
+    color: ${colors.secondary};
+  }
+`;
+
+export const ThreeDots = styled(FaIcons.FaEllipsisH)`
+  color: ${colors.primary};
+  font-size: 2rem;
+  color: black;
+  float: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  background-color: ${(props) => (props.isActive ? colors.primary : "")};
+  color: ${(props) => (props.isActive ? "white" : "")};
+  border-radius: 50%;
+  cursor: pointer;
+  height: 30px;
+  width: 30px;
+  text-align: center;
+  justify-content: center;
   :hover {
     cursor: pointer;
     transform: scale(1.06);

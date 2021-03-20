@@ -71,7 +71,6 @@ export const CategoryCard = ({ product, isCategory, index }) => {
 };
 
 export const PersonProfileInfo = ({ data }) => {
-  console.log(data);
   return (
     <ProfileInfo to={config.sellerInfo}>
       <ProfileImg src={person} />

@@ -1,21 +1,26 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { apiConfig } from "../constants/constants";
-import { api } from "./api/api";
+import { apiConfig } from "../../constants/constants";
+import { api } from "../api/api";
 const slice = createSlice({
-  name: "category",
+  name: "popularItem",
   initialState: {
-    payload: null,
+    payload: [],
     loading: false,
     errors: [],
+    count: 0,
+    nextUrl: "",
+    previousUrl: "",
   },
   reducers: {
     loading: (state, action) => {
       state.loading = action.payload;
-      state.loading = true;
     },
     success: (state, action) => {
       state.payload = action.payload.results;
       state.loading = false;
+      state.count = action.payload.count;
+      state.nextUrl = action.payload.next;
+      state.previousUrl = action.payload.previous;
     },
     error: (state, action) => {
       state.errors = action.payload;
@@ -26,17 +31,17 @@ const slice = createSlice({
 export default slice.reducer;
 const { loading, success, error } = slice.actions;
 
-export const category = () => async (dispatch) => {
+export const popularThisWeek = (_url) => async (dispatch) => {
   dispatch(loading(true));
   const headers = {};
+  const url = _url ? _url : apiConfig.root + apiConfig.item + "?limit=2";
   try {
-    const res = await api.get(apiConfig.root + apiConfig.category, headers);
+    const res = await api.get(url, headers);
 
+    dispatch(loading(false));
     dispatch(success(res));
   } catch (e) {
-    if (e.body) {
-      return dispatch(error(e.body?.errors));
-    }
+    dispatch(loading(false));
     return dispatch(error({ detail: "There is something went wrong" }));
   }
 };

@@ -1,21 +1,24 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { apiConfig } from "../constants/constants";
-import { api } from "./api/api";
-import { browserStore } from "./localStore";
+import { apiConfig } from "../../constants/constants";
+import { api } from "../api/api";
 const slice = createSlice({
   name: "signup",
   initialState: {
     payload: [],
     loading: false,
     errors: [],
+    count: 0,
+    nextUrl: "",
   },
   reducers: {
     loading: (state, action) => {
       state.loading = action.payload;
     },
     success: (state, action) => {
-      state.payload = action.payload;
+      state.payload = action.payload.results;
       state.loading = false;
+      state.count = action.payload.count;
+      state.nextUrl = action.payload.next;
     },
     error: (state, action) => {
       state.errors = action.payload;
@@ -48,6 +51,7 @@ export const list = () => async (dispatch) => {
   const headers = {};
   try {
     const res = await api.get(apiConfig.root + apiConfig.item, headers);
+
     dispatch(loading(false));
     dispatch(success(res));
   } catch (e) {

@@ -20,9 +20,9 @@ export async function api(endpoint, header, { body, ...customConfig } = {}) {
   }
   let data;
   try {
-    console.log("requestOptions");
     const response = await fetch(endpoint, requestOptions);
     const data = await response.json();
+
     if (response.ok) {
       return data;
     }
