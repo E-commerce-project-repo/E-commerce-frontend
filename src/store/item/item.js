@@ -46,12 +46,12 @@ export const add = (data) => async (dispatch) => {
   }
 };
 
-export const list = () => async (dispatch) => {
+export const list = (_url) => async (dispatch) => {
   dispatch(loading(true));
   const headers = {};
+  const url = _url ? _url : apiConfig.root + apiConfig.item + "?limit=10";
   try {
-    const res = await api.get(apiConfig.root + apiConfig.item, headers);
-
+    const res = await api.get(url, headers);
     dispatch(loading(false));
     dispatch(success(res));
   } catch (e) {

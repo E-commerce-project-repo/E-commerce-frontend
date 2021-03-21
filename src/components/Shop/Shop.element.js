@@ -49,33 +49,6 @@ export const ProductWrapper = styled.div`
   margin: 0 auto;
 `;
 
-export const PaginationContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  margin: 2rem;
-`;
-export const Pagination = styled.div`
-  display: inline-block;
-  align-items: center;
-`;
-export const PaginationLink = styled.a`
-  color: black;
-  float: left;
-  padding: 8px 16px;
-  margin: 4px 4px;
-  text-decoration: none;
-  background-color: ${(props) => (props.isActive ? colors.primary : "")};
-  color: ${(props) => (props.isActive ? "white" : "")};
-  border-radius: 20px;
-  cursor: pointer;
-  @media screen and (max-width: 560px) {
-    padding: 3px 3px;
-    margin: 2px 2px;
-    font-size: 12px;
-  }
-`;
 export const LeftPaginationArrow = styled(FaIcons.FaAngleLeft)`
   display: inline-block;
   align-items: center;

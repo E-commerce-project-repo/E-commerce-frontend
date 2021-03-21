@@ -61,7 +61,13 @@ export const ItemCard = ({ product, isCategory, index }) => {
 
 export const CategoryCard = ({ product, isCategory, index }) => {
   return (
-    <Card key={index}>
+    <Card
+      key={index}
+      to={{
+        pathname: config.shoping,
+        data: product,
+      }}
+    >
       <CategoryInfo>
         <CategoryImg src={sweet3} alt={product.alt} />
         <CategoryTitle>{product.name}</CategoryTitle>
@@ -72,9 +78,14 @@ export const CategoryCard = ({ product, isCategory, index }) => {
 
 export const PersonProfileInfo = ({ data }) => {
   return (
-    <ProfileInfo to={config.sellerInfo}>
+    <ProfileInfo
+      to={{
+        pathname: config.sellerInfo,
+        data: data,
+      }}
+    >
       <ProfileImg src={person} />
-      <ProfileName>Endalk belete</ProfileName>
+      <ProfileName>{data.name}</ProfileName>
       <ProfileDesc>Lives, Addis Ababa, Ethiopia</ProfileDesc>
       <ProfileDesc>{data.email}</ProfileDesc>
       <ProfileDesc>Joined, Aug 6,2027</ProfileDesc>

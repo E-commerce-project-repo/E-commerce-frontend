@@ -7,6 +7,11 @@ import item from "./item/item";
 import popularThisWeek from "./item/popularThisWeek";
 import topSales from "./item/topSales";
 import tredingNow from "./item/tredingNow";
+import relatedItem from "./item/relatedItem";
+import customerAlsoViews from "./item/customerAlsoViewed";
+import categoryItems from "./item/categoryItems";
+import premiumItems from "./item/premiumItem";
+import sharedItemByUser from "./item/sharedItemByUser";
 
 const reducer = combineReducers({
   login,
@@ -16,6 +21,11 @@ const reducer = combineReducers({
   popularThisWeek,
   topSales,
   tredingNow,
+  relatedItem,
+  customerAlsoViews,
+  categoryItems,
+  premiumItems,
+  sharedItemByUser,
 });
 
 const store = configureStore({

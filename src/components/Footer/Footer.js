@@ -31,8 +31,8 @@ import {
 function Footer() {
   return (
     <FooterContainer>
-      <FooterSubscription>
-        <FooterSubHeading>
+      {/* <FooterSubscription> */}
+      {/* <FooterSubHeading>
           Join our exclusive membership to receive the latest news and trends
         </FooterSubHeading>
         <FooterSubText>You can unsubscribe at any time.</FooterSubText>
@@ -41,8 +41,8 @@ function Footer() {
           <Button fontBig primary={false}>
             Subscribe
           </Button>
-        </Form>
-      </FooterSubscription>
+        </Form> */}
+      {/* </FooterSubscription> */}
       <FooterLinksContainer>
         <FooterLinksWrapper>
           <FooterLinkItems>

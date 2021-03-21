@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { colors } from "../../../constants/constants";
 
-export const Card = styled.div`
+export const Card = styled(Link)`
   margin: 0 1rem;
   width: 100px;
   background-color: ${colors.white};
@@ -11,6 +11,8 @@ export const Card = styled.div`
   border-radius: 5px;
   padding: 0.3rem;
   border: 1px solid ${colors.gray};
+  text-decoration: none;
+  color: ${colors.primary};
 
   :hover {
     cursor: pointer;

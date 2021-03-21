@@ -4,8 +4,8 @@ import { colors } from "../../constants/constants";
 export const ProductsContainer = styled.div`
   background: ${colors.bodyColor};
   color: ${colors.dark};
-  padding: 2rem 1rem;
   animation: fade 1.2s linear;
+
   @keyframes fade {
     from {
       opacity: 0;
@@ -18,8 +18,16 @@ export const ProductsContainer = styled.div`
 
 export const ProductWrapper = styled.div`
   display: flex;
-  justify-content: center;
   overflow: scroll;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  ::-webkit-scrollbar {
+    -webkit-appearance: none;
+    height: 15px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
 `;
 
 export const ProductsHeading = styled.h1`

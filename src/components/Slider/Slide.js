@@ -8,7 +8,8 @@ import {
   Active,
 } from "./Slide.elements";
 import { Hero } from "../Cards/Hero/index";
-const delay = 5000;
+import { AddWithImage } from "../Cards/AdsCard/AddsCard";
+const delay = 20000;
 export const Slider = ({ data }) => {
   const [index, setIndex] = React.useState(0);
   const timeoutRef = React.useRef(null);
@@ -43,7 +44,7 @@ export const Slider = ({ data }) => {
         {data.map((item, index) => {
           return (
             <Slide>
-              <Hero data={item} />
+              <AddWithImage data={item} />
             </Slide>
           );
         })}

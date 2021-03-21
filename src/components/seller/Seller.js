@@ -11,12 +11,12 @@ import {
 import { Label } from "../../globalStyles";
 import product1 from "../../images/person.jpeg";
 
-export const SellerInfo = () => {
+export const SellerInfo = ({ data }) => {
   return (
     <Container>
       <ImageContainer>
         <ProfileImg src={product1} />
-        <Label style={{ textAlign: "center" }}>Endalk belete</Label>
+        <Label style={{ textAlign: "center" }}>{data.owner.name}</Label>
       </ImageContainer>
       <VerticalGap />
 

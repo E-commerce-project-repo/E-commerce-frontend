@@ -1,9 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { productData, productDataTwo } from "../CategoryGrid/data";
 import Search from "../SearchComponent/Search";
 import { SideBody } from "../SideBodyBar/SideBody";
-
 import {
   ItemContainer,
   SideCategoryHolder,
@@ -19,35 +18,55 @@ import {
   LeftPaginationArrow,
   ExpandArrow,
 } from "./Shop.element";
-import { ItemCard } from "../Cards/Card/Card";
-export const Shop = () => {
+import { ItemGrid } from "../../components/ItemGrid/ItemGrid";
+import * as categoryItemsAction from "../../store/item/categoryItems";
+import { useDispatch, useSelector } from "react-redux";
+import { apiConfig } from "../../constants/constants";
+import { Loader } from "../../components/Loader/Loader";
+import * as categoryAction from "../../store/category";
+
+export const Shop = (props) => {
+  const category = props.location?.data;
   const [page, setPage] = useState(0);
+  const categoryItems = useSelector((state) => state.categoryItems);
+  const categoryPayload = useSelector((state) => state.category);
   const [showCategory, setShowCategory] = useState(false);
-  const next = () => {
-    if (page < productData.length - 1) {
-      setPage(page + 1);
-    }
+  console.log(categoryPayload);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(categoryItemsAction.categoryItems());
+    dispatch(categoryAction.category());
+  }, []);
+
+  const nextPage = (nextUrl) => {
+    dispatch(categoryItemsAction.categoryItems(nextUrl));
+    setPage(page + 1);
   };
-  const prev = () => {
-    if (page > 0) {
-      setPage(page - 1);
-    }
+  const prevPage = (previousUrl) => {
+    dispatch(categoryItemsAction.categoryItems(previousUrl));
+    setPage(page - 1);
   };
-  const Paginator = (props) => {
-    return (
-      <PaginationLink
-        onClick={() => {
-          setPage(props.index);
-        }}
-        isActive={props.index === page ? true : false}
-      >
-        {props.index + 1}
-      </PaginationLink>
+  const currentPage = (currentIndex) => {
+    setPage(currentIndex);
+
+    dispatch(
+      categoryItemsAction.categoryItems(
+        apiConfig.root + apiConfig.item + `?offset=${8 * currentIndex}&limit=8`
+      )
     );
   };
+  const changeCategory = (item) => {
+    dispatch(categoryItemsAction.categoryItems());
+  };
+
   return (
     <ItemContainer>
-      <SideBody showCategory={showCategory} setShowCategory={setShowCategory} />
+      <SideBody
+        showCategory={showCategory}
+        setShowCategory={setShowCategory}
+        data={categoryPayload.payload}
+        changeCategory={changeCategory}
+      />
       <ProductsContainer>
         <ExpandArrow
           onClick={() => {
@@ -55,20 +74,22 @@ export const Shop = () => {
           }}
         />
 
-        <ProductWrapper>
-          {productDataTwo.map((product, _index) => {
-            return <ItemCard product={product} isCategory={false} index />;
-          })}
-        </ProductWrapper>
-        <PaginationContainer>
-          <LeftPaginationArrow onClick={prev} />
-          <Pagination>
-            {productData.map((_pro, index) => {
-              return <Paginator index={index} />;
-            })}
-          </Pagination>
-          <RightPaginationArrow onClick={next} />
-        </PaginationContainer>
+        {categoryItems.loading ? (
+          <Loader />
+        ) : (
+          <ItemGrid
+            title="Computers"
+            data={categoryItems.payload}
+            nextPage={nextPage}
+            prevPage={prevPage}
+            number_in_page={8}
+            count={categoryItems.count}
+            nextUrl={categoryItems.nextUrl}
+            previousUrl={categoryItems.previousUrl}
+            page={page}
+            currentPage={currentPage}
+          />
+        )}
       </ProductsContainer>
     </ItemContainer>
   );

@@ -77,21 +77,24 @@ export const PopularThisWeek = ({
       <PaginationContainer>
         <Pagination>
           {pages.map((index) => {
-            console.log(index);
             if (
               index === 0 ||
               index === 1 ||
               index === 2 ||
-              index === count - 1 ||
-              index === count - 2 ||
-              index === count - 3 ||
+              index === pages.length - 1 ||
+              index === total_data_length - 2 ||
+              index === total_data_length - 3 ||
               (index > page - 2 && index < page + 3) ||
               pages.length < 10
             ) {
               return <Paginator index={index} />;
             } else if (dotController === false) {
-              // dotController = true;
-              return <ThreeDots />;
+              dotController = true;
+              return (
+                <PaginationLink>
+                  <ThreeDots />
+                </PaginationLink>
+              );
             }
           })}
         </Pagination>

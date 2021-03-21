@@ -76,7 +76,7 @@ export const PaginationContainer = styled.div`
   margin-top: 12px;
 `;
 export const Pagination = styled.div`
-  display: inline-block;
+  display: flex;
   align-items: center;
 `;
 export const PaginationLink = styled.a`

@@ -14,32 +14,39 @@ import {
   SortLabel,
   SortItems,
   SortItem,
+  CategoryItemWrapper,
 } from "./SideBody.elements";
-export const SideBody = ({ showCategory, setShowCategory }) => {
+export const SideBody = ({
+  showCategory,
+  setShowCategory,
+  data,
+  changeCategory,
+}) => {
   const [page, SetIsActive] = useState(0);
   const [showAllCategory, setShowAllCategory] = useState(false);
   const [value, onChange] = useState(1);
+  const CategoryChange = (item) => {
+    setShowCategory(!showCategory);
+    changeCategory(item);
+  };
 
   return (
     <SideCategoryHolder showCategory={showCategory}>
       <CategoryHeading>Categories</CategoryHeading>
-      <CategoryListItem onClick={() => setShowCategory(!showCategory)}>
-        All
-      </CategoryListItem>
-      <CategoryListItem onClick={() => setShowCategory(!showCategory)}>
-        Category Electronics Electronics
-      </CategoryListItem>
-      <CategoryListItem>Category Electronics Electronics</CategoryListItem>
-      <CategoryListItem>Category and Electronics</CategoryListItem>
-      {showAllCategory ? (
-        <>
-          <CategoryListItem>Apple ProductsContainer</CategoryListItem>
-          <CategoryListItem>Cement raw materials</CategoryListItem>
-          <CategoryListItem>Car maintaince tools</CategoryListItem>
-          <CategoryListItem>clothes and shoes</CategoryListItem>
-        </>
-      ) : null}
 
+      <CategoryItemWrapper>
+        {data.map((item, index) => {
+          return index <= 1 ? (
+            <CategoryListItem onClick={CategoryChange}>
+              {item.name}
+            </CategoryListItem>
+          ) : showAllCategory ? (
+            <CategoryListItem onClick={CategoryChange}>
+              {item.name}
+            </CategoryListItem>
+          ) : null;
+        })}
+      </CategoryItemWrapper>
       <ItemShowMore
         onClick={() => {
           setShowAllCategory(!showAllCategory);

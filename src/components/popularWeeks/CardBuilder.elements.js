@@ -71,10 +71,11 @@ export const PaginationContainer = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+
   margin-top: 12px;
 `;
 export const Pagination = styled.div`
-  display: inline-block;
+  display: flex;
   align-items: center;
 `;
 export const PaginationLink = styled.a`
@@ -126,7 +127,6 @@ export const ThreeDots = styled(FaIcons.FaEllipsisH)`
   display: flex;
   justify-content: center;
   align-items: center;
-  text-decoration: none;
   background-color: ${(props) => (props.isActive ? colors.primary : "")};
   color: ${(props) => (props.isActive ? "white" : "")};
   border-radius: 50%;

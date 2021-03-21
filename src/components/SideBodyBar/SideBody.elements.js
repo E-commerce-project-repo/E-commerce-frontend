@@ -8,6 +8,7 @@ export const SideCategoryHolder = styled.div`
   top: 0;
   padding: 15px;
   padding: 0.2rem 1rem;
+
   @media screen and (max-width: 960px) {
     width: 100vh;
     display: ${({ showCategory }) => (showCategory ? "flex" : "none")};
@@ -21,7 +22,12 @@ export const SideCategoryHolder = styled.div`
     background: ${colors.bodyColor};
   }
 `;
-
+export const CategoryItemWrapper = styled.div`
+  max-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+`;
 export const CategoryHeading = styled.h2`
   font-size: clamp(1rem, 1.5vw, 2rem);
   font-weight: 570;
@@ -31,8 +37,16 @@ export const CategoryListItem = styled.a`
   padding: 5px;
   :hover {
     cursor: pointer;
-    transform: scale(1.06);
-    transition: all 0.3s ease-out;
+    animation: skew 2s infinite;
+    animation-direction: alternate;
+  }
+  @keyframes skew {
+    0% {
+      transform: skewX(20deg);
+    }
+    100% {
+      transform: skewX(-30deg);
+    }
   }
 `;
 export const ItemShowMore = styled.a`
