@@ -7,7 +7,6 @@ import {
   Slide,
   Active,
 } from "./Slide.elements";
-import { Hero } from "../Cards/Hero/index";
 import { AddWithImage } from "../Cards/AdsCard/AddsCard";
 const delay = 20000;
 export const Slider = ({ data }) => {

@@ -34,23 +34,25 @@ export const config = {
   carts: "/carts",
   addItems: "/add-items",
   sellerInfo: "/seller-info",
+  searchedResult: "/search-results",
 };
 
 export const apiConfig = {
-  // root: "https://meba-backend.herokuapp.com/api/v1",
-  root: " http://localhost:8000/api/v1",
+  root: "https://meba-project.herokuapp.com/api/v1",
+  // root: " http://0.0.0.0:8000/api/v1",
   home: "/",
   singlePage: "/singlePage",
-  category: "/categories/",
+  category: "/categories",
   shoping: "/shoping",
   orders: "/orders",
-  signIn: "/auth/login/",
-  signUp: "/auth/signup/",
-  carts: "/carts",
-  item: "/items/",
+  signIn: "/auth/login",
+  signUp: "/auth/signup",
+  carts: "/add-to-cart",
+  getCarts: "/get-cart",
+  removeCarts: "/remove-from-cart",
+  item: "/items",
   sellerInfo: "/seller-info",
 };
-// https://meba-project.herokuapp.com/api/v1/auth/login/
 
 export const constant_variables = {
   left_icon_top: "40px",

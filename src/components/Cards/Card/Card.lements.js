@@ -14,7 +14,6 @@ export const ProductCard = styled(Link)`
   text-decoration: none;
   color: ${colors.primary};
   border: 1px solid ${colors.gray};
-
   :hover {
     cursor: pointer;
     transform: scale(1.06);
@@ -61,6 +60,7 @@ export const ProductInfo = styled.div`
 export const ProductDesc = styled.p`
   margin-bottom: 1px;
   font-size: 12px;
+  text-align: left;
 `;
 
 export const ProductPrice = styled.p`

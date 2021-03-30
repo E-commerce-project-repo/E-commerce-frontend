@@ -162,7 +162,7 @@ export const NavBtnLink = styled(Link)`
   border: none;
   outline: none;
 `;
-export const SearchIconWrapper = styled.div`
+export const SearchIconWrapper = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -171,6 +171,14 @@ export const SearchIconWrapper = styled.div`
   border: none;
 
   outline: none;
+`;
+
+export const ImageLogo = styled.img`
+  height: 50px;
+  width: auto;
+  @media screen and (max-width: 960px) {
+    display: none;
+  }
 `;
 export const SearchIcon = styled(FaIcons.FaSearch)`
   width: 20px;
@@ -186,6 +194,7 @@ export const SearchIcon = styled(FaIcons.FaSearch)`
     cursor: pointer;
     transform: scale(1.06);
     transition: all 0.3s ease-out;
+    cursor: pointer;
   }
 
   @media screen and (max-width: ${max_960_responsive_screen_size}) {
@@ -215,3 +224,4 @@ export const CloseIcon = styled(FaIcons.FaTimes)`
     height: 15px;
   }
 `;
+export const SearchIconLink = styled(Link)``;

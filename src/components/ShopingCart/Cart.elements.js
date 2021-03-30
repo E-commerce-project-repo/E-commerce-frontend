@@ -2,7 +2,6 @@ import styled from "styled-components";
 import {
   colors,
   max_960_responsive_screen_size,
-  max_500_responsive_screen_size,
   max_responsive_screen_size,
 } from "../../constants/constants";
 import * as FaIcons from "react-icons/fa";
@@ -17,15 +16,15 @@ export const Title = styled.span`
   font-size: 2rem;
   font-weight: bold;
   color: ${colors.primary};
-  text-align: center;
-  border-bottom: 1px solid red;
+  text-align: left;
+  margin-left: 2rem;
 `;
 export const CartListWrapper = styled.div`
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
   justify-content: space-between;
-  padding: 0rem 2rem;
+  padding: 0rem 1rem;
 `;
 
 export const CartWrapper = styled.div`
@@ -33,7 +32,8 @@ export const CartWrapper = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 0.1px solid ${colors.primary};
+  margin-top: 2px;
+  background-color: ${colors.bodyColor};
 
   @media screen and (max-width: ${max_responsive_screen_size}) {
     flex-direction: column;
@@ -64,7 +64,7 @@ export const CartQuntity = styled.div`
 export const CartTotalPrice = styled.p`
   color: ${colors.primary};
   display: flex;
-  font-size: 2rem;
+  font-size: 1rem;
 `;
 
 export const TotalPriceCheckout = styled.div`

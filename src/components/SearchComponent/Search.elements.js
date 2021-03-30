@@ -4,6 +4,7 @@ import {
   colors,
   max_960_responsive_screen_size,
 } from "../../constants/constants";
+import { Link } from "react-router-dom";
 
 export const SearchBoxContainer = styled.div`
   width: 100%;
@@ -27,7 +28,6 @@ export const SearchBox = styled.input`
   border-radius: 15px;
   font-size: 1rem;
   padding: 15px;
-  padding-left: 4rem;
   transition: width 0.3s;
   color: ${colors.SecondPrimary};
   width: 100%;
@@ -35,6 +35,8 @@ export const SearchBox = styled.input`
   ::placeholder {
     font-style: italic;
     font-size: 20px;
+    padding-left: 26%;
+
     @media screen and (max-width: ${max_960_responsive_screen_size}) {
       font-size: 15px;
     }
@@ -42,7 +44,7 @@ export const SearchBox = styled.input`
   :focus {
     outline: none;
     border: 1px solid ${colors.SecondPrimary};
-    padding-left: 5rem;
+    padding-left: 26%;
   }
   :hover {
     outline: none;
@@ -53,14 +55,23 @@ export const SearchBox = styled.input`
     padding-left: 4rem;
   }
 `;
+export const SearchIconLink = styled(Link)``;
+
 export const SearchIcon = styled(FaIcons.FaSearch)`
   width: 20px;
   height: 20px;
   position: absolute;
-  left: 5px;
+  right: 3rem;
   top: 17px;
   color: ${colors.primary};
   margin-left: 20px;
+  :hover {
+    color: ${colors.secondary};
+    cursor: pointer;
+    transform: scale(1.06);
+    transition: all 0.3s ease-out;
+    cursor: pointer;
+  }
 
   @media screen and (max-width: ${max_960_responsive_screen_size}) {
     width: 15px;
@@ -71,47 +82,50 @@ export const SearchDevider = styled(FaIcons.FaGripLinesVertical)`
   width: 20px;
   height: 20px;
   position: absolute;
-  left: 75%;
+  left: 30%;
   top: 15px;
   color: ${colors.primary};
   @media screen and (max-width: ${max_960_responsive_screen_size}) {
     width: 20px;
     height: 20px;
-    left: 55%;
   }
 `;
 export const CategoryContainer = styled.div`
   display: flex;
   flex-direction: center;
   justify-content: space-between;
-  left: 78%;
+  left: 5px;
   top: 17px;
   position: absolute;
   text-align: center;
   font-weight: 670;
-  border: 1px solid ${colors.primary};
+  border-right: 2px solid ${colors.primary};
   border-radius: 5px;
-  width: 20%;
-  height: 23px;
+  width: 25%;
+  padding: 2px;
+
   :hover {
     cursor: pointer;
   }
   @media screen and (max-width: ${max_960_responsive_screen_size}) {
-    left: 70%;
+    left: 5px;
     top: 12px;
   }
 `;
 
 export const CategoryLabel = styled.span`
-  font-size: 0.5rem;
+  font-size: 1rem;
   text-align: center;
-  font-weight: 570;
+  font-weight: 400;
+  font-style: italic;
   overflow: hidden;
   display: flex;
   align-items: center;
   width: 80%;
   text-align: center;
   justify-content: center;
+  white-space: nowrap;
+
   @media screen and (max-width: ${max_960_responsive_screen_size}) {
     font-size: 0.7rem;
   }
@@ -119,13 +133,8 @@ export const CategoryLabel = styled.span`
 
 export const CategoryIcon = styled(FaIcons.FaAngleDown)`
   width: 20px;
-  height: 20px;
-  top: 20px;
+  height: 100%;
   color: ${colors.primary};
-
-  @media screen and (max-width: ${max_960_responsive_screen_size}) {
-    margin-left: 0px;
-  }
 `;
 
 export const CloseIcon = styled(FaIcons.FaTimes)`

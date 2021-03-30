@@ -2,11 +2,14 @@ import { createSlice } from "@reduxjs/toolkit";
 import { apiConfig } from "../../constants/constants";
 import { api } from "../api/api";
 const slice = createSlice({
-  name: "premiumItems",
+  name: "topViewedItems",
   initialState: {
     payload: [],
     loading: false,
     errors: [],
+    count: 0,
+    nextUrl: "",
+    previousUrl: "",
   },
   reducers: {
     loading: (state, action) => {
@@ -15,6 +18,8 @@ const slice = createSlice({
     success: (state, action) => {
       state.payload = action.payload.results;
       state.loading = false;
+      state.count = action.payload.count;
+      state.nextUrl = action.payload.next;
     },
     error: (state, action) => {
       state.errors = action.payload;
@@ -25,12 +30,13 @@ const slice = createSlice({
 export default slice.reducer;
 const { loading, success, error } = slice.actions;
 
-export const premiumItems = (_url) => async (dispatch) => {
+export const topViewedItems = (_url) => async (dispatch) => {
   dispatch(loading(true));
   const headers = {
     "Content-Type": "application/json",
   };
-  const url = _url ? _url : apiConfig.root + apiConfig.item + `?limit=10`;
+  const url = _url ? _url : apiConfig.root + apiConfig.item + "?limit=10";
+
   try {
     const res = await api.get(url, headers);
     dispatch(loading(false));

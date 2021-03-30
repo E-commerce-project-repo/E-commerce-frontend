@@ -1,12 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
 import { apiConfig } from "../../constants/constants";
 import { api } from "../api/api";
+import { browserGet } from "../localStore";
+
 const slice = createSlice({
-  name: "premiumItems",
+  name: "carts",
   initialState: {
     payload: [],
     loading: false,
     errors: [],
+    count: 0,
+    nextUrl: "",
   },
   reducers: {
     loading: (state, action) => {
@@ -15,28 +20,44 @@ const slice = createSlice({
     success: (state, action) => {
       state.payload = action.payload.results;
       state.loading = false;
+      toast.success("You successfully added");
     },
     error: (state, action) => {
       state.errors = action.payload;
       state.loading = false;
+      console.log(action.payload);
+      Object.keys(action.payload).forEach((key) => {
+        if (Array.isArray(action.payload[key])) {
+          toast.error(action.payload[key][0]);
+        } else {
+          toast.error(action.payload[key]);
+        }
+      });
     },
   },
 });
 export default slice.reducer;
 const { loading, success, error } = slice.actions;
 
-export const premiumItems = (_url) => async (dispatch) => {
+export const add = (data) => async (dispatch) => {
+  let user = browserGet();
   dispatch(loading(true));
+  data = {
+    order_item: [{ item: data.id }],
+  };
   const headers = {
+    Authorization: `Token ${user.token}`,
     "Content-Type": "application/json",
   };
-  const url = _url ? _url : apiConfig.root + apiConfig.item + `?limit=10`;
+
   try {
-    const res = await api.get(url, headers);
-    dispatch(loading(false));
+    const res = await api.post(apiConfig.root + apiConfig.carts, headers, data);
+    dispatch(loading(true));
     dispatch(success(res.data));
   } catch (e) {
-    dispatch(loading(false));
+    if (e.body) {
+      return dispatch(error(e.body?.errors));
+    }
     return dispatch(error({ detail: "There is something went wrong" }));
   }
 };

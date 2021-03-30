@@ -19,7 +19,6 @@ import {
   ImagesWrapper,
   ProfileButton,
   SubContainer,
-  RelatedItemCardsWrapper,
 } from "./Single.element";
 import sweet3 from "../../images/mac1.jpg";
 import person from "../../images/person.jpeg";
@@ -29,6 +28,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { config, apiConfig } from "../../constants/constants";
 import * as relatedItemAction from "../../store/item/relatedItem";
 import * as customerAlsoViewedAction from "../../store/item/customerAlsoViewed";
+import * as getSingleItemAction from "../../store/item/getSingleItem";
 import { ItemGrid } from "../../components/ItemGrid/ItemGrid";
 import { Redirect } from "react-router";
 export const SingleItem = (props) => {
@@ -38,10 +38,20 @@ export const SingleItem = (props) => {
   const item = props.location?.data;
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(relatedItemAction.relatedItem());
+    dispatch(
+      getSingleItemAction.getSingleItem(
+        apiConfig.root + apiConfig.item + `/${item?.id}`
+      )
+    );
+    dispatch(
+      relatedItemAction.relatedItem(
+        apiConfig.root +
+          apiConfig.item +
+          `?category=${item?.category?.id}&limit=4`
+      )
+    );
     dispatch(customerAlsoViewedAction.customerAlsoViews());
   }, []);
-
   const nextPage = (nextUrl) => {
     dispatch(relatedItemAction.relatedItem(nextUrl));
     setPageRelatedItem(pageRelatedItem + 1);
@@ -54,7 +64,9 @@ export const SingleItem = (props) => {
     setPageRelatedItem(currentIndex);
     dispatch(
       relatedItemAction.relatedItem(
-        apiConfig.root + apiConfig.item + `?offset=${4 * currentIndex}&limit=4`
+        apiConfig.root +
+          apiConfig.item +
+          `?category=${item?.category?.id}&offset=${4 * currentIndex}&limit=4`
       )
     );
   };
@@ -71,20 +83,23 @@ export const SingleItem = (props) => {
     setPageItemView(currentIndex);
     dispatch(
       customerAlsoViewedAction.customerAlsoViews(
-        apiConfig.root + apiConfig.item + `?offset=${5 * currentIndex}&limit=5`
+        apiConfig.root +
+          apiConfig.item +
+          `?category=${item?.category?.id}&offset=${5 * currentIndex}&limit=5`
       )
     );
   };
 
   const relatedItems = useSelector((state) => state.relatedItem);
   const customerAlsoViewes = useSelector((state) => state.customerAlsoViews);
-
-  const [fullSize, setFullSize] = useState(sweet3);
+  const singleItem = useSelector((state) => state.getSingleItem);
+  const [fullSize, setFullSize] = useState(
+    singleItem.payload.item_images?.[0]?.image
+  );
 
   if (!item) {
     return <Redirect to={config.home} />;
   }
-
   return (
     <>
       <ItemContainer>
@@ -93,11 +108,14 @@ export const SingleItem = (props) => {
             <ImageContainer>
               <ItemImage src={fullSize} fullSize={true} />
               <ImagesWrapper>
-                <ItemImage src={sweet3} onClick={() => setFullSize(sweet3)} />
-                <ItemImage src={person} onClick={() => setFullSize(person)} />
-                <ItemImage src={sweet3} onClick={() => setFullSize(sweet3)} />
-                <ItemImage src={person} onClick={() => setFullSize(person)} />
-                <ItemImage src={person} onClick={() => setFullSize(person)} />
+                {singleItem.payload.item_images?.map((item) => {
+                  return (
+                    <ItemImage
+                      src={item.image}
+                      onClick={() => setFullSize(item.image)}
+                    />
+                  );
+                })}
               </ImagesWrapper>
             </ImageContainer>
             {relatedItems.loading ? (
@@ -124,7 +142,7 @@ export const SingleItem = (props) => {
                   <ItemDetailHeader>Product Title</ItemDetailHeader>
                   <ItemDetailValue>
                     <CheckedIcon />
-                    {item.title}
+                    {singleItem?.payload?.name}
                   </ItemDetailValue>
                 </ItemDetailGroup>
 
@@ -132,7 +150,7 @@ export const SingleItem = (props) => {
                   <ItemDetailHeader>Condition</ItemDetailHeader>
                   <ItemDetailValue>
                     <CheckedIcon />
-                    {item.condition}
+                    {singleItem?.payload?.condition}
                   </ItemDetailValue>
                 </ItemDetailGroup>
 
@@ -140,28 +158,14 @@ export const SingleItem = (props) => {
                   <ItemDetailHeader>Availabile Quantity</ItemDetailHeader>
                   <ItemDetailValue>
                     <CheckedIcon />
-                    {item.items_in_stock}
+                    {singleItem?.payload?.items_in_stock}
                   </ItemDetailValue>
                 </ItemDetailGroup>
                 <ItemDetailGroup>
                   <ItemDetailHeader>Price</ItemDetailHeader>
                   <ItemDetailValue>
                     <CheckedIcon />
-                    $250
-                  </ItemDetailValue>
-                </ItemDetailGroup>
-                <ItemDetailGroup>
-                  <ItemDetailHeader>Location</ItemDetailHeader>
-                  <ItemDetailValue>
-                    <CheckedIcon />
-                    {item.location}
-                  </ItemDetailValue>
-                </ItemDetailGroup>
-                <ItemDetailGroup>
-                  <ItemDetailHeader>Shop</ItemDetailHeader>
-                  <ItemDetailValue>
-                    <CheckedIcon />
-                    {item.shop.name}
+                    {singleItem?.payload?.price}
                   </ItemDetailValue>
                 </ItemDetailGroup>
               </ItemDetailGroupContainer>

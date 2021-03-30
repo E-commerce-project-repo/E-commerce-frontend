@@ -1,8 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { apiConfig } from "../../constants/constants";
 import { api } from "../api/api";
+import { browserGet } from "../localStore";
+import { toast } from "react-toastify";
+
 const slice = createSlice({
-  name: "signup",
+  name: "item_add",
   initialState: {
     payload: [],
     loading: false,
@@ -19,10 +22,14 @@ const slice = createSlice({
       state.loading = false;
       state.count = action.payload.count;
       state.nextUrl = action.payload.next;
+      toast.success("Your product added successfully");
     },
     error: (state, action) => {
       state.errors = action.payload;
       state.loading = false;
+      Object.keys(action.payload).forEach((key) => {
+        toast.error(String(action.payload[key]));
+      });
     },
   },
 });
@@ -31,31 +38,24 @@ const { loading, success, error } = slice.actions;
 
 export const add = (data) => async (dispatch) => {
   dispatch(loading(true));
+
+  let user = browserGet();
+
   const headers = {
+    Accept: "application/json",
     "Content-Type":
       "multipart/form-data;boundary=----WebKitFormBoundaryyrV7KO0BoCBuDbT",
+    Authorization: `Token ${user.token}`,
   };
 
   try {
     const res = await api.post(apiConfig.root + apiConfig.item, headers, data);
+    dispatch(loading(false));
+    dispatch(success(res.data));
   } catch (e) {
     if (e.body) {
       return dispatch(error(e.body?.errors));
     }
-    return dispatch(error({ detail: "There is something went wrong" }));
-  }
-};
-
-export const list = (_url) => async (dispatch) => {
-  dispatch(loading(true));
-  const headers = {};
-  const url = _url ? _url : apiConfig.root + apiConfig.item + "?limit=10";
-  try {
-    const res = await api.get(url, headers);
-    dispatch(loading(false));
-    dispatch(success(res));
-  } catch (e) {
-    dispatch(loading(false));
     return dispatch(error({ detail: "There is something went wrong" }));
   }
 };

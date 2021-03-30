@@ -11,7 +11,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { colors, config, apiConfig } from "../../constants/constants";
 import * as categoryAction from "../../store/category";
 import * as itemAction from "../../store/item/item";
-import * as tredingNowAction from "../../store/item/tredingNow";
 import * as topSalesAction from "../../store/item/topSales";
 import * as popularThisWeekAction from "../../store/item/popularThisWeek";
 import * as sharedItemByUserAction from "../../store/item/sharedItemByUser";

@@ -13,16 +13,17 @@ import {
   WidthGap,
   CheckedIcon,
 } from "./Card.lements";
+import { Link } from "react-router-dom";
+
 import sweet3 from "../../../images/mac1.jpg";
 import { parseDate } from "../../../utilities/dateFormat";
 import { config } from "../../../constants/constants";
-export const SideItemCard = ({ data, isCategory }) => {
+export const SideItemCard = ({ data, isCategory, height }) => {
   return (
-    <ProductCard to={config.singlePage}>
+    <ProductCard to={config.singlePage} height={height}>
       <ProductInfo>
-        <ProductTitle>{data.title}</ProductTitle>
-        <HeightGap height="5px" />
-        <ProductDesc>{data.description}</ProductDesc>
+        <ProductTitle>{data.name}</ProductTitle>
+
         <HeightGap height="10px" />
 
         <ProductDesc>
@@ -37,18 +38,27 @@ export const SideItemCard = ({ data, isCategory }) => {
         </ProductDesc>
         <ProductDesc>
           <CheckedIcon />
-          {data.location}
+          {data.condition}
         </ProductDesc>
         <ProductDesc>
           <CheckedIcon />
-          {data.shop.name}
+          Owner by{" "}
+          <Link
+            to={{
+              pathname: config.sellerInfo,
+              data: data,
+            }}
+          >
+            {data.name}
+          </Link>
         </ProductDesc>
+
         <ProductButton isCategory={isCategory} to="/carts">
           <AddCartIcon />
         </ProductButton>
         <ProductDesc>{parseDate(data.created_at)}</ProductDesc>
       </ProductInfo>
-      <ProductImg src={sweet3} alt={data.alt} />
+      <ProductImg src={sweet3} alt={data.alt} height={height} />
     </ProductCard>
   );
 };

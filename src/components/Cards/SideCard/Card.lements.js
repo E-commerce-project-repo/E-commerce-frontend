@@ -5,17 +5,17 @@ import * as FaIcons from "react-icons/fa";
 
 export const ProductCard = styled(Link)`
   width: 40%;
-  height: 250px;
+  height: ${(height) => (height ? height : " 250px")};
   margin: 6px;
   background-color: ${colors.white};
   align-items: center;
   border-radius: 5px;
-  padding: 0.5rem;
   border: 1px solid ${colors.gray};
   display: flex;
   flex-direction: row;
   text-decoration: none;
   color: ${colors.primary};
+  justify-content: space-between;
   @media screen and (max-width: 960px) {
     width: 100%;
   }
@@ -29,8 +29,8 @@ export const ProductCard = styled(Link)`
 `;
 
 export const ProductImg = styled.img`
-  height: 90%;
-  width: 50%;
+  height: 100%;
+  width: ${(height) => (height ? "40%" : "auto")};
   display: flex;
   flex-direction: column;
   box-shadow: 1px 1px ${colors.secondary};
@@ -48,8 +48,7 @@ export const ProductInfo = styled.div`
   text-align: left;
   height: 100%;
   width: 50%;
-  padding: 2px 10px 1px 2px;
-  /* background: red; */
+  padding: 0.5rem;
 `;
 
 export const ProductDesc = styled.p`
@@ -72,18 +71,19 @@ export const ProductPrice = styled.h6`
 export const ProductButton = styled(Link)`
   font-size: 1rem;
   border: none;
-  color: #fff;
+  color: ${colors.white};
   transition: 0.2 ease-out;
   display: ${(props) => (props.isCategory ? "none" : "")};
   text-decoration: none;
   display: flex;
-  width: 40px;
-  height: 40px;
+  width: auto;
+  height: auto;
   align-self: flex-end;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
   border: 1px solid ${colors.gray};
+  padding: 0.4rem;
 
   &:hover {
     background: ${colors.bodyColor};
@@ -154,7 +154,6 @@ export const ProfileButton = styled.button`
 `;
 
 export const AddCartIcon = styled(FaIcons.FaCartPlus)`
-  margin-right: 0.2rem;
   color: ${colors.secondary};
   :hover {
     color: ${colors.secondary};

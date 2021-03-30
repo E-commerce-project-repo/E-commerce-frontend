@@ -1,26 +1,34 @@
 import { useState, useEffect } from "react";
 
-import { Slider } from "../../components/Slider/Slide";
 import { ItemGrid } from "../../components/ItemGrid/ItemGrid";
 import { CategoryGrid } from "../../components/CategoryGrid/CategoryGrid";
 import { AddWithImage } from "../../components/Cards/AdsCard/AddsCard";
 import { PopularThisWeek } from "../../components/popularWeeks/CardBuilder";
 import { Loader } from "../../components/Loader/Loader";
-
 import { useDispatch, useSelector } from "react-redux";
 import { colors, apiConfig } from "../../constants/constants";
 import * as categoryAction from "../../store/category";
-import * as itemAction from "../../store/item/item";
-import * as tredingNowAction from "../../store/item/tredingNow";
+import * as itemAction from "../../store/item/latestItem";
+import * as topViewedItemsAction from "../../store/item/topViewedItems";
 import * as topSalesAction from "../../store/item/topSales";
 import * as popularThisWeekAction from "../../store/item/popularThisWeek";
 import * as premiumItemAction from "../../store/item/premiumItem";
 import { HeightGap, WidthGap } from "../../globalStyles";
+import { CarouselSlider } from "../../components/Carousel/Carousel";
+function getRandomItem(arr) {
+  // get random index value
+  const randomIndex = Math.floor(Math.random() * arr.length);
+  console.log("length", randomIndex);
+  // get random item
+  const item = arr[randomIndex];
+
+  return item;
+}
 export const Home = () => {
   const categoryPayload = useSelector((state) => state.category);
-  const newItems = useSelector((state) => state.item);
+  const newItems = useSelector((state) => state.latestItem);
   const topSales = useSelector((state) => state.topSales);
-  const tredingNow = useSelector((state) => state.tredingNow);
+  const topViewedItems = useSelector((state) => state.topViewedItems);
   const popularThisWeek = useSelector((state) => state.popularThisWeek);
   const premiumItems = useSelector((state) => state.premiumItems);
   var [page, SetIsActive] = useState(0);
@@ -32,7 +40,7 @@ export const Home = () => {
   useEffect(() => {
     dispatch(categoryAction.category());
     dispatch(itemAction.list());
-    dispatch(tredingNowAction.tredingNow());
+    dispatch(topViewedItemsAction.topViewedItems());
     dispatch(topSalesAction.topSales());
     dispatch(popularThisWeekAction.popularThisWeek());
     dispatch(premiumItemAction.premiumItems());
@@ -77,17 +85,17 @@ export const Home = () => {
   };
 
   const nextPageTreding = (nextUrl) => {
-    dispatch(tredingNowAction.tredingNow(nextUrl));
+    dispatch(topViewedItemsAction.topViewedItems(nextUrl));
     setPageTreding(pageTreding + 1);
   };
   const prevPageTreding = (previousUrl) => {
-    dispatch(tredingNowAction.tredingNow(previousUrl));
+    dispatch(topViewedItemsAction.topViewedItems(previousUrl));
     setPageTreding(pageTreding - 1);
   };
   const currentPageTreding = (currentIndex) => {
     setPageTreding(currentIndex);
     dispatch(
-      tredingNowAction.tredingNow(
+      topViewedItemsAction.topViewedItems(
         apiConfig.root +
           apiConfig.item +
           `?offset=${10 * currentIndex}&limit=10`
@@ -114,7 +122,8 @@ export const Home = () => {
 
   return (
     <>
-      <Slider data={premiumItems.payload} />
+      <CarouselSlider />
+
       {categoryPayload.loading ? (
         <Loader />
       ) : (
@@ -136,6 +145,8 @@ export const Home = () => {
           currentPage={currentPage}
         />
       )}
+      <AddWithImage data={getRandomItem(premiumItems.payload)} />
+
       <HeightGap background={colors.white} height="5px" />
       {topSales.loading ? (
         <Loader />
@@ -153,23 +164,25 @@ export const Home = () => {
           currentPage={currentPageTopItems}
         />
       )}
+      <AddWithImage data={getRandomItem(premiumItems.payload)} />
 
-      {tredingNow.loading ? (
+      {topViewedItems.loading ? (
         <Loader />
       ) : (
         <ItemGrid
-          title="Treding now"
-          data={tredingNow.payload}
+          title="Top viewed Items"
+          data={topViewedItems.payload}
           nextPage={nextPageTreding}
           prevPage={prevPageTreding}
           number_in_page={8}
-          count={tredingNow.count}
-          nextUrl={tredingNow.nextUrl}
-          previousUrl={tredingNow.previousUrl}
+          count={topViewedItems.count}
+          nextUrl={topViewedItems.nextUrl}
+          previousUrl={topViewedItems.previousUrl}
           page={pageTreding}
           currentPage={currentPageTreding}
         />
       )}
+
       {popularThisWeek.loading ? (
         <Loader />
       ) : (

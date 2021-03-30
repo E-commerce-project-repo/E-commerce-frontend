@@ -18,6 +18,7 @@ const slice = createSlice({
       state.user = action.payload;
       state.loading = false;
       state.success = true;
+      console.log("success", action.payload);
     },
     loginError: (state, action) => {
       state.errors = action.payload;
@@ -43,8 +44,8 @@ export const login = ({ email, password }) => async (dispatch) => {
       email,
       password,
     });
-    browserStore(res);
-    dispatch(loginSuccess(res));
+    browserStore(res.data);
+    dispatch(loginSuccess(res.data));
   } catch (e) {
     if (e.body) {
       return dispatch(loginError(e.body?.errors));

@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { apiConfig } from "../../constants/constants";
 import { api } from "../api/api";
 const slice = createSlice({
-  name: "topSales",
+  name: "related_items",
   initialState: {
     payload: [],
     loading: false,
@@ -33,13 +33,15 @@ const { loading, success, error } = slice.actions;
 
 export const relatedItem = (_url) => async (dispatch) => {
   dispatch(loading(true));
-  const headers = {};
-  const url = _url ? _url : apiConfig.root + apiConfig.item + "?limit=4";
+  const headers = {
+    "Content-Type": "application/json",
+  };
+  const url = _url ? _url : apiConfig.root + apiConfig.item + "?limit=8";
   try {
     const res = await api.get(url, headers);
 
     dispatch(loading(false));
-    dispatch(success(res));
+    dispatch(success(res.data));
   } catch (e) {
     dispatch(loading(false));
     return dispatch(error({ detail: "There is something went wrong" }));

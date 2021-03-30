@@ -1,40 +1,45 @@
-export async function api(endpoint, header, { body, ...customConfig } = {}) {
-  let formData = new FormData();
-  for (let name in body) {
-    formData.append(name, body[name]);
+import axios from "axios";
+export async function api(endpoint, headers, { body, ...customConfig } = {}) {
+  let formData;
+  if (headers["Content-Type"] === "application/json") {
+    formData = body;
+  } else {
+    formData = new FormData();
+    for (let key in body) {
+      if (key === "item_images") {
+        for (let previewKey in body[key]) {
+          formData.append(
+            `item_images[${previewKey}]image`,
+            body[key][previewKey].image
+          );
+        }
+      } else {
+        formData.append(key, body[key]);
+      }
+    }
   }
-  const headers =
-    Object.keys(header).length !== 0
-      ? header
-      : { "Content-Type": "application/json" };
 
   const config = {
     headers: headers,
-  };
-  const requestOptions = {
     method: customConfig.method,
-    config,
+    url: endpoint,
   };
-  if (body) {
-    requestOptions.body = formData;
-  }
-  let data;
-  try {
-    const response = await fetch(endpoint, requestOptions);
-    const data = await response.json();
 
-    if (response.ok) {
-      return data;
-    }
-    return Promise.reject({
-      status: response.status,
-      ok: false,
-      statusText: response.statusText,
-      body: data,
-    });
-  } catch (err) {
-    return Promise.reject(err.message ? err.message : data);
+  if (body) {
+    config.data = formData;
   }
+  return axios(config)
+    .then((data) => {
+      return data;
+    })
+    .catch((error) => {
+      return Promise.reject({
+        status: error.response.status,
+        ok: false,
+        statusText: error.response.statusText,
+        body: error.response?.data,
+      });
+    });
 }
 
 api.get = function (endpoint, headers, customConfig = {}) {
@@ -49,5 +54,5 @@ api.put = function (endpoint, headers = {}, body, customConfig = {}) {
 };
 
 api.delete = function (endpoint, headers = {}, customConfig = {}) {
-  return api(endpoint, headers, { ...customConfig, method: "PUT" });
+  return api(endpoint, headers, { ...customConfig, method: "DELETE" });
 };

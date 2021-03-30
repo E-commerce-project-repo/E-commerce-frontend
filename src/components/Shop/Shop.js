@@ -31,10 +31,13 @@ export const Shop = (props) => {
   const categoryItems = useSelector((state) => state.categoryItems);
   const categoryPayload = useSelector((state) => state.category);
   const [showCategory, setShowCategory] = useState(false);
-  console.log(categoryPayload);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(categoryItemsAction.categoryItems());
+    dispatch(
+      categoryItemsAction.categoryItems(
+        apiConfig.root + apiConfig.item + `?category=${category?.id}&limit=8`
+      )
+    );
     dispatch(categoryAction.category());
   }, []);
 
@@ -48,15 +51,20 @@ export const Shop = (props) => {
   };
   const currentPage = (currentIndex) => {
     setPage(currentIndex);
-
     dispatch(
       categoryItemsAction.categoryItems(
-        apiConfig.root + apiConfig.item + `?offset=${8 * currentIndex}&limit=8`
+        apiConfig.root +
+          apiConfig.item +
+          `?category=${category?.id}&offset=${8 * currentIndex}&limit=8`
       )
     );
   };
   const changeCategory = (item) => {
-    dispatch(categoryItemsAction.categoryItems());
+    dispatch(
+      categoryItemsAction.categoryItems(
+        apiConfig.root + apiConfig.item + `?category=${item.id}&limit=8`
+      )
+    );
   };
 
   return (

@@ -1,45 +1,25 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { Container, CategoryListItem } from "./HidedCategory.element";
+import { useDispatch, useSelector } from "react-redux";
+import * as categoryAction from "../../store/category";
 
 export const HidedCategory = (props) => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(categoryAction.category());
+  }, []);
+  const categoryPayload = useSelector((state) => state.category);
+
   return (
     <Container showCategory={props.showCategory}>
-      <CategoryListItem onClick={() => props.categoryLabel("All")}>
-        All
-      </CategoryListItem>
-      <CategoryListItem
-        onClick={() => props.categoryLabel("Category  Electronics items")}
-      >
-        Category Electronics Electronics
-      </CategoryListItem>
-      <CategoryListItem>Category Electronics Electronics</CategoryListItem>
-      <CategoryListItem
-        onClick={() => props.categoryLabel("Category and Electronics no")}
-      >
-        Category and Electronics
-      </CategoryListItem>
-      <CategoryListItem>Apple ProductsContainer</CategoryListItem>
-      <CategoryListItem>Cement raw materials</CategoryListItem>
-      <CategoryListItem>Car maintaince tools</CategoryListItem>
-      <CategoryListItem>clothes and shoes</CategoryListItem>
-      <CategoryListItem>Category Electronics Electronics</CategoryListItem>
-      <CategoryListItem>Category Electronics Electronics</CategoryListItem>
-      <CategoryListItem>Category and Electronics</CategoryListItem>
-      <CategoryListItem>Apple ProductsContainer</CategoryListItem>
-      <CategoryListItem>Cement raw materials</CategoryListItem>
-      <CategoryListItem>Car maintaince tools</CategoryListItem>
-      <CategoryListItem>clothes and shoes</CategoryListItem>
-      <CategoryListItem>Category Electronics Electronics</CategoryListItem>
-      <CategoryListItem>Category Electronics Electronics</CategoryListItem>
-      <CategoryListItem>Category and Electronics</CategoryListItem>
-      <CategoryListItem>Apple ProductsContainer</CategoryListItem>
-      <CategoryListItem>Cement raw materials</CategoryListItem>
-      <CategoryListItem>Car maintaince tools</CategoryListItem>
-      <CategoryListItem>clothes and shoes</CategoryListItem>
-      <CategoryListItem>clothes and shoes</CategoryListItem>
-      <CategoryListItem>clothes and shoes</CategoryListItem>
-      <CategoryListItem>clothes and shoes</CategoryListItem>
+      {categoryPayload.payload.map((item, index) => {
+        return (
+          <CategoryListItem onClick={() => props.categoryLabel(item.name)}>
+            {item.name}
+          </CategoryListItem>
+        );
+      })}
     </Container>
   );
 };

@@ -1,15 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { apiConfig } from "../../constants/constants";
 import { api } from "../api/api";
+import { browserGet } from "../localStore";
+import { toast } from "react-toastify";
+
 const slice = createSlice({
-  name: "tredingItem",
+  name: "add_viewed",
   initialState: {
     payload: [],
     loading: false,
     errors: [],
     count: 0,
     nextUrl: "",
-    previousUrl: "",
   },
   reducers: {
     loading: (state, action) => {
@@ -20,27 +22,42 @@ const slice = createSlice({
       state.loading = false;
       state.count = action.payload.count;
       state.nextUrl = action.payload.next;
+      toast.success("Your product");
     },
     error: (state, action) => {
       state.errors = action.payload;
       state.loading = false;
+      Object.keys(action.payload).forEach((key) => {
+        toast.error(action.payload[key]);
+      });
     },
   },
 });
 export default slice.reducer;
 const { loading, success, error } = slice.actions;
 
-export const tredingNow = (_url) => async (dispatch) => {
+export const add = (data) => async (dispatch) => {
   dispatch(loading(true));
-  const headers = {};
-  const url = _url ? _url : apiConfig.root + apiConfig.item + "?limit=10";
+
+  let user = browserGet();
+
+  const headers = {
+    Accept: "application/json",
+    "Content-Type":
+      "multipart/form-data;boundary=----WebKitFormBoundaryyrV7KO0BoCBuDbT",
+    Authorization: `Token ${user.token}`,
+  };
 
   try {
-    const res = await api.get(url, headers);
+    const res = await api.post(apiConfig.root + apiConfig.item, headers, {
+      id: data.id,
+    });
     dispatch(loading(false));
-    dispatch(success(res));
+    dispatch(success(res.data));
   } catch (e) {
-    dispatch(loading(false));
+    if (e.body) {
+      return dispatch(error(e.body?.errors));
+    }
     return dispatch(error({ detail: "There is something went wrong" }));
   }
 };

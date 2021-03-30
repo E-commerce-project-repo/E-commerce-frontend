@@ -5,22 +5,14 @@ import { colors } from "../../../constants/constants";
 export const Card = styled(Link)`
   margin: 0 1rem;
   width: 100px;
-  background-color: ${colors.white};
+  /* background-color: ${colors.white}; */
   align-items: center;
   margin: 10px;
   border-radius: 5px;
   padding: 0.3rem;
-  border: 1px solid ${colors.gray};
+  /* border: 1px solid ${colors.gray}; */
   text-decoration: none;
   color: ${colors.primary};
-
-  :hover {
-    cursor: pointer;
-    transform: scale(1.06);
-    transition: all 0.3s ease-out;
-    background: ${colors.primary};
-    color: ${colors.white};
-  }
 `;
 
 export const CategoryImg = styled.img`
@@ -31,6 +23,11 @@ export const CategoryImg = styled.img`
   border-radius: 10rem;
   border: 1px solid red;
   margin-bottom: 0.7rem;
+  :hover {
+    cursor: pointer;
+    transform: scale(1.06);
+    transition: all 0.3s ease-out;
+  }
 `;
 
 export const CategoryInfo = styled.div`

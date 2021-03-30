@@ -26,23 +26,12 @@ import {
   WebsiteRights,
   SocialIcons,
   SocialIconLink,
+  ImageLogo,
 } from "./Footer.elements";
-
+import Logo from "../../images/logo.jpg";
 function Footer() {
   return (
     <FooterContainer>
-      {/* <FooterSubscription> */}
-      {/* <FooterSubHeading>
-          Join our exclusive membership to receive the latest news and trends
-        </FooterSubHeading>
-        <FooterSubText>You can unsubscribe at any time.</FooterSubText>
-        <Form>
-          <FormInput name="email" type="email" placeholder="Your Email" />
-          <Button fontBig primary={false}>
-            Subscribe
-          </Button>
-        </Form> */}
-      {/* </FooterSubscription> */}
       <FooterLinksContainer>
         <FooterLinksWrapper>
           <FooterLinkItems>
@@ -73,8 +62,7 @@ function Footer() {
       <SocialMedia>
         <SocialMediaWrap>
           <SocialLogo to="/">
-            <SocialIcon />
-            My Work
+            <ImageLogo src={Logo} />
           </SocialLogo>
           <WebsiteRights>endalk © 2020</WebsiteRights>
           <SocialIcons>

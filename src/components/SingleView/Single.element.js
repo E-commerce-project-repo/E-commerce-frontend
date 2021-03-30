@@ -89,8 +89,8 @@ export const ImagesWrapper = styled.div`
 export const ItemImage = styled.img`
   width: ${({ fullSize }) => (fullSize ? "100%" : "80px")};
   height: ${({ fullSize }) => (fullSize ? "100%" : "80px")};
-  max-width: 700px;
-  max-height: 700px;
+  max-width: auto;
+  max-height: 400px;
   border-radius: 0.5rem;
   margin: 0.2rem;
   border: ${({ fullSize }) => (fullSize ? "" : `1px solid ${colors.primary}`)};

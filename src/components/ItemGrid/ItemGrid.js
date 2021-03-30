@@ -59,6 +59,7 @@ export const ItemGrid = ({
     <ProductsContainer>
       <ProductsHeadingContainer>
         <ProductsHeading>{title}</ProductsHeading>
+
         <PaginationContainer>
           <LeftPaginationArrow onClick={prev} />
           <RightPaginationArrow onClick={next} />

@@ -159,3 +159,12 @@ export const SocialIconLink = styled.a`
   color: ${colors.white};
   font-size: 24px;
 `;
+
+export const ImageLogo = styled.img`
+  height: 50px;
+  width: auto;
+
+  @media screen and (max-width: 960px) {
+    display: none;
+  }
+`;

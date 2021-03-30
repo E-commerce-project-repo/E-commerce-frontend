@@ -37,11 +37,11 @@ export const SideBody = ({
       <CategoryItemWrapper>
         {data.map((item, index) => {
           return index <= 1 ? (
-            <CategoryListItem onClick={CategoryChange}>
+            <CategoryListItem onClick={() => CategoryChange(item)}>
               {item.name}
             </CategoryListItem>
           ) : showAllCategory ? (
-            <CategoryListItem onClick={CategoryChange}>
+            <CategoryListItem onClick={() => CategoryChange(item)}>
               {item.name}
             </CategoryListItem>
           ) : null;

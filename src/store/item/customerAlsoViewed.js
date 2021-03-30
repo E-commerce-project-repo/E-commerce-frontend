@@ -33,13 +33,15 @@ const { loading, success, error } = slice.actions;
 
 export const customerAlsoViews = (_url) => async (dispatch) => {
   dispatch(loading(true));
-  const headers = {};
+  const headers = {
+    "Content-Type": "application/json",
+  };
   const url = _url ? _url : apiConfig.root + apiConfig.item + "?limit=5";
   try {
     const res = await api.get(url, headers);
 
     dispatch(loading(false));
-    dispatch(success(res));
+    dispatch(success(res.data));
   } catch (e) {
     dispatch(loading(false));
     return dispatch(error({ detail: "There is something went wrong" }));

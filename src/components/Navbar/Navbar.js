@@ -14,11 +14,16 @@ import {
   NavBtnLink,
   SearchIcon,
   CloseIcon,
+  ImageLogo,
+  SearchIconLink,
 } from "./Navbar.elements";
+
 import { Autocomplete } from "../SearchComponent/Search";
 import { config } from "../../constants/constants";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../store/login";
+import Logo from "../../images/logo.jpg";
+
 function Navbar() {
   const dispatch = useDispatch();
   const { success } = useSelector((state) => state.login);
@@ -48,7 +53,7 @@ function Navbar() {
   return (
     <Nav>
       <NavLogo to={config.home}>
-        <NavIcon>Meba </NavIcon>
+        <ImageLogo src={Logo} />
 
         <MobileIcon onClick={handleClick}>
           {click ? <FaTimes /> : <FaBars />}
@@ -70,11 +75,6 @@ function Navbar() {
               </NavLinks>
             </NavItem>
 
-            <NavItem>
-              <NavLinks to={config.shoping} onClick={closeMobileMenu}>
-                Shoping
-              </NavLinks>
-            </NavItem>
             <NavItem>
               <NavLinks to={config.orders} onClick={closeMobileMenu}>
                 Orders
@@ -113,14 +113,18 @@ function Navbar() {
         )}
       </NavbarContainer>
       {expandSearch ? (
-        <CloseIcon onClick={() => setExpandSearch(false)} />
+        <SearchIconLink to={config.home}>
+          <CloseIcon onClick={() => setExpandSearch(false)} />
+        </SearchIconLink>
       ) : (
-        <SearchIcon
-          onClick={() => {
-            setExpandSearch(true);
-            setClick(false);
-          }}
-        />
+        <SearchIconLink to={config.searchedResult}>
+          <SearchIcon
+            onClick={() => {
+              setExpandSearch(true);
+              setClick(false);
+            }}
+          />
+        </SearchIconLink>
       )}
     </Nav>
   );

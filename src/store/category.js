@@ -28,14 +28,17 @@ const { loading, success, error } = slice.actions;
 
 export const category = () => async (dispatch) => {
   dispatch(loading(true));
-  const headers = {};
+  const headers = {
+    "Content-Type": "application/json",
+  };
+
   try {
     const res = await api.get(
       apiConfig.root + apiConfig.category + "?limit=10000",
       headers
     );
 
-    dispatch(success(res));
+    dispatch(success(res.data));
   } catch (e) {
     if (e.body) {
       return dispatch(error(e.body?.errors));
