@@ -39,6 +39,7 @@ export const SignUp = () => {
     mobile: "",
     email: "",
     password: "",
+    user_name: "",
     name: "",
     imageUrl: "",
     image: {},
@@ -71,13 +72,15 @@ export const SignUp = () => {
   return (
     <Container>
       <TextWrap>
-        <TextHeader>Why do you write in indian language?</TextHeader>
+        <TextHeader>Advanced marketing strategies?</TextHeader>
         <Text>
-          hello world hello world hello world hello world hello world hello
-          world hello world hello world hello world hello world hello world
-          hello world hello world hello world hello world hello world hello
-          world hello world hello world hello world world hello world hello
-          world hello world
+          The popularity of e-commerce apps keeps rising because of strong
+          marketing strategies. Zara for example, recently launched an app to
+          offer their customers a different shopping experience with the
+          implementation of Augmented Reality. By downloading the app and
+          pointing the camera at a mannequin in a Zara store or to the screen of
+          your e-commerce purchase, the clothing will come to life on a model
+          for a few seconds.
         </Text>
       </TextWrap>
       <FormContainer>
@@ -107,11 +110,6 @@ export const SignUp = () => {
             <LeftUserNameIcon />
           </FormGroup>
         </NameContainer>
-        {errors.name ? (
-          <FormGroup>
-            <Message>{errors.name}</Message>
-          </FormGroup>
-        ) : null}
 
         <FormGroup>
           <ButtonContainer>
@@ -121,6 +119,17 @@ export const SignUp = () => {
           </ButtonContainer>
         </FormGroup>
         <FormGroup>
+          <Label>Username</Label>
+          <Input
+            placeholder="Username"
+            value={user.user_name}
+            name="user_name"
+            onChange={handleChange}
+          />
+          <Message>{errors?.user_name}</Message>
+          <LeftEmailIcon />
+        </FormGroup>
+        <FormGroup>
           <Label>Email</Label>
           <Input
             placeholder="Email Address"
@@ -128,7 +137,6 @@ export const SignUp = () => {
             name="email"
             onChange={handleChange}
           />
-          <Message>{errors.email}</Message>
           <LeftEmailIcon />
         </FormGroup>
         <FormGroup>
@@ -137,13 +145,14 @@ export const SignUp = () => {
             placeholder="Password"
             value={user.password}
             name="password"
+            type="password"
             onChange={handleChange}
           />
-          <Message>{errors.password}</Message>
+          <Message>{errors?.password}</Message>
 
           <LeftPasswordIcon />
         </FormGroup>
-        <Message>{errors.detail}</Message>
+        <Message>{errors?.detail}</Message>
 
         <FormGroup>
           <TermAndConditionWrapper>

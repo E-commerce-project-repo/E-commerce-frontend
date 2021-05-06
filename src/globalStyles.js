@@ -31,7 +31,8 @@ export const Container = styled.div`
 `;
 export const Button = styled.button`
   border-radius: 4px;
-  background: ${({ primary }) => (primary ? colors.primary : colors.secondary)};
+  background: ${({ primary }) =>
+    primary ? colors.secondary : colors.secondary};
   white-space: nowrap;
   padding: ${({ big }) => (big ? "12px 64px" : "10px 20px")};
   color: ${colors.white};
@@ -39,6 +40,7 @@ export const Button = styled.button`
   outline: none;
   border: none;
   cursor: pointer;
+  border-radius: 0.3rem;
 
   &:hover {
     transition: all 0.3s ease-out;
@@ -50,11 +52,11 @@ export const Button = styled.button`
     width: 100%;
   }
 `;
-
 export const Label = styled.label`
   color: ${colors.labelColor};
   display: block;
   font-weight: bold;
+  margin-bottom: 10px;
 `;
 export const Input = styled.input`
   padding: 1em;

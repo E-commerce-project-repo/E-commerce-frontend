@@ -19,8 +19,8 @@ export const ProductsContainer = styled.div`
 export const ProductWrapper = styled.div`
   display: flex;
   overflow: scroll;
-  padding-left: 3rem;
-  padding-right: 3rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   ::-webkit-scrollbar {
     -webkit-appearance: none;
     height: 15px;

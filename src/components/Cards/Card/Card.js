@@ -60,7 +60,7 @@ export const ItemCard = ({ product, isCategory, index }) => {
               ${product.price}
             </ProductPrice>
             <ProductDesc>{product.items_in_stock} in Stock</ProductDesc>
-            <ProductDesc>
+            {/* <ProductDesc>
               Owner by{" "}
               <Link
                 to={{
@@ -70,7 +70,7 @@ export const ItemCard = ({ product, isCategory, index }) => {
               >
                 {product.owner.name}
               </Link>
-            </ProductDesc>
+            </ProductDesc> */}
           </LeftItemWrapper>
           <ProductButton>
             <AddCartIcon onClick={addToCart} />

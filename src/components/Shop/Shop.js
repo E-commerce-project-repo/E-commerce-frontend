@@ -50,14 +50,14 @@ export const Shop = (props) => {
     setPage(page - 1);
   };
   const currentPage = (currentIndex) => {
-    setPage(currentIndex);
-    dispatch(
-      categoryItemsAction.categoryItems(
-        apiConfig.root +
-          apiConfig.item +
-          `?category=${category?.id}&offset=${8 * currentIndex}&limit=8`
-      )
-    );
+    // setPage(currentIndex);
+    // dispatch(
+    //   categoryItemsAction.categoryItems(
+    //     apiConfig.root +
+    //       apiConfig.item +
+    //       `?category=${category?.id}&offset=${8 * currentIndex}&limit=8`
+    //   )
+    // );
   };
   const changeCategory = (item) => {
     dispatch(

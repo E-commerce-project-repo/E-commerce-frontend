@@ -198,7 +198,6 @@ export const FeatureButton = styled(Link)`
   margin-top: 1rem;
   text-decoration: none;
   width: 10rem;
-  background-color: red;
 
   &:hover {
     color: #fff;

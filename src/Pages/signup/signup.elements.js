@@ -136,6 +136,7 @@ export const SignInLabel = styled.span`
   color: ${colors.primary};
   font-size: 1rem;
   margin-right: 5px;
+  
 `;
 // export const ButtonContainer = styled.div`
 //   display: flex;
@@ -151,7 +152,7 @@ export const ButtonContainer = styled.div`
 
 export const ButtonFile = styled.a`
   border-radius: 4px;
-  background: ${colors.primary};
+  background: ${colors.secondary};
   white-space: nowrap;
   padding: 10px 24px;
   color: ${colors.white};

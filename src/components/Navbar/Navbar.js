@@ -103,9 +103,9 @@ function Navbar() {
                 </NavBtnLink>
               ) : (
                 <NavBtnLink to={config.signIn}>
-                  <Button onClick={closeMobileMenu} fontBig primary={false}>
-                    SIGN IN
-                  </Button>
+                  {/* <Button onClick={closeMobileMenu} fontBig primary={false}> */}
+                  SIGN IN
+                  {/* </Button> */}
                 </NavBtnLink>
               )}
             </NavItemBtn>

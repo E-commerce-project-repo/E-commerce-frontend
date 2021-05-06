@@ -5,8 +5,10 @@ export const colors = {
   // primary: "#0B3C5D",
   // primary: "#dc422a",
   // stepperPrimary: "#387cf6",
+  // primary: "#0B3C5D",
   primary: "#0B3C5D",
-  secondary: "#e31837",
+  // secondary: "#e31837",
+  secondary: "#F7912D",
   bodyColor: "#f4f4f4",
   // dark: "#040404",
   dark: "#202022",
@@ -38,7 +40,7 @@ export const config = {
 };
 
 export const apiConfig = {
-  root: "https://meba-project.herokuapp.com/api/v1",
+  root: "https://web-meba-project.herokuapp.com/api/v1",
   // root: " http://0.0.0.0:8000/api/v1",
   home: "/",
   singlePage: "/singlePage",

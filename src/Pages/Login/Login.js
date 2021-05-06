@@ -48,12 +48,15 @@ export const SignIn = (props) => {
   return (
     <Container>
       <TextWrap>
-        <TextHeader>Why do you write in indian language?</TextHeader>
+        <TextHeader>Advanced marketing strategies?</TextHeader>
         <Text>
-          hello world hello world hello world hello world hello world hello
-          world hello world hello world hello world hello world hello world
-          hello world hello world hello world hello world hello world hello
-          world hello world hello world hello world
+          The popularity of e-commerce apps keeps rising because of strong
+          marketing strategies. Zara for example, recently launched an app to
+          offer their customers a different shopping experience with the
+          implementation of Augmented Reality. By downloading the app and
+          pointing the camera at a mannequin in a Zara store or to the screen of
+          your e-commerce purchase, the clothing will come to life on a model
+          for a few seconds.
         </Text>
       </TextWrap>
       <FormContainer>

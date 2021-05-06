@@ -9,7 +9,7 @@ import {
 import * as FaIcons from "react-icons/fa";
 
 export const Nav = styled.nav`
-  height: 80px;
+  height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,8 +17,10 @@ export const Nav = styled.nav`
   position: sticky;
   top: 0;
   z-index: 999;
-  background: ${colors.dark};
+  background: ${colors.bodyColor};
+  /* background: -webkit-linear-gradient(#ffc05c, #ff3857); */
   box-shadow: 1px 1px ${colors.primary};
+  color: ${colors.dark};
   padding-left: 50px;
   padding-right: 50px;
 `;
@@ -138,6 +140,7 @@ export const NavLinks = styled(Link)`
   height: 100%;
   text-align: center;
   justify-content: center;
+  color: ${colors.dark};
 
   @media screen and (max-width: 960px) {
     text-align: center;
@@ -161,6 +164,7 @@ export const NavBtnLink = styled(Link)`
   width: 100%;
   border: none;
   outline: none;
+  color: ${colors.dark};
 `;
 export const SearchIconWrapper = styled(Link)`
   display: flex;
@@ -183,7 +187,7 @@ export const ImageLogo = styled.img`
 export const SearchIcon = styled(FaIcons.FaSearch)`
   width: 20px;
   height: 20px;
-  color: ${colors.white};
+  color: ${colors.dark};
   display: flex;
   justify-content: left;
   align-items: center;
@@ -206,7 +210,7 @@ export const SearchIcon = styled(FaIcons.FaSearch)`
 export const CloseIcon = styled(FaIcons.FaTimes)`
   width: 20px;
   height: 20px;
-  color: ${colors.white};
+  color: ${colors.dark};
   display: flex;
   justify-content: left;
   align-items: center;
@@ -224,4 +228,6 @@ export const CloseIcon = styled(FaIcons.FaTimes)`
     height: 15px;
   }
 `;
-export const SearchIconLink = styled(Link)``;
+export const SearchIconLink = styled(Link)`
+  color: ${colors.dark};
+`;

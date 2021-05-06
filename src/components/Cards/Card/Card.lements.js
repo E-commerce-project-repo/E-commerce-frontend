@@ -96,7 +96,7 @@ export const ProductButton = styled(Link)`
 `;
 
 export const AddCartIcon = styled(FaIcons.FaCartPlus)`
-  color: ${colors.secondary};
+  color: ${colors.dark};
 `;
 
 export const ProfileInfo = styled(Link)`
